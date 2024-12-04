@@ -1,18 +1,24 @@
 #pragma once
 #include "GL/glut.h"
+#include "string"
 
 class DisplayManager {
 public:
-	DisplayManager(int width, int height, bool shouldFullscreen);
+	DisplayManager(float width, float height, bool shouldFullscreen, bool shouldOrthogonal, bool shouldDoubleBuffer, std::string title);
 	void initializeWindow();
-	int getWindowWidth();
-	int GetWindowHeight();
-	void setWindowWidth(int width);
-	void setWindowHeight(int height);
-	bool getFullscreen();
+	float getWindowWidth();
+	float GetWindowHeight();
+	void setWindowWidth(float width);
+	void setWindowHeight(float height);
+	bool ifFullscreen();
 	void setFullscreen(bool shouldFullscreen);
+	bool ifOrthogonal();
+	void setOrthogonal(bool shouldOrthogonal);
 private:
-	int windowWidth;
-	int windowHeight;
+	float windowWidth;
+	float windowHeight;
 	bool fullscreen;
+	bool orthogonalView;
+	bool doubleBuffer;
+	std::string programTitle;
 };
