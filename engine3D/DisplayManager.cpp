@@ -1,10 +1,10 @@
 #include "DisplayManager.h"
 
-DisplayManager::DisplayManager(float width, float height, bool shouldFullscreen, bool shouldOrthogonal, bool shouldDoubleBuffer, std::string title) {
+DisplayManager::DisplayManager(float width, float height, bool shouldFullscreen, bool shouldDoubleBuffer, std::string title) {
 	windowHeight = height;
 	windowWidth = width;
 	fullscreen = shouldFullscreen;
-	orthogonalView = shouldOrthogonal;
+
 	doubleBuffer = shouldDoubleBuffer;
 	programTitle = title;
 }
@@ -51,19 +51,4 @@ void DisplayManager::setFullscreen(bool shouldFullscreen) {
 		glutPositionWindow((glutGet(GLUT_SCREEN_WIDTH) - windowWidth) / 2, (glutGet(GLUT_SCREEN_HEIGHT) - windowHeight) / 2);
 		fullscreen = false;
 	}
-}
-
-bool DisplayManager::ifOrthogonal() {
-	return orthogonalView;
-}
-
-void DisplayManager::setOrthogonal(bool shouldOrthogonal) {
-	orthogonalView = shouldOrthogonal;
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-	if (orthogonalView) 
-		glOrtho(-windowWidth / 2, windowWidth / 2, -windowHeight / 2, windowHeight / 2, -1.0, 1.0);
-	else 
-		gluPerspective(45.0, windowWidth / windowHeight, 0.1, 100.0);
-	glMatrixMode(GL_MODELVIEW);
 }

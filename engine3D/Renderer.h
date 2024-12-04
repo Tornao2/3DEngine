@@ -11,12 +11,16 @@ typedef struct Color {
 class Renderer {
 private:
 	void renderProper();
+	void prepareView();
+	//DEBUGGING, DELETE FROM RELEASE
+	void fadingBackground();
+	//DEBUGGING, DELETE FROM RELEASE
 	static Renderer* instance;
 	Color clearColor;
 	bool enableZBuffer;
-	bool enableDoubleBuffer;
+	bool orthogonalView;
 public:
-	Renderer(Color readClearColor = Color(), bool zBuffer = false, bool doubleBuffer = true);
+	Renderer(Color readClearColor = Color(), bool zBuffer = true, bool shouldOrthogonal = false);
 	static void render();
 	void setClearColor(Color readClearColor);
 	Color getClearColor();
@@ -24,4 +28,6 @@ public:
 	void setDoubleBuffer(bool should);
 	bool getZBuffer();
 	bool getDoubleBuffer();
+	bool ifOrthogonal();
+	void setOrthogonal(bool shouldOrthogonal);
 };
