@@ -6,19 +6,34 @@
 
 class Engine {
 public:
-	Engine(int* argc, char* argv[], Renderer&renderer, DisplayManager& displayManager, int delay, bool readMouse, bool readKeyboard);
+	Engine(int* argc, char* argv[], Renderer&renderer, DisplayManager& displayManager, int delay);
+	template<typename mouseFunc, typename keyboardFunc>
+	void registerCallbacks(mouseFunc mouse, keyboardFunc keyboard) {
+		glutDisplayFunc(Renderer::render);
+		if (mouse)
+			glutMouseFunc(mouse);
+		if (keyboard)
+			glutKeyboardFunc(keyboard);
+		glutTimerFunc(1, timer, fpsCap);
+	}
+	void run();
 	void finishProgram();
 	int getFpsCap();
 	void setFpsCap(int delay);
 private:
-	bool keyboard;
-	bool mouse;
 	int fpsCap;
 	void initializeLibrary(int* argc, char* argv[]);
-	void registerCallbacks(bool readMouse, bool readKeyboard);
 	void static timer(int value);
-	void toggleKeyboard(bool toggle);
-	bool getKeyboard();
-	void toggleMouse(bool toggle);
-	bool getMouse();
+	template<typename keyboardFunc> void toggleKeyboard(keyboardFunc keyboard) {
+		if (keyboard)
+			glutKeyboardFunc(keyboard);
+		else if (!keyboard)
+			glutKeyboardFunc(NULL);
+	}
+	template<typename mouseFunc> void toggleMouse(mouseFunc mouse) {
+		if (mouse)
+			glutMouseFunc(mouse);
+		else if (!mouse)
+			glutMouseFunc(NULL);
+	}
 };
