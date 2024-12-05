@@ -3,37 +3,25 @@
 #include "DisplayManager.h"
 #include "MouseHandler.h"
 #include "KeyboardHandler.h"
+#include "GL/freeglut_std.h"
+#include <functional>
 
 class Engine {
 public:
 	Engine(int* argc, char* argv[], Renderer&renderer, DisplayManager& displayManager, int delay);
-	template<typename mouseFunc, typename keyboardFunc>
-	void registerCallbacks(mouseFunc mouse, keyboardFunc keyboard) {
-		glutDisplayFunc(Renderer::render);
-		if (mouse)
-			glutMouseFunc(mouse);
-		if (keyboard)
-			glutKeyboardFunc(keyboard);
-		glutTimerFunc(1, timer, fpsCap);
-	}
+	void registerCallbacks();
 	void run();
 	void finishProgram();
 	int getFpsCap();
 	void setFpsCap(int delay);
+	void toggleKeyboard(bool should, std::function<void(void)> function);
+	void toggleMouse(bool should, std::function<void(void)> function);
+	void setKeyboardFunc(std::function<void(void)> function);
+	void setMouseFunc(std::function<void(void)> function);
 private:
 	int fpsCap;
 	void initializeLibrary(int* argc, char* argv[]);
 	void static timer(int value);
-	template<typename keyboardFunc> void toggleKeyboard(keyboardFunc keyboard) {
-		if (keyboard)
-			glutKeyboardFunc(keyboard);
-		else if (!keyboard)
-			glutKeyboardFunc(NULL);
-	}
-	template<typename mouseFunc> void toggleMouse(mouseFunc mouse) {
-		if (mouse)
-			glutMouseFunc(mouse);
-		else if (!mouse)
-			glutMouseFunc(NULL);
-	}
+	static std::function<void(void)> mouseFunc;
+	static std::function<void(void)> keyboardFunc;
 };

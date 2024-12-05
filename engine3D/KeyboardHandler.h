@@ -1,6 +1,24 @@
 #pragma once
+#include <GL/freeglut_std.h>
+
+typedef enum KeyStates{
+	released,
+	pressed
+}KeyStates;
 
 class KeyboardHandler {
+private:
+	static KeyboardHandler* instance;
+	KeyStates keyStates[256] = { released };
+	bool ifKeyRefresh[256] = { false };
+	void keyDownProper(unsigned char key, int x, int y);
+	void keyUpProper(unsigned char key, int x, int y);
 public:
-	static void handleKeyboard(unsigned char key, int x, int y) {};
+	KeyboardHandler();
+	void refresh();
+	void setIfShouldRefresh(unsigned char key, bool should);
+	bool getIfShouldRefresh(unsigned char key);
+	void static keyDown(unsigned char key, int x, int y);
+	void static keyUp(unsigned char key, int x, int y);
+	bool checkIfPressed(unsigned char key);
 };

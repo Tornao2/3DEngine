@@ -1,6 +1,5 @@
 #pragma once
 #include "Gl/glut.h"
-#include "chrono"
 
 typedef struct Color {
 	double r, g, b, a;
@@ -25,9 +24,7 @@ public:
 	void setClearColor(Color readClearColor);
 	Color getClearColor();
 	void setZBuffer(bool should);
-	void setDoubleBuffer(bool should);
 	bool getZBuffer();
-	bool getDoubleBuffer();
 	bool ifOrthogonal();
 	void setOrthogonal(bool shouldOrthogonal);
 };
