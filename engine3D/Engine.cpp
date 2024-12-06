@@ -2,8 +2,10 @@
 
 std::function<void()> Engine::mouseFunc = nullptr;
 std::function<void()> Engine::keyboardFunc = nullptr;
+Engine* Engine::instance = nullptr;
 
 Engine::Engine(int* argc, char* argv[], Renderer& renderer, DisplayManager& displayManager, int delay) {
+	instance = this;
 	fpsCap = delay;
 	initializeLibrary(argc, argv);
 	displayManager.initializeWindow();
@@ -13,10 +15,6 @@ Engine::Engine(int* argc, char* argv[], Renderer& renderer, DisplayManager& disp
 void Engine::registerCallbacks(){
 	glutDisplayFunc(Renderer::render);
 	glutTimerFunc(1, timer, fpsCap);
-}
-
-void Engine::finishProgram() {
-	glutDestroyWindow(glutGetWindow());
 }
 
 void Engine::initializeLibrary(int* argc, char* argv[]) {
@@ -32,8 +30,8 @@ int Engine::getFpsCap() {
 }
 
 void Engine::setFpsCap(int delay) {
-	glutTimerFunc(fpsCap, timer, delay);
-	fpsCap = delay;
+	if (delay > 0)
+		this->fpsCap = delay;
 }
 
 void Engine::toggleKeyboard(bool should, std::function<void(void)> function) {
@@ -60,7 +58,7 @@ void Engine::timer(int value) {
 	Engine::mouseFunc();
 	Engine::keyboardFunc();
 	glutPostRedisplay();
-	glutTimerFunc(1000 / value, timer, value);
+	glutTimerFunc(1000 / instance->fpsCap, timer, instance->fpsCap);
 }
 
 void Engine::setKeyboardFunc(std::function<void(void)> function) {

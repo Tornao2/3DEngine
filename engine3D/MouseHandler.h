@@ -1,22 +1,18 @@
 #pragma once
-#include <GL/freeglut_std.h>
-
-typedef enum buttonsStates {
-	releasedButton,
-	pressedButton
-}buttonsStates;
+#include "KeyboardHandler.h"
 
 typedef enum mouseButtons {
 	leftButton = 0,
 	scrollButton,
 	rightButton
-};
+}mouseButtons;
 
 class MouseHandler {
 private:
 	static MouseHandler* instance;
-	buttonsStates buttonStates[3] = { releasedButton };
+	KeyStates buttonStates[3] = { notClicked };
 	bool ifButtonsRefresh[3] = { true };
+	bool ifPressedOnThisFrame[3] = { false };
 	void buttonHandleProper(int button, int state, int x, int y);
 public:
 	MouseHandler();

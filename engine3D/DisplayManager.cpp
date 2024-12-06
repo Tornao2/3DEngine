@@ -30,12 +30,18 @@ float DisplayManager::GetWindowHeight() {
 
 void DisplayManager::setWindowWidth(float width) {
 	windowWidth = width;
-	glutReshapeWindow(windowWidth, windowHeight);
+	if (width > 1) {
+		glutReshapeWindow(windowWidth, windowHeight);
+		glutPositionWindow((glutGet(GLUT_SCREEN_WIDTH) - windowWidth) / 2, (glutGet(GLUT_SCREEN_HEIGHT) - windowHeight) / 2);
+	}
 }
 
 void DisplayManager::setWindowHeight(float height) {
 	windowHeight = height;
-	glutReshapeWindow(windowWidth, windowHeight);
+	if (height > 1) {
+		glutReshapeWindow(windowWidth, windowHeight);
+		glutPositionWindow((glutGet(GLUT_SCREEN_WIDTH) - windowWidth) / 2, (glutGet(GLUT_SCREEN_HEIGHT) - windowHeight) / 2);
+	}
 }
 
 bool DisplayManager::ifFullscreen() {

@@ -2,17 +2,21 @@
 
 MouseHandler* MouseHandler::instance = nullptr;
 
-
 MouseHandler::MouseHandler() {
 	instance = this;
 	glutMouseFunc(buttonHandle);
 }
 
 void MouseHandler::buttonHandleProper(int button, int state, int x, int y) {
-	if (state == GLUT_UP)
-		buttonStates[button] = releasedButton;
-	else
-		buttonStates[button] = pressedButton;
+	if (state == GLUT_DOWN) {
+		buttonStates[button] = pressing;
+		ifPressedOnThisFrame[button] = true;
+	}
+	else if (state == GLUT_UP)
+		if (ifPressedOnThisFrame[button])
+			buttonStates[button] = removeLater;
+		else
+			buttonStates[button] = notClicked;
 }
 
 void MouseHandler::buttonHandle(int button, int state, int x, int y) {
@@ -20,9 +24,11 @@ void MouseHandler::buttonHandle(int button, int state, int x, int y) {
 }
 
 void MouseHandler::refresh() {
-	for (int i = 0; i < 3; i++)
-		if (ifButtonsRefresh[i])
-			instance->buttonStates[i] = releasedButton;
+	for (int i = 0; i < 3; i++) {
+		if (buttonStates[i] == removeLater || ifButtonsRefresh[i])
+			buttonStates[i] = notClicked;
+		ifPressedOnThisFrame[i] = false;
+	}
 }
 
 void MouseHandler::setIfShouldRefresh(unsigned char button, bool should) {
@@ -34,7 +40,7 @@ bool MouseHandler::getIfShouldRefresh(unsigned char button) {
 }
 
 bool MouseHandler::checkIfPressed(unsigned char button) {
-	if (buttonStates[button] == pressedButton)
+	if (buttonStates[button] != notClicked)
 		return true;
 	return false;
 }
