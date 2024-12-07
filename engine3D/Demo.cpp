@@ -8,6 +8,7 @@ class CustomKeyboard:public KeyboardHandler {
     DisplayManager* display;
     Engine* engine;
     Renderer* renderer;
+    bool returnTheFunc;
 public:
     CustomKeyboard(DisplayManager* readDisplay, Engine* readEngine, Renderer* readRenderer) {
         display = readDisplay;
@@ -18,27 +19,43 @@ public:
         setIfShouldRefresh('6', true);
     }
     void handleKeyboard() {
+        glutKeyboardFunc(NULL);
+        if (returnTheFunc) {
+            glutKeyboardFunc(KeyboardHandler::keyDown);
+            returnTheFunc = false;
+        }
         if (checkIfPressed(27)) {
             glutDestroyWindow(glutGetWindow());
             exit(0);
         }
         if (checkIfPressed('1')) {
+            returnTheFunc = true;
             std::cout << "Podaj liczbe klatek na sekunde ";
             float fps;
             getUserInput(fps);
             engine->setFpsCap(fps);
-        }
-        if (checkIfPressed('2')) {
+        } else if (checkIfPressed('2')) {
+            returnTheFunc = true;
             std::cout << "Podaj szerokosc okna ";
             float width;
             getUserInput(width);
             display->setWindowWidth(width);
-        }
-        if (checkIfPressed('3')) {
+        } else if (checkIfPressed('3')) {
+            returnTheFunc = true;
             std::cout << "Podaj wysokosc okna ";
             float height;
             getUserInput(height);
             display->setWindowHeight(height);
+        } else if (checkIfPressed('7')) {
+            returnTheFunc = true;
+            float r, g, b, a;
+            std::cout << "Podaj czesc r(0-255) ";
+            getUserInput(r);
+            std::cout << "Podaj czesc g(0-255) ";
+            getUserInput(g);
+            std::cout << "Podaj czesc b(0-255) ";
+            getUserInput(b);
+            renderer->setClearColor(normalizeColors({ r, g, b, 255 }));
         }
         if (checkIfPressed('4')) 
             display->setFullscreen(!display->ifFullscreen());
@@ -50,16 +67,8 @@ public:
             renderer->setOrthogonal(!renderer->getOrthogonal());
             std::cout << "Zmieniono ustawienie widoku ortogonalnego" << std::endl;
         }
-        if (checkIfPressed('7')) {
-            float r, g, b, a;
-            std::cout << "Podaj czesc r(0-255) ";
-            getUserInput(r);
-            std::cout << "Podaj czesc g(0-255) ";
-            getUserInput(g);
-            std::cout << "Podaj czesc b(0-255) ";
-            getUserInput(b);
-            renderer->setClearColor(normalizeColors({ r, g, b, 255 }));
-        }
+        if (!returnTheFunc)
+            glutKeyboardFunc(KeyboardHandler::keyDown);
         refresh();
     }
     void getUserInput(float& inputVar) {
@@ -88,7 +97,7 @@ int main(int argc, char* argv[]) {
     std::cout << "Nacisnij 6 zeby wlaczyc/wylaczyc widok ortogonalny" << std::endl;
     std::cout << "Nacisnij 7 zeby zmienic kolor odswiezania" << std::endl;
     Renderer renderer(Color { 0.5, 0.5, 0.5, 1 }, true, false);
-    DisplayManager displayManager(640, 480, false, false, "3DEngine");
+    DisplayManager displayManager(640, 480, false, true, "3DEngine");
     Engine engine(&argc, argv, renderer, displayManager, 60);
     CustomKeyboard key(&displayManager, &engine, &renderer);
     CustomMouse mouse;

@@ -1,11 +1,12 @@
 #include "Renderer.h"
+#include "Point.h"
 
 Renderer* Renderer::instance = nullptr;
 
 Renderer::Renderer(Color readClearColor, bool zBuffer, bool shouldOrthogonal) {
 	instance = this;
 	clearColor = readClearColor;
-	enableZBuffer = zBuffer;
+	setZBuffer(zBuffer);
 	orthogonalView = shouldOrthogonal;
 }
 
@@ -18,15 +19,16 @@ void Renderer::prepareView() {
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	if (orthogonalView)
-		glOrtho(-GLUT_WINDOW_WIDTH / 2, GLUT_WINDOW_WIDTH / 2, -GLUT_WINDOW_HEIGHT / 2, GLUT_WINDOW_HEIGHT / 2, -1.0, 1.0);
+		glOrtho(-GLUT_WINDOW_WIDTH / 2, GLUT_WINDOW_WIDTH / 2, -GLUT_WINDOW_HEIGHT / 2, GLUT_WINDOW_HEIGHT / 2, -5.0f, 5.0f);
 	else
-		gluPerspective(45.0, GLUT_WINDOW_WIDTH / GLUT_WINDOW_HEIGHT, 0.1, 100.0);
+		gluPerspective(45.0, GLUT_WINDOW_WIDTH / GLUT_WINDOW_HEIGHT, 0.1f, 100.0f);
 	glMatrixMode(GL_MODELVIEW);
 }
 
 void Renderer::renderProper() {
-	prepareView();
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	prepareView();
+	//Draw Figures here
 	if (glutGet(GLUT_WINDOW_DOUBLEBUFFER)) glutSwapBuffers();
 	else glFlush();
 }
