@@ -1,15 +1,12 @@
 #include "ObjectManager.h"
 
 void ObjectManager::addFigure(Primitive* readFigure, int index) {
-	if (index == -1 || index >= primitiveList.size()) {
+	if (index == -1 || index >= primitiveList.size()) 
 		primitiveList.push_back(readFigure);
-	}
-	else if (index >= 0) {
+	else if (index >= 0) 
 		primitiveList.insert(primitiveList.begin() + index, readFigure);
-	}
-	else {
+	else 
 		return;
-	}
 	std::vector<float> vertexData;
 	for (Primitive* figure : primitiveList) {
 		float* vertexArray = figure->getVertex();

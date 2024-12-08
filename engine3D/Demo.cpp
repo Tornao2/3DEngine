@@ -4,7 +4,7 @@
 #include <string>
 #include <sstream>
 
-class CustomKeyboard:public KeyboardHandler {
+class CustomKeyboard :public KeyboardHandler {
     DisplayManager* display;
     Engine* engine;
     Renderer* renderer;
@@ -35,19 +35,22 @@ public:
             float fps;
             getUserInput(fps);
             engine->setFpsCap(fps);
-        } else if (checkIfPressed('2')) {
+        }
+        else if (checkIfPressed('2')) {
             returnTheFunc = true;
             std::cout << "Podaj szerokosc okna ";
             float width;
             getUserInput(width);
             display->setWindowWidth(width);
-        } else if (checkIfPressed('3')) {
+        }
+        else if (checkIfPressed('3')) {
             returnTheFunc = true;
             std::cout << "Podaj wysokosc okna ";
             float height;
             getUserInput(height);
             display->setWindowHeight(height);
-        } else if (checkIfPressed('7')) {
+        }
+        else if (checkIfPressed('7')) {
             returnTheFunc = true;
             float r, g, b, a;
             std::cout << "Podaj czesc r(0-255) ";
@@ -58,7 +61,7 @@ public:
             getUserInput(b);
             renderer->setClearColor(normalizeColors({ r, g, b, 255 }));
         }
-        if (checkIfPressed('4')) 
+        if (checkIfPressed('4'))
             display->setFullscreen(!display->ifFullscreen());
         if (checkIfPressed('5')) {
             renderer->setZBuffer(!renderer->getZBuffer());
@@ -80,7 +83,7 @@ public:
     }
 };
 
-class CustomMouse:public MouseHandler {
+class CustomMouse :public MouseHandler {
 public:
     void handleMouse() {
         if (checkIfPressed(leftButton))
@@ -90,8 +93,10 @@ public:
 };
 
 void fillManager(ObjectManager& manager) {
-    float pos[6] = { 0, 0 ,0, 0.5, 0.2, 0.2 };
+    float pos[6] = { 1, 0 ,0, 1.0, 1, 0.2 };
+    float pos2[6] = { 0, -1 ,1, 1.0, 1.0, 1.0 };
     manager.addFigure(new Point(pos, 50));
+    manager.addFigure(new Point(pos2, 50));
 }
 
 int main(int argc, char* argv[]) {
@@ -103,7 +108,7 @@ int main(int argc, char* argv[]) {
     std::cout << "Nacisnij 6 zeby wlaczyc/wylaczyc widok ortogonalny" << std::endl;
     std::cout << "Nacisnij 7 zeby zmienic kolor odswiezania" << std::endl;
     ObjectManager manager;
-    Renderer renderer(&manager, Color { 0.5, 0.5, 0.5, 1 }, true, false);
+    Renderer renderer(&manager, Color{ 0.5, 0.5, 0.5, 1 }, true, false);
     DisplayManager displayManager(640, 480, false, true, "3DEngine");
     Engine engine(&argc, argv, renderer, displayManager, 60);
     CustomKeyboard key(&displayManager, &engine, &renderer);

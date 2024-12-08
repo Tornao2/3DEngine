@@ -4,24 +4,16 @@ std::function<void()> Engine::mouseFunc = nullptr;
 std::function<void()> Engine::keyboardFunc = nullptr;
 Engine* Engine::instance = nullptr;
 
-void APIENTRY MessageCallback(GLenum source, GLenum type, GLuint id,
-	GLenum severity, GLsizei length,
-	const GLchar* message, const void* userParam) {
-	std::cerr << "GL CALLBACK: " << (type == GL_DEBUG_TYPE_ERROR ? "** GL ERROR **" : "")
-		<< " type = 0x" << type
-		<< ", severity = 0x" << severity
-		<< ", message = " << message << std::endl;
-}
 Engine::Engine(int* argc, char* argv[], Renderer& renderer, DisplayManager& displayManager, int delay) {
 	instance = this;
 	fpsCap = delay;
 	initializeLibrary(argc, argv);
 	displayManager.initializeWindow();
 	glewInit();
+	if (glewInit() != GLEW_OK) 
+		std::cerr << "Failed to initialize GLEW" << std::endl;
 	renderer.setClearColor(renderer.getClearColor());
 	renderer.setZBuffer(renderer.getZBuffer());
-	glEnable(GL_DEBUG_OUTPUT);
-	glDebugMessageCallback(MessageCallback, 0);
 }
 
 void Engine::registerCallbacks(){
