@@ -3,8 +3,9 @@
 
 Renderer* Renderer::instance = nullptr;
 
-Renderer::Renderer(Color readClearColor, bool zBuffer, bool shouldOrthogonal) {
+Renderer::Renderer(ObjectManager readManager, Color readClearColor, bool zBuffer, bool shouldOrthogonal) {
 	instance = this;
+	manager = readManager;
 	clearColor = readClearColor;
 	setZBuffer(zBuffer);
 	orthogonalView = shouldOrthogonal;
@@ -28,7 +29,7 @@ void Renderer::prepareView() {
 void Renderer::renderProper() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	prepareView();
-	//Draw Figures here
+	manager.drawAll();
 	if (glutGet(GLUT_WINDOW_DOUBLEBUFFER)) glutSwapBuffers();
 	else glFlush();
 }
@@ -59,4 +60,13 @@ bool Renderer::getOrthogonal() {
 
 void Renderer::setOrthogonal(bool shouldOrthogonal) {
 	orthogonalView = shouldOrthogonal;
+}
+
+ObjectManager* Renderer::getManager() {
+	return &manager;
+}
+
+void Renderer::replaceManager(ObjectManager readManager) {
+	manager.clearList();
+	manager = readManager;
 }

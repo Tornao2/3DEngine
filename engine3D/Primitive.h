@@ -10,5 +10,5 @@ public:
 	void setPointVertex(float* readVertex);
 	float* getColorVertex();
 	void setColorVertex(float* readVertex);
-	void virtual drawFigure() = 0;
+	void virtual drawFigure() {};
 };

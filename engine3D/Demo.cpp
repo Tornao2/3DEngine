@@ -96,7 +96,8 @@ int main(int argc, char* argv[]) {
     std::cout << "Nacisnij 5 zeby wlaczyc/wylaczyc zBuffer" << std::endl;
     std::cout << "Nacisnij 6 zeby wlaczyc/wylaczyc widok ortogonalny" << std::endl;
     std::cout << "Nacisnij 7 zeby zmienic kolor odswiezania" << std::endl;
-    Renderer renderer(Color { 0.5, 0.5, 0.5, 1 }, true, false);
+    ObjectManager manager;
+    Renderer renderer(manager, Color { 0.5, 0.5, 0.5, 1 }, true, false);
     DisplayManager displayManager(640, 480, false, true, "3DEngine");
     Engine engine(&argc, argv, renderer, displayManager, 60);
     CustomKeyboard key(&displayManager, &engine, &renderer);

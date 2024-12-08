@@ -129,6 +129,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Color.cpp" />
+    <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Primitive.cpp" />
     <ClCompile Include="DisplayManager.cpp" />
@@ -143,6 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Color.h" />
+    <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Primitive.h" />
     <ClInclude Include="DisplayManager.h" />

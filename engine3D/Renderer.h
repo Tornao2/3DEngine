@@ -1,6 +1,7 @@
 #pragma once
 #include "Gl/glut.h"
 #include "Color.h"
+#include "ObjectManager.h"
 
 class Renderer {
 private:
@@ -10,8 +11,9 @@ private:
 	Color clearColor;
 	bool enableZBuffer;
 	bool orthogonalView;
+	ObjectManager manager;
 public:
-	Renderer(Color readClearColor = Color(), bool zBuffer = true, bool shouldOrthogonal = false);
+	Renderer(ObjectManager readManager, Color readClearColor = Color(), bool zBuffer = true, bool shouldOrthogonal = false);
 	static void render();
 	void setClearColor(Color readClearColor);
 	Color getClearColor();
@@ -19,4 +21,6 @@ public:
 	bool getZBuffer();
 	bool getOrthogonal();
 	void setOrthogonal(bool shouldOrthogonal);
+	ObjectManager* getManager();
+	void replaceManager(ObjectManager readManager);
 };

@@ -66,6 +66,9 @@
     <ClCompile Include="Point.cpp">
       <Filter>Source Files\Figures</Filter>
     </ClCompile>
+    <ClCompile Include="ObjectManager.cpp">
+      <Filter>Source Files\Handlers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -94,6 +97,9 @@
     </ClInclude>
     <ClInclude Include="Point.h">
       <Filter>Header Files\Figures</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectManager.h">
+      <Filter>Header Files\Handlers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
