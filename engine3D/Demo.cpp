@@ -14,6 +14,7 @@ public:
         display = readDisplay;
         engine = readEngine;
         renderer = readRenderer;
+        returnTheFunc = false;
         setIfShouldRefresh('4', true);
         setIfShouldRefresh('5', true);
         setIfShouldRefresh('6', true);
@@ -88,6 +89,11 @@ public:
     }
 };
 
+void fillManager(ObjectManager& manager) {
+    float pos[6] = { 0, 0 ,0, 0.5, 0.2, 0.2 };
+    manager.addFigure(new Point(pos, 50));
+}
+
 int main(int argc, char* argv[]) {
     std::cout << "Nacisnij 1 zeby wybrac liczbe klatek na sekunde" << std::endl;
     std::cout << "Nacisnij 2 zeby wybrac szerokosc okna" << std::endl;
@@ -97,7 +103,7 @@ int main(int argc, char* argv[]) {
     std::cout << "Nacisnij 6 zeby wlaczyc/wylaczyc widok ortogonalny" << std::endl;
     std::cout << "Nacisnij 7 zeby zmienic kolor odswiezania" << std::endl;
     ObjectManager manager;
-    Renderer renderer(manager, Color { 0.5, 0.5, 0.5, 1 }, true, false);
+    Renderer renderer(&manager, Color { 0.5, 0.5, 0.5, 1 }, true, false);
     DisplayManager displayManager(640, 480, false, true, "3DEngine");
     Engine engine(&argc, argv, renderer, displayManager, 60);
     CustomKeyboard key(&displayManager, &engine, &renderer);
@@ -106,6 +112,8 @@ int main(int argc, char* argv[]) {
     engine.toggleMouse(true, std::bind(&CustomMouse::handleMouse, &mouse));
     engine.setKeyboardFunc(std::bind(&CustomKeyboard::handleKeyboard, &key));
     engine.registerCallbacks();
+    renderer.setUpShaders();
+    fillManager(manager);
     engine.run();
     return 0;
 }

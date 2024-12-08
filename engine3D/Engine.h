@@ -3,6 +3,8 @@
 #include "DisplayManager.h"
 #include "MouseHandler.h"
 #include <functional>
+#include "Point.h"
+#include "Line.h"
 
 class Engine {
 public:

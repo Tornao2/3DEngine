@@ -69,9 +69,17 @@
     <ClCompile Include="ObjectManager.cpp">
       <Filter>Source Files\Handlers</Filter>
     </ClCompile>
+    <ClCompile Include="Line.cpp">
+      <Filter>Source Files\Figures</Filter>
+    </ClCompile>
+    <ClCompile Include="ShaderHandler.cpp">
+      <Filter>Source Files\Handlers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="shader.vert" />
+    <None Include="shader.frag" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DisplayManager.h">
@@ -99,6 +107,12 @@
       <Filter>Header Files\Figures</Filter>
     </ClInclude>
     <ClInclude Include="ObjectManager.h">
+      <Filter>Header Files\Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="Line.h">
+      <Filter>Header Files\Figures</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderHandler.h">
       <Filter>Header Files\Handlers</Filter>
     </ClInclude>
   </ItemGroup>

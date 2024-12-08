@@ -1,10 +1,9 @@
 #include "DisplayManager.h"
 
-DisplayManager::DisplayManager(float width, float height, bool shouldFullscreen, bool shouldDoubleBuffer, std::string title) {
+DisplayManager::DisplayManager(int width, int height, bool shouldFullscreen, bool shouldDoubleBuffer, std::string title) {
 	windowHeight = height;
 	windowWidth = width;
 	fullscreen = shouldFullscreen;
-
 	doubleBuffer = shouldDoubleBuffer;
 	programTitle = title;
 }
@@ -20,15 +19,15 @@ void DisplayManager::initializeWindow() {
 	setFullscreen(fullscreen);
 }
 
-float DisplayManager::getWindowWidth() {
+int DisplayManager::getWindowWidth() {
 	return windowWidth;
 }
 
-float DisplayManager::GetWindowHeight() {
+int DisplayManager::GetWindowHeight() {
 	return windowHeight;
 }
 
-void DisplayManager::setWindowWidth(float width) {
+void DisplayManager::setWindowWidth(int width) {
 	windowWidth = width;
 	if (width > 1) {
 		glutReshapeWindow(windowWidth, windowHeight);
@@ -36,7 +35,7 @@ void DisplayManager::setWindowWidth(float width) {
 	}
 }
 
-void DisplayManager::setWindowHeight(float height) {
+void DisplayManager::setWindowHeight(int height) {
 	windowHeight = height;
 	if (height > 1) {
 		glutReshapeWindow(windowWidth, windowHeight);

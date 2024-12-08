@@ -1,17 +1,17 @@
 #include "Primitive.h"
 
-float* Primitive::getPointVertex() {
-	return pointVertex;
+float* Primitive::getVertex() {
+	return vertex;
 }
 
-void Primitive::setPointVertex(float* readVertex) {
-	pointVertex = readVertex;
+void Primitive::setVertex(float* readVertex) {
+	vertex = readVertex;
 }
 
-float* Primitive::getColorVertex() {
-	return colorVertex;
+int Primitive::getSize() {
+	return size;
 }
 
-void Primitive::setColorVertex(float* readVertex) {
-	colorVertex = readVertex;
+void Primitive::setSize(int readSize) {
+	size = readSize;
 }

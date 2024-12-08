@@ -5,8 +5,6 @@ class Point :public Primitive {
 private:
 	int size;
 public:
-	Point(float point[3], float color[3], int readSize);
-	void drawFigure();
-	int getSize();
-	void setSize(int readSize);
+	Point(float point[6], int readSize);
+	void drawFigure(Shader* shader);
 };

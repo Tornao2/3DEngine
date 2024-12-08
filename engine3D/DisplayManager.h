@@ -4,17 +4,17 @@
 
 class DisplayManager {
 public:
-	DisplayManager(float width, float height, bool shouldFullscreen, bool shouldDoubleBuffer, std::string title);
+	DisplayManager(int width, int height, bool shouldFullscreen, bool shouldDoubleBuffer, std::string title);
 	void initializeWindow();
-	float getWindowWidth();
-	float GetWindowHeight();
-	void setWindowWidth(float width);
-	void setWindowHeight(float height);
+	int getWindowWidth();
+	int GetWindowHeight();
+	void setWindowWidth(int width);
+	void setWindowHeight(int height);
 	bool ifFullscreen();
 	void setFullscreen(bool shouldFullscreen);
 private:
-	float windowWidth;
-	float windowHeight;
+	int windowWidth;
+	int windowHeight;
 	bool fullscreen;
 	bool doubleBuffer;
 	std::string programTitle;
