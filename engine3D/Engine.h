@@ -3,8 +3,6 @@
 #include "Renderer.h"
 #include "DisplayManager.h"
 #include <functional>
-#include "Point.h"
-#include "Line.h"
 
 class Engine {
 public:

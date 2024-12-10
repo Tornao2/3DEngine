@@ -91,21 +91,21 @@ public:
 
 void fillManager(ObjectManager* managers) {
     std::vector<glm::vec4> triangleData = {
-    glm::vec4(0.0f,  0.5f, 0.0f, 1.0f),
+    glm::vec4(0.0f,  0.5f, -3.0f, 1.0f),
     glm::vec4(1.0f, 0.0f, 0.0f, 1.0f),
-    glm::vec4(-0.5f, -0.5f, 0.0f, 1.0f),
+    glm::vec4(-11.5f, -10.5f, -3.0f, 1.0f),
     glm::vec4(0.0f, 1.0f, 0.0f, 1.0f),
-    glm::vec4(0.5f, -0.5f, 0.0f, 1.0f),
+    glm::vec4(11.5f, -0.5f, -3.0f, 1.0f),
     glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)
     };
     std::vector<glm::vec4> lineData = {
-        glm::vec4(-1.0f,  0.0f, 0.0f, 1.0),
+        glm::vec4(-11.0f,  0.0f, -3.0f, 1.0),
         glm::vec4(1.0f, 1.0f, 0.0, 1.0f),
-        glm::vec4(1.0f,  0.0f, 0.0f, 1.0),
+        glm::vec4(11.0f,  5.0f, -3.0f, 1.0),
         glm::vec4(1.0f, 0.0f, 0.1, 1.0f)
     };
     std::vector<glm::vec4> pointData = {
-        glm::vec4(0.0f,  0.0f, 0.0f, 1.0f),
+        glm::vec4(2.0f,  0.0f, -3.0f, 1.0f),
         glm::vec4(0.0f, 1.0f, 1.0f, 1.0f)
     }; 
     std::vector<glm::vec4> circleData;
@@ -114,7 +114,7 @@ void fillManager(ObjectManager* managers) {
         float angle = glm::radians((float)i);
         float x = radius * cos(angle);
         float y = radius * sin(angle);
-        circleData.push_back({ x, -y, 0, 1 });
+        circleData.push_back({ x, -y, -1.0f, 1 });
         circleData.push_back({ 1, 0, 0, 1 });
         managers->addFigure(new Point(circleData, 10));
         circleData.clear();
@@ -143,5 +143,6 @@ int main(int argc, char** argv) {
     engine.toggleKeyboard(true, std::bind(&CustomKeyboard::handleKeyboard, &key));
     engine.registerCallbacks();
     fillManager(&manager);
+    glClearColor(0.5f, 0.3f, 0.3f, 1.0f);
     engine.run();
 }

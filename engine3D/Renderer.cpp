@@ -25,11 +25,12 @@ void Renderer::setUpShaders() {
 void Renderer::prepareView() {
 	float aspectRatio = (float)glutGet(GLUT_WINDOW_WIDTH) / glutGet(GLUT_WINDOW_HEIGHT);
 	if (orthogonalView) 
-		projectionMatrix = glm::ortho(-1.0f * aspectRatio, 1.0f * aspectRatio, -1.0f, 1.0f, 1.0f, 400.0f);
+		projectionMatrix = glm::ortho(-1.0f * aspectRatio, 1.0f * aspectRatio, -1.0f, 1.0f, 1.0f, 100.0f);
 	else 
-		projectionMatrix = glm::perspective(glm::radians(50.0f), aspectRatio, 0.1f, 100.0f);
+		projectionMatrix = glm::perspective(glm::radians(45.0f), aspectRatio, 3.0f, 100.0f);
 	GLint projectionLoc = glGetUniformLocation(shader->getProgramId(), "projectionMatrix");
 	glUniformMatrix4fv(projectionLoc, 1, GL_TRUE, glm::value_ptr(projectionMatrix));
+
 }
 
 void Renderer::renderProper() {

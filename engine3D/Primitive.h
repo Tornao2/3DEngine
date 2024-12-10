@@ -1,7 +1,7 @@
 #pragma once
 #include <GL/glut.h>
-#include <vector>
 #include <glm/glm.hpp>
+#include <vector>
 
 class Primitive {
 protected:

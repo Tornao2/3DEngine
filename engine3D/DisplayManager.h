@@ -1,6 +1,6 @@
 #pragma once
-#include "GL/glut.h"
-#include "string"
+#include <GL/glut.h>
+#include <string>
 
 class DisplayManager {
 public:

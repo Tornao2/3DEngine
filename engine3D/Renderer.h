@@ -1,9 +1,6 @@
 #pragma once
-#include "ShaderHandler.h"
-#include "Gl/glut.h"
 #include "Color.h"
 #include "ObjectManager.h"
-#include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
 
 class Renderer {

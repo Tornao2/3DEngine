@@ -16,7 +16,7 @@ void DisplayManager::initializeWindow() {
 	glutInitWindowSize(windowWidth, windowHeight);
 	glutInitWindowPosition((glutGet(GLUT_SCREEN_WIDTH) - windowWidth) / 2, (glutGet(GLUT_SCREEN_HEIGHT) - windowHeight) / 2);
 	glutCreateWindow(programTitle.c_str());
-	setFullscreen(fullscreen);
+	setFullscreen(fullscreen); 
 }
 
 int DisplayManager::getWindowWidth() {
