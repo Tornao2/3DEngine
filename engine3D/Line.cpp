@@ -1,45 +1,37 @@
-/*#include "Line.h"
+#include "Line.h"
 
-Line::Line(float point[6], float color[6], int readSize) {
-	colorVertex = new float[6];
-	pointVertex = new float[6];
-	pointVertex = point;
-	colorVertex = color;
+Line::Line(std::vector <glm::vec4> readData, int readSize) {
+	data = readData;
 	size = readSize;
 }
 
-void Line::drawFigure(Shader* shader) {
+void Line::drawFigure(int index) {
 	glLineWidth(size);
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glVertexPointer(3, GL_FLOAT, 0, pointVertex);
-	glEnableClientState(GL_COLOR_ARRAY);
-	glColorPointer(3, GL_FLOAT, 0, colorVertex);
-	glDrawArrays(GL_LINES, 0, 2);
-	glDisableClientState(GL_VERTEX_ARRAY);
-	glDisableClientState(GL_COLOR_ARRAY);
+	glDrawArrays(GL_LINES, index, 2);
 }
 
-void Line::changeFirstPoint(float point[3], float color[3]) {
-	std::memcpy(&pointVertex[0], point, sizeof(float) * 3);
-	std::memcpy(&colorVertex[0], color, sizeof(float) * 3);
+void Line::changeFirstPoint(std::vector <glm::vec4> firstPoint) {
+	data[0] = firstPoint[0];
+	data[1] = firstPoint[1];
+	callForRefresh = true;
 }
 
-void Line::changeSecondPoint(float point[3], float color[3]) {
-	std::memcpy(&pointVertex[3], point, sizeof(float) * 3);
-	std::memcpy(&colorVertex[3], color, sizeof(float) * 3);
+void Line::changeSecondPoint(std::vector <glm::vec4> secondPoint) {
+	data[2] = secondPoint[0];
+	data[3] = secondPoint[1];
+	callForRefresh = true;
 }
 
-float* Line::getFirstPoint() {
-	float firstPoint[6];
-	std::memcpy(&firstPoint[0], &pointVertex[0], sizeof(float) * 3);
-	std::memcpy(&firstPoint[3], &colorVertex[0], sizeof(float) * 3);
-	return firstPoint;
+std::vector <glm::vec4> Line::getFirstPoint() {
+	std::vector <glm::vec4> returnData;
+	returnData.push_back(data[0]);
+	returnData.push_back(data[1]);
+	return returnData;
 }
 
-float* Line::getSecondPoint() {
-	float secondPoint[6];
-	std::memcpy(&secondPoint[0], &pointVertex[3], sizeof(float) * 3);
-	std::memcpy(&secondPoint[3], &colorVertex[3], sizeof(float) * 3);
-	return secondPoint;
+std::vector <glm::vec4> Line::getSecondPoint() {
+	std::vector <glm::vec4> returnData;
+	returnData.push_back(data[2]);
+	returnData.push_back(data[3]);
+	return returnData;
 }
-*/

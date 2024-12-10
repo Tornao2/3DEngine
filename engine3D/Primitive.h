@@ -1,16 +1,21 @@
 #pragma once
-#include "ShaderHandler.h"
 #include <GL/glut.h>
+#include <vector>
+#include <glm/glm.hpp>
 
 class Primitive {
 protected:
-	float* vertex;
+	std::vector <glm::vec4> data;
 	int size;
+	int callForRefresh;
 public:
-	float* getVertex();
-	void setVertex(float* readVertex);
-	void virtual drawFigure(Shader* shader) {};
+	std::vector <glm::vec4> getData();
+	void setData(std::vector <glm::vec4> readData);
+	void virtual drawFigure(int index) {};
 	int getSize();
 	void setSize(int readSize);
-	int virtual getVerticeSize() { return sizeof(vertex); };
+	int getDataCount();
+	void updateIndex(int& index);
+	bool getIfRefresh();
+	void setIfRefresh(bool readRefresh);
 };

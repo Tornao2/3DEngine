@@ -8,7 +8,7 @@
 
 class Engine {
 public:
-	Engine(int* argc, char* argv[], Renderer&renderer, DisplayManager& displayManager, int delay);
+	Engine(int* argc, char* argv[], Renderer& renderer, DisplayManager& displayManager, int delay);
 	void registerCallbacks();
 	void run();
 	int getFpsCap();
@@ -20,7 +20,7 @@ public:
 private:
 	int fpsCap;
 	static Engine* instance;
-	void initializeLibrary(int* argc, char* argv[]);
+	void initializeLibrary(int* argc, char* argv[], DisplayManager& displayManager);
 	void static timer(int value);
 	static std::function<void(void)> mouseFunc;
 	static std::function<void(void)> keyboardFunc;

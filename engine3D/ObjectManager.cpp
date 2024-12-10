@@ -1,21 +1,21 @@
 #include "ObjectManager.h"
 
+ObjectManager::ObjectManager(Shader* readShader) {
+	shader = readShader;
+}
+
+ObjectManager::ObjectManager() {
+	shader = nullptr;
+}
+
 void ObjectManager::addFigure(Primitive* readFigure, int index) {
-	if (index == -1 || index >= primitiveList.size()) 
+	if (index == -1 || index >= primitiveList.size())
 		primitiveList.push_back(readFigure);
-	else if (index >= 0) 
+	else if (index >= 0)
 		primitiveList.insert(primitiveList.begin() + index, readFigure);
-	else 
+	else
 		return;
-	std::vector<float> vertexData;
-	for (Primitive* figure : primitiveList) {
-		float* vertexArray = figure->getVertex();
-		int vertexCount = figure->getVerticeSize();
-		vertexData.insert(vertexData.end(), vertexArray, vertexArray + vertexCount);
-	}
-	glBindBuffer(GL_ARRAY_BUFFER, shader->getVBO());
-	glBufferData(GL_ARRAY_BUFFER, vertexData.size() * sizeof(float), vertexData.data(), GL_DYNAMIC_DRAW);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	refreshBuffer();
 }
 
 void ObjectManager::removeFigure(int index) {
@@ -23,6 +23,8 @@ void ObjectManager::removeFigure(int index) {
 	if (primitiveList.size() <= index || index < 0)
 		return;
 	primitiveList.erase(primitiveList.begin() + index);
+	std::vector <glm::vec4> allFigures;
+	refreshBuffer();
 }
 
 Primitive* ObjectManager::getFigure(int index) {
@@ -34,13 +36,36 @@ Primitive* ObjectManager::getFigure(int index) {
 
 void ObjectManager::clearList() {
 	primitiveList.clear();
+	refreshBuffer();
 }
 
 void ObjectManager::drawAll() {
-	for (int i = 0; i < primitiveList.size(); i++) 
-		primitiveList[i]->drawFigure(shader);
+	for (int i = 0; i < primitiveList.size(); i++) {
+		if (primitiveList[i]->getIfRefresh()) {
+			for (int j = i; j < primitiveList.size(); j++) {
+				primitiveList[j]->setIfRefresh(false);
+			}
+			refreshBuffer();
+			break;
+		}
+	}
+	int index = 0;
+	for (int i = 0; i < primitiveList.size(); i++) {
+		primitiveList[i]->drawFigure(index);
+		primitiveList[i]->updateIndex(index);
+	}
 }
 
 void ObjectManager::setShader(Shader* readShader) {
 	shader = readShader;
+}
+
+void ObjectManager::refreshBuffer() {
+	std::vector <glm::vec4> allFigures;
+	for (int i = 0; i < primitiveList.size(); i++)
+		for (int j = 0; j < primitiveList[i]->getDataCount() * 2; j++)
+			allFigures.push_back(primitiveList[i]->getData()[j]);
+	glBindBuffer(GL_ARRAY_BUFFER, shader->getVBO());
+	glBufferData(GL_ARRAY_BUFFER, allFigures.size() * sizeof(glm::vec4), allFigures.data(), GL_DYNAMIC_DRAW);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }

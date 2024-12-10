@@ -14,7 +14,7 @@ void DisplayManager::initializeWindow() {
 	else
 		glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
 	glutInitWindowSize(windowWidth, windowHeight);
-	glutInitWindowPosition((glutGet(GLUT_SCREEN_WIDTH) - windowWidth) / 2, (glutGet(GLUT_SCREEN_HEIGHT) - windowHeight)/2);
+	glutInitWindowPosition((glutGet(GLUT_SCREEN_WIDTH) - windowWidth) / 2, (glutGet(GLUT_SCREEN_HEIGHT) - windowHeight) / 2);
 	glutCreateWindow(programTitle.c_str());
 	setFullscreen(fullscreen);
 }
@@ -51,8 +51,9 @@ void DisplayManager::setFullscreen(bool shouldFullscreen) {
 	if (shouldFullscreen) {
 		glutFullScreen();
 		fullscreen = true;
-	} else {
-		glutReshapeWindow(windowWidth, windowHeight);   
+	}
+	else {
+		glutReshapeWindow(windowWidth, windowHeight);
 		glutPositionWindow((glutGet(GLUT_SCREEN_WIDTH) - windowWidth) / 2, (glutGet(GLUT_SCREEN_HEIGHT) - windowHeight) / 2);
 		fullscreen = false;
 	}

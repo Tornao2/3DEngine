@@ -1,13 +1,57 @@
-#include "Engine.h"
-#include "stdlib.h"
-#include <iostream>
-#include <string>
+#include <fstream>
 #include <sstream>
+#include <string>
+#include "ObjectManager.h"
+#include "DisplayManager.h"
+#include "MouseHandler.h"
+#include <iostream>
+#include <vector>
+#include "Engine.h"
+
+Shader* shader = nullptr;
+ObjectManager* manager = nullptr;
+
+void render() {
+    glClear(GL_COLOR_BUFFER_BIT);
+    glUseProgram(shader->getProgramId());
+    glBindVertexArray(shader->getVAO());
+    manager->drawAll();
+    glBindVertexArray(0);
+    glutSwapBuffers();
+}
+
+void fillManager(ObjectManager* managers) {
+    std::vector <glm::vec4> triangleData = {
+    glm::vec4(0.0f,  0.5f, 0.0f, 1.0f),
+    glm::vec4(1.0f, 0.0f, 0.0f, 1.0f),
+    glm::vec4(-0.5f, -0.5f, 0.0f, 1.0f),
+    glm::vec4(0.0f, 1.0f, 0.0f, 1.0f),
+    glm::vec4(0.5f, -0.5f, 0.0f, 1.0f),
+    glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)
+    };
+    std::vector <glm::vec4> lineData = {
+        glm::vec4(-0.75f, 0.75f, 0.0f, 1.0f),
+        glm::vec4(1.0f, 1.0f, 0.0f, 1.0f),
+        glm::vec4(0.75f, 0.75f, 0.0f, 1.0f),
+        glm::vec4(1.0f, 0.0f, 0.1f, 1.0f)
+    };
+    std::vector <glm::vec4> line1Data = {
+        glm::vec4(0.0f, 0.75f, 0.0f, 1.0f),
+        glm::vec4(1.0f, 1.0f, 0.0f, 1.0f),
+    };
+    std::vector <glm::vec4> pointData = {
+        glm::vec4(0.0f, -0.75f, 0.0f, 1.0f),
+        glm::vec4(0.0f, 1.0f, 1.0f, 1.0f)
+    };
+    managers->addFigure(new Triangle (triangleData, 10));
+    managers->addFigure(new Point(pointData, 10));
+    managers->addFigure(new Line(lineData, 2));
+}
 
 class CustomKeyboard :public KeyboardHandler {
     DisplayManager* display;
-    Engine* engine;
-    Renderer* renderer;
+    //Engine* engine;
+    //Renderer* renderer;
     bool returnTheFunc;
 public:
     CustomKeyboard(DisplayManager* readDisplay, Engine* readEngine, Renderer* readRenderer) {
@@ -83,42 +127,12 @@ public:
     }
 };
 
-class CustomMouse :public MouseHandler {
-public:
-    void handleMouse() {
-        if (checkIfPressed(leftButton))
-            printf("3");
-        refresh();
-    }
-};
-
-void fillManager(ObjectManager& manager) {
-    float pos[6] = { 1, 0 ,0, 1.0, 1, 0.2 };
-    float pos2[6] = { 0, -1 ,1, 1.0, 1.0, 1.0 };
-    manager.addFigure(new Point(pos, 50));
-    manager.addFigure(new Point(pos2, 50));
-}
-
-int main(int argc, char* argv[]) {
-    std::cout << "Nacisnij 1 zeby wybrac liczbe klatek na sekunde" << std::endl;
-    std::cout << "Nacisnij 2 zeby wybrac szerokosc okna" << std::endl;
-    std::cout << "Nacisnij 3 zeby wybrac wysokosc okna" << std::endl;
-    std::cout << "Nacisnij 4 zeby wlaczyc/wylaczyc fullscreen" << std::endl;
-    std::cout << "Nacisnij 5 zeby wlaczyc/wylaczyc zBuffer" << std::endl;
-    std::cout << "Nacisnij 6 zeby wlaczyc/wylaczyc widok ortogonalny" << std::endl;
-    std::cout << "Nacisnij 7 zeby zmienic kolor odswiezania" << std::endl;
-    ObjectManager manager;
-    Renderer renderer(&manager, Color{ 0.5, 0.5, 0.5, 1 }, true, false);
+int main(int argc, char** argv) {
     DisplayManager displayManager(640, 480, false, true, "3DEngine");
-    Engine engine(&argc, argv, renderer, displayManager, 60);
-    CustomKeyboard key(&displayManager, &engine, &renderer);
-    CustomMouse mouse;
-    engine.toggleKeyboard(true, std::bind(&CustomKeyboard::handleKeyboard, &key));
-    engine.toggleMouse(true, std::bind(&CustomMouse::handleMouse, &mouse));
-    engine.setKeyboardFunc(std::bind(&CustomKeyboard::handleKeyboard, &key));
-    engine.registerCallbacks();
-    renderer.setUpShaders();
+    shader = new Shader();
+    manager = new ObjectManager(shader);
     fillManager(manager);
-    engine.run();
+    glutDisplayFunc(render);
+    glutMainLoop();
     return 0;
 }

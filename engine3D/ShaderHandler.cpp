@@ -1,9 +1,9 @@
 #include "ShaderHandler.h"
 
 Shader::Shader() {
-    programID = glCreateProgram();
     vertexShaderID = compileShader("shader.vert", GL_VERTEX_SHADER);
     fragmentShaderID = compileShader("shader.frag", GL_FRAGMENT_SHADER);
+    programID = glCreateProgram();
     glAttachShader(programID, vertexShaderID);
     glAttachShader(programID, fragmentShaderID);
     glLinkProgram(programID);
@@ -14,6 +14,8 @@ Shader::Shader() {
         glGetProgramInfoLog(programID, sizeof(infoLog), NULL, infoLog);
         std::cerr << "ERROR::SHADER::PROGRAM::LINKING_FAILED " << infoLog << std::endl;
     }
+    glDeleteShader(vertexShaderID);
+    glDeleteShader(fragmentShaderID);
     setupBuffers();
 }
 
@@ -49,18 +51,14 @@ GLuint Shader::compileShader(const char* path, GLenum shaderType) {
     return shaderID;
 }
 
-int Shader::getProgramId() {
-    return programID;
-}
-
 void Shader::setupBuffers() {
     glGenVertexArrays(1, &VAO);
-    glBindVertexArray(VAO);
     glGenBuffers(1, &VBO);
+    glBindVertexArray(VAO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, (GLvoid*)0);
+    glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (GLvoid*)0);
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, (GLvoid*)(sizeof(float) * 3));
+    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (GLvoid*)(sizeof(float) * 4));
     glEnableVertexAttribArray(1);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
@@ -72,4 +70,8 @@ int Shader::getVBO() {
 
 int Shader::getVAO() {
     return VAO;
+}
+
+int Shader::getProgramId() {
+    return programID;
 }

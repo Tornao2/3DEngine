@@ -1,7 +1,7 @@
 #pragma once
 #include <GL/freeglut_std.h>
 
-typedef enum KeyStates{
+typedef enum KeyStates {
 	notClicked,
 	removeLater,
 	pressing
@@ -21,6 +21,6 @@ public:
 	void setIfShouldRefresh(unsigned char key, bool should);
 	bool getIfShouldRefresh(unsigned char key);
 	void static keyDown(unsigned char key, int x, int y);
-	void static keyUp(unsigned char key, int x, int y);	
+	void static keyUp(unsigned char key, int x, int y);
 	bool checkIfPressed(unsigned char key);
 };
