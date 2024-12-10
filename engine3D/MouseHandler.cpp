@@ -2,8 +2,9 @@
 
 MouseHandler* MouseHandler::instance = nullptr;
 
-MouseHandler::MouseHandler() {
+MouseHandler::MouseHandler(Shader* shader) {
 	instance = this;
+	camera = CameraHandler(shader);
 	glutMouseFunc(buttonHandle);
 }
 
@@ -43,4 +44,19 @@ bool MouseHandler::checkIfPressed(unsigned char button) {
 	if (buttonStates[button] != notClicked)
 		return true;
 	return false;
+}
+
+void MouseHandler::mouseCallback(int xpos, int ypos) {
+	float xoffset = xpos - instance->camera.lastX;
+	float yoffset = instance->camera.lastY - ypos;
+	instance->camera.lastX = xpos;
+	instance->camera.lastY = ypos;
+	float sensitivity = 2.5f;
+	xoffset *= sensitivity;
+	yoffset *= sensitivity;
+	instance->camera.yaw += xoffset;
+	instance->camera.pitch += yoffset;
+	if (instance->camera.pitch > 89.0f) instance->camera.pitch = 89.0f;
+	if (instance->camera.pitch < -89.0f) instance->camera.pitch = -89.0f;
+	instance->camera.updateCamera();
 }

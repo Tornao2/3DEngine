@@ -1,12 +1,10 @@
 #include "Triangle.h"
 
-Triangle::Triangle(std::vector <glm::vec4> readData, int readSize) {
+Triangle::Triangle(std::vector <glm::vec4> readData) {
 	data = readData;
-	size = readSize;
 }
 
 void Triangle::drawFigure(int index) {
-	glLineWidth(size);
 	glDrawArrays(GL_TRIANGLES, index, 3);
 }
 

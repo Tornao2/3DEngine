@@ -4,7 +4,7 @@
 
 class DisplayManager {
 public:
-	DisplayManager(int width, int height, bool shouldFullscreen, bool shouldDoubleBuffer, std::string title);
+	DisplayManager(int width = 640, int height = 480, bool shouldFullscreen = false, bool shouldDoubleBuffer = true, std::string title = "Engine");
 	void initializeWindow();
 	int getWindowWidth();
 	int GetWindowHeight();

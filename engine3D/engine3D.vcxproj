@@ -128,6 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CameraHandler.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
@@ -148,6 +149,7 @@
     <None Include="shader.vert" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CameraHandler.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Line.h" />
     <ClInclude Include="ObjectManager.h" />

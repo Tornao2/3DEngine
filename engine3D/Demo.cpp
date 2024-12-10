@@ -1,57 +1,9 @@
-#include <fstream>
-#include <sstream>
-#include <string>
-#include "ObjectManager.h"
-#include "DisplayManager.h"
-#include "MouseHandler.h"
-#include <iostream>
-#include <vector>
 #include "Engine.h"
-
-Shader* shader = nullptr;
-ObjectManager* manager = nullptr;
-
-void render() {
-    glClear(GL_COLOR_BUFFER_BIT);
-    glUseProgram(shader->getProgramId());
-    glBindVertexArray(shader->getVAO());
-    manager->drawAll();
-    glBindVertexArray(0);
-    glutSwapBuffers();
-}
-
-void fillManager(ObjectManager* managers) {
-    std::vector <glm::vec4> triangleData = {
-    glm::vec4(0.0f,  0.5f, 0.0f, 1.0f),
-    glm::vec4(1.0f, 0.0f, 0.0f, 1.0f),
-    glm::vec4(-0.5f, -0.5f, 0.0f, 1.0f),
-    glm::vec4(0.0f, 1.0f, 0.0f, 1.0f),
-    glm::vec4(0.5f, -0.5f, 0.0f, 1.0f),
-    glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)
-    };
-    std::vector <glm::vec4> lineData = {
-        glm::vec4(-0.75f, 0.75f, 0.0f, 1.0f),
-        glm::vec4(1.0f, 1.0f, 0.0f, 1.0f),
-        glm::vec4(0.75f, 0.75f, 0.0f, 1.0f),
-        glm::vec4(1.0f, 0.0f, 0.1f, 1.0f)
-    };
-    std::vector <glm::vec4> line1Data = {
-        glm::vec4(0.0f, 0.75f, 0.0f, 1.0f),
-        glm::vec4(1.0f, 1.0f, 0.0f, 1.0f),
-    };
-    std::vector <glm::vec4> pointData = {
-        glm::vec4(0.0f, -0.75f, 0.0f, 1.0f),
-        glm::vec4(0.0f, 1.0f, 1.0f, 1.0f)
-    };
-    managers->addFigure(new Triangle (triangleData, 10));
-    managers->addFigure(new Point(pointData, 10));
-    managers->addFigure(new Line(lineData, 2));
-}
 
 class CustomKeyboard :public KeyboardHandler {
     DisplayManager* display;
-    //Engine* engine;
-    //Renderer* renderer;
+    Engine* engine;
+    Renderer* renderer;
     bool returnTheFunc;
 public:
     CustomKeyboard(DisplayManager* readDisplay, Engine* readEngine, Renderer* readRenderer) {
@@ -127,12 +79,69 @@ public:
     }
 };
 
+class CustomMouse :public MouseHandler {
+public:
+    CustomMouse(Shader* shader) : MouseHandler(shader) {};
+    void handleMouse() {
+        if (checkIfPressed(leftButton))
+            printf("3");
+        refresh();
+    }
+};
+
+void fillManager(ObjectManager* managers) {
+    std::vector<glm::vec4> triangleData = {
+    glm::vec4(0.0f,  0.5f, 0.0f, 1.0f),
+    glm::vec4(1.0f, 0.0f, 0.0f, 1.0f),
+    glm::vec4(-0.5f, -0.5f, 0.0f, 1.0f),
+    glm::vec4(0.0f, 1.0f, 0.0f, 1.0f),
+    glm::vec4(0.5f, -0.5f, 0.0f, 1.0f),
+    glm::vec4(0.0f, 0.0f, 1.0f, 1.0f)
+    };
+    std::vector<glm::vec4> lineData = {
+        glm::vec4(-1.0f,  0.0f, 0.0f, 1.0),
+        glm::vec4(1.0f, 1.0f, 0.0, 1.0f),
+        glm::vec4(1.0f,  0.0f, 0.0f, 1.0),
+        glm::vec4(1.0f, 0.0f, 0.1, 1.0f)
+    };
+    std::vector<glm::vec4> pointData = {
+        glm::vec4(0.0f,  0.0f, 0.0f, 1.0f),
+        glm::vec4(0.0f, 1.0f, 1.0f, 1.0f)
+    }; 
+    std::vector<glm::vec4> circleData;
+    const float radius = 10.0f;
+    for (int i = 0; i < 360; i += 3) {
+        float angle = glm::radians((float)i);
+        float x = radius * cos(angle);
+        float y = radius * sin(angle);
+        circleData.push_back({ x, -y, 0, 1 });
+        circleData.push_back({ 1, 0, 0, 1 });
+        managers->addFigure(new Point(circleData, 10));
+        circleData.clear();
+    }
+    managers->addFigure(new Triangle(triangleData));
+    managers->addFigure(new Point(pointData, 40));
+    managers->addFigure(new Line(lineData, 10));
+}
+
 int main(int argc, char** argv) {
-    DisplayManager displayManager(640, 480, false, true, "3DEngine");
-    shader = new Shader();
-    manager = new ObjectManager(shader);
-    fillManager(manager);
-    glutDisplayFunc(render);
-    glutMainLoop();
-    return 0;
+    std::cout << "Nacisnij 1 zeby wybrac liczbe klatek na sekunde" << std::endl;
+    std::cout << "Nacisnij 2 zeby wybrac szerokosc okna" << std::endl;
+    std::cout << "Nacisnij 3 zeby wybrac wysokosc okna" << std::endl;
+    std::cout << "Nacisnij 4 zeby wlaczyc/wylaczyc fullscreen" << std::endl;
+    std::cout << "Nacisnij 5 zeby wlaczyc/wylaczyc zBuffer" << std::endl;
+    std::cout << "Nacisnij 6 zeby wlaczyc/wylaczyc widok ortogonalny" << std::endl;
+    std::cout << "Nacisnij 7 zeby zmienic kolor odswiezania" << std::endl;
+    ObjectManager manager;
+    Renderer renderer(&manager);
+    DisplayManager displayManager = DisplayManager();
+    Engine engine(&argc, argv, renderer, displayManager);
+    CustomKeyboard key(&displayManager, &engine, &renderer);
+    renderer.setUpShaders();
+    CustomMouse mouse(renderer.getShader());
+    engine.toggleMouse(true, std::bind(&CustomMouse::handleMouse, &mouse));
+    engine.toggleKeyboard(true, std::bind(&CustomKeyboard::handleKeyboard, &key));
+    engine.registerCallbacks();
+    fillManager(&manager);
+    engine.run();
 }

@@ -53,24 +53,20 @@ void Engine::toggleKeyboard(bool should, std::function<void(void)> function) {
 }
 
 void Engine::toggleMouse(bool should, std::function<void(void)> function) {
-	if (should)
+	if (should) {
 		glutMouseFunc(MouseHandler::buttonHandle);
-	else
+		glutPassiveMotionFunc(MouseHandler::mouseCallback);
+	}
+	else {
 		glutMouseFunc(NULL);
+		glutPassiveMotionFunc(NULL);
+	}
 	mouseFunc = function;
 }
 
 void Engine::timer(int value) {
+	glutPostRedisplay();
 	Engine::mouseFunc();
 	Engine::keyboardFunc();
-	glutPostRedisplay();
 	glutTimerFunc(1000 / instance->fpsCap, timer, instance->fpsCap);
-}
-
-void Engine::setKeyboardFunc(std::function<void(void)> function) {
-	Engine::keyboardFunc = function;
-}
-
-void Engine::setMouseFunc(std::function<void(void)> function) {
-	Engine::mouseFunc = function;
 }

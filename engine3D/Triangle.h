@@ -3,7 +3,7 @@
 
 class Triangle :public Primitive {
 public:
-	Triangle(std::vector <glm::vec4> readData, int readSize);
+	Triangle(std::vector <glm::vec4> readData);
 	void drawFigure(int index);
 	void changeFirstPoint(std::vector <glm::vec4> firstPoint);
 	void changeSecondPoint(std::vector <glm::vec4> secondPoint);
