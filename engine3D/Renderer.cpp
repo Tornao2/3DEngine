@@ -3,13 +3,14 @@
 
 Renderer* Renderer::instance = nullptr;
 
-Renderer::Renderer(ObjectManager* readManager, Color readClearColor, bool zBuffer, bool shouldOrthogonal) {
+Renderer::Renderer(ObjectManager* readManager, Color readClearColor, glm::vec4 lightingVector, bool zBuffer, bool shouldOrthogonal) {
 	instance = this;
 	shader = nullptr;
 	manager = readManager;
 	clearColor = readClearColor;
 	setZBuffer(zBuffer);
 	orthogonalView = shouldOrthogonal;
+	lightDir = lightingVector;
 }
 
 void Renderer::setClearColor(Color readClearColor) {
@@ -30,7 +31,8 @@ void Renderer::prepareView() {
 		projectionMatrix = glm::perspective(glm::radians(45.0f), aspectRatio, 3.0f, 100.0f);
 	GLint projectionLoc = glGetUniformLocation(shader->getProgramId(), "projectionMatrix");
 	glUniformMatrix4fv(projectionLoc, 1, GL_TRUE, glm::value_ptr(projectionMatrix));
-
+	GLint lightingDir = glGetUniformLocation(shader->getProgramId(), "lightDir");
+	glUniform4fv(lightingDir, 1, glm::value_ptr(lightDir));
 }
 
 void Renderer::renderProper() {
@@ -83,4 +85,12 @@ void Renderer::replaceManager(ObjectManager* readManager) {
 
 Shader* Renderer::getShader() {
 	return shader;
+}
+
+glm::vec4 Renderer::getLightningVector() {
+	return lightDir;
+}
+
+void Renderer::setlightingVector(glm::vec4 readLighting) {
+	lightDir = readLighting;
 }

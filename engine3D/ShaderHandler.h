@@ -13,7 +13,6 @@ private:
     GLuint VBO;
     GLuint VAO;
     GLuint compileShader(const char* path, GLenum shaderType);
-    void setupBuffers();
 public:
     Shader();
     void use();

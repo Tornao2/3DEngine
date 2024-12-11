@@ -23,7 +23,6 @@ void ObjectManager::removeFigure(int index) {
 	if (primitiveList.size() <= index || index < 0)
 		return;
 	primitiveList.erase(primitiveList.begin() + index);
-	std::vector <glm::vec4> allFigures;
 	refreshBuffer();
 }
 
@@ -42,9 +41,8 @@ void ObjectManager::clearList() {
 void ObjectManager::drawAll() {
 	for (int i = 0; i < primitiveList.size(); i++) {
 		if (primitiveList[i]->getIfRefresh()) {
-			for (int j = i; j < primitiveList.size(); j++) {
+			for (int j = i; j < primitiveList.size(); j++) 
 				primitiveList[j]->setIfRefresh(false);
-			}
 			refreshBuffer();
 			break;
 		}
@@ -63,7 +61,7 @@ void ObjectManager::setShader(Shader* readShader) {
 void ObjectManager::refreshBuffer() {
 	std::vector <glm::vec4> allFigures;
 	for (int i = 0; i < primitiveList.size(); i++)
-		for (int j = 0; j < primitiveList[i]->getDataCount() * 2; j++)
+		for (int j = 0; j < primitiveList[i]->getDataCount() * 3; j++)
 			allFigures.push_back(primitiveList[i]->getData()[j]);
 	glBindBuffer(GL_ARRAY_BUFFER, shader->getVBO());
 	glBufferData(GL_ARRAY_BUFFER, allFigures.size() * sizeof(glm::vec4), allFigures.data(), GL_DYNAMIC_DRAW);

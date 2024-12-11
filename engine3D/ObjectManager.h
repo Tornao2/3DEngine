@@ -3,6 +3,11 @@
 #include "Point.h"
 #include "Line.h"
 #include "Triangle.h"
+#include "PoliLine.h"
+#include "TriangleStrip.h"
+#include "TriangleFan.h"
+#include "Quads.h"
+#include "Cube.h"
 
 class ObjectManager {
 private:

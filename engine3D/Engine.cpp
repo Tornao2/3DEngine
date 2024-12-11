@@ -10,11 +10,9 @@ Engine::Engine(int* argc, char* argv[], Renderer& renderer, DisplayManager& disp
 	initializeLibrary(argc, argv, displayManager);
 	renderer.setClearColor(renderer.getClearColor());
 	renderer.setZBuffer(renderer.getZBuffer());
-}
-
-void Engine::registerCallbacks() {
 	glutDisplayFunc(Renderer::render);
 	glutTimerFunc(1, timer, fpsCap);
+	renderer.setUpShaders();
 }
 
 void Engine::initializeLibrary(int* argc, char* argv[], DisplayManager& displayManager) {
@@ -25,10 +23,6 @@ void Engine::initializeLibrary(int* argc, char* argv[], DisplayManager& displayM
 		std::cerr << "GLEW initialization failed: " << glewGetErrorString(glewInitResult) << std::endl;
 		exit(-1);
 	}
-}
-
-void Engine::run() {
-	glutMainLoop();
 }
 
 int Engine::getFpsCap() {

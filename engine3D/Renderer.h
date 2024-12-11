@@ -14,8 +14,9 @@ private:
 	ObjectManager* manager;
 	Shader* shader;
 	glm::mat4 projectionMatrix;
+	glm::vec4 lightDir;
 public:
-	Renderer(ObjectManager* readManager, Color readClearColor = {0, 0, 0, 0}, bool zBuffer = true, bool shouldOrthogonal = true);
+	Renderer(ObjectManager* readManager, Color readClearColor = { 0, 0, 0, 0 }, glm::vec4 lightingVector = { 1, 1, 1, 0 }, bool zBuffer = true, bool shouldOrthogonal = true);
 	static void render();
 	void setClearColor(Color readClearColor);
 	Color getClearColor();
@@ -27,4 +28,6 @@ public:
 	void replaceManager(ObjectManager* readManager);
 	void setUpShaders();
 	Shader* getShader();
+	glm::vec4 getLightningVector();
+	void setlightingVector(glm::vec4 readLighting);
 };

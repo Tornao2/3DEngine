@@ -18,11 +18,11 @@ void Primitive::setSize(int readSize) {
 }
 
 int Primitive::getDataCount() {
-	return data.size()/2;
+	return data.size()/3;
 }
 
 void Primitive::updateIndex(int& index) {
-	index += data.size()/2;
+	index += data.size()/3;
 }
 
 bool Primitive::getIfRefresh() {
