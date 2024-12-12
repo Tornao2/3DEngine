@@ -14,6 +14,7 @@ private:
 	Shader* shader;
 	std::vector<Primitive*> primitiveList;
 	std::vector<Figure*> figureList;
+	std::vector<unsigned short int> totalIndices;
 public:
 	ObjectManager(Shader* readShader);
 	ObjectManager();

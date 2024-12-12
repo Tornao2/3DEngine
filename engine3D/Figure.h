@@ -9,21 +9,20 @@ typedef enum vecType {
 	nor
 }vecType;
 
-class Figure {
+class Figure{
 protected:
-	std::vector<float> indices;
-	std::vector<float> indicesPerSide;
-	std::vector<glm::vec4>posVec;
-	std::vector<glm::vec4>colVec;
-	std::vector<glm::vec4>norVec;
+	std::vector<unsigned short int> indices;
+	std::vector <glm::vec4> data;
+	int callForRefresh;
 public:
-	std::vector<float>* getIndices();
-	void setIndices(std::vector<float> readIndices);
-	std::vector<float>* getIndicesPerSide();
-	void setIndicesPerSide(std::vector<float> readIndicesPerSide);
-	std::vector<glm::vec4> getVector(vecType type);
-	void setVector(std::vector<glm::vec4> readVec, vecType type);
-	void changePoint(glm::vec4 point, int index, vecType type);
-	glm::vec4 getPoint(int index, vecType type);
-	void virtual drawFigure() {};
+	std::vector<unsigned short int> getIndices();
+	void setIndices(std::vector<unsigned short int> readIndices);
+	std::vector <glm::vec4> getData();
+	void setData(std::vector <glm::vec4> readData);
+	void updateIndiceCount(unsigned short int& index);
+	int getDataCount();
+	bool getIfRefresh();
+	void setIfRefresh(bool readRefresh);
+	void changePoint(std::vector <glm::vec4> point, int index);
+	std::vector <glm::vec4> getPoint(int index);
 };

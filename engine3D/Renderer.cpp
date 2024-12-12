@@ -74,7 +74,7 @@ void Renderer::setOrthogonal(bool shouldOrthogonal) {
 	if (orthogonalView)
 		projectionMatrix = glm::ortho(-1.0f * aspectRatio, 1.0f * aspectRatio, -1.0f, 1.0f, 1.0f, 100.0f);
 	else
-		projectionMatrix = glm::perspective(glm::radians(45.0f), aspectRatio, 3.0f, 100.0f);
+		projectionMatrix = glm::perspective(glm::radians(50.0f), aspectRatio, 2.0f, 100.0f);
 	
 	GLint projectionLoc = glGetUniformLocation(shader->getProgramId(), "projectionMatrix");
 	glUniformMatrix4fv(projectionLoc, 1, GL_TRUE, glm::value_ptr(projectionMatrix));
@@ -85,7 +85,8 @@ ObjectManager* Renderer::getManager() {
 }
 
 void Renderer::replaceManager(ObjectManager* readManager) {
-	manager->clearList();
+	manager->clearPrimitiveList();
+	manager->clearFigureList();
 	manager = readManager;
 }
 

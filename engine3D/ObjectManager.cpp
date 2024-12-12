@@ -39,40 +39,53 @@ void ObjectManager::clearPrimitiveList() {
 }
 
 void ObjectManager::drawAll() {
+	bool refreshed = false;
 	for (int i = 0; i < primitiveList.size(); i++) {
 		if (primitiveList[i]->getIfRefresh()) {
 			for (int j = i; j < primitiveList.size(); j++) 
 				primitiveList[j]->setIfRefresh(false);
 			refreshBuffer();
+			refreshed = true;
 			break;
 		}
 	}
-	int index = 0;
+	if (!refreshed) {
+		for (int i = 0; i < figureList.size(); i++) {
+			if (figureList[i]->getIfRefresh()) {
+				for (int j = i; j < figureList.size(); j++)
+					figureList[j]->setIfRefresh(false);
+				refreshBuffer();
+				break;
+			}
+		}
+	}
+	glDrawElements(GL_TRIANGLES, totalIndices.size(), GL_UNSIGNED_SHORT, totalIndices.data());
+	int index = totalIndices.size();
 	for (int i = 0; i < primitiveList.size(); i++) {
 		primitiveList[i]->drawFigure(index);
 		primitiveList[i]->updateIndex(index);
 	}
-	for (int i = 0; i < figureList.size(); i++)
-		figureList[i]->drawFigure();
 }
 
-void ObjectManager::addFigure(Figure* readFigure, int index = -1) {
+void ObjectManager::addFigure(Figure* readFigure, int index) {
 	if (index == -1 || index >= figureList.size())
 		figureList.push_back(readFigure);
 	else if (index >= 0)
 		figureList.insert(figureList.begin() + index, readFigure);
 	else
 		return;
+	refreshBuffer();
 }
 
-void ObjectManager::removeFigure(int index = -1) {
+void ObjectManager::removeFigure(int index) {
 	if (index == -1) index = figureList.size() - 1;
 	if (figureList.size() <= index || index < 0)
 		return;
 	figureList.erase(figureList.begin() + index);
+	refreshBuffer();
 }
 
-Figure* ObjectManager::getFigure(int index = -1) {
+Figure* ObjectManager::getFigure(int index) {
 	if (index == -1) index = figureList.size() - 1;
 	if (figureList.size() <= index || index < 0)
 		return nullptr;
@@ -81,6 +94,7 @@ Figure* ObjectManager::getFigure(int index = -1) {
 
 void ObjectManager::clearFigureList() {
 	figureList.clear();
+	refreshBuffer();
 }
 
 void ObjectManager::setShader(Shader* readShader) {
@@ -89,6 +103,14 @@ void ObjectManager::setShader(Shader* readShader) {
 
 void ObjectManager::refreshBuffer() {
 	std::vector <glm::vec4> allFigures;
+	unsigned short int index = 0;
+	for (int i = 0; i < figureList.size(); i++) {
+		for (int j = 0; j < figureList[i]->getDataCount() * 3; j++)
+			allFigures.push_back(figureList[i]->getData()[j]);
+		for (int j = 0; j < figureList[i]->getIndices().size(); j++) 
+			totalIndices.push_back(figureList[i]->getIndices()[j] + index);
+		figureList[i]->updateIndiceCount(index);
+	}
 	for (int i = 0; i < primitiveList.size(); i++)
 		for (int j = 0; j < primitiveList[i]->getDataCount() * 3; j++)
 			allFigures.push_back(primitiveList[i]->getData()[j]);

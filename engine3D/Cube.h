@@ -3,6 +3,6 @@
 
 class Cube :public Figure {
 public:
-	Cube(std::vector <glm::vec4> posData, std::vector<float> readIndices);
-	void drawFigure();
+	Cube(float sideLength, float x, float y, float z, std::vector <glm::vec4> colors);
 };
+ 

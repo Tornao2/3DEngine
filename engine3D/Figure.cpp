@@ -1,61 +1,56 @@
 #include "Figure.h"
 
-std::vector<float>* Figure::getIndices() {
-	return &indices;
+std::vector<unsigned short int> Figure::getIndices() {
+	return indices;
 }
 
-void Figure::setIndices(std::vector<float> readIndices) {
+void Figure::setIndices(std::vector<unsigned short int> readIndices) {
 	indices = readIndices;
 }
 
-std::vector<float>* Figure::getIndicesPerSide() {
-	return &indicesPerSide;
+std::vector <glm::vec4> Figure::getData() {
+	return data;
 }
 
-void Figure::setIndicesPerSide(std::vector<float> readIndicesPerSide) {
-	indicesPerSide = readIndicesPerSide;
+void Figure::setData(std::vector <glm::vec4> readData) {
+	data = readData;
+	callForRefresh = true;
 }
 
-std::vector<glm::vec4> Figure::getVector(vecType type) {
-	if (type == col)
-		return colVec;
-	else if (type == nor)
-		return norVec;
-	else 
-		return posVec;
+int Figure::getDataCount() {
+	return indices.size();
 }
 
-void Figure::setVector(std::vector<glm::vec4> readVec, vecType type) {
-	if (type == col)
-		colVec = readVec;
-	else if (type == nor)
-		norVec = readVec;
-	else
-		posVec = readVec;
+void Figure::updateIndiceCount(unsigned short int& index) {
+	index += indices.size();
 }
 
-void Figure::changePoint(glm::vec4 point, int index, vecType type) {
-	if (colVec.size() <= index || index < 0)
+bool Figure::getIfRefresh() {
+	return callForRefresh;
+}
+
+void Figure::setIfRefresh(bool readRefresh) {
+	callForRefresh = readRefresh;
+}
+
+void Figure::changePoint(std::vector <glm::vec4> point, int index) {
+	int realIndex = index * 3;
+	if (data.size() <= realIndex || realIndex < 0)
 		return;
-	glm::vec4* changedPoint;
-	if (type == col) 
-		changedPoint = &colVec[index];
-	else if (type == nor) 
-		changedPoint = &norVec[index];
-	else 
-		changedPoint = &posVec[index];
-	(*changedPoint) = point;
+	data[realIndex] = point[0];
+	data[realIndex + 1] = point[1];
+	data[realIndex + 2] = point[2];
+	callForRefresh = true;
 }
 
-glm::vec4 Figure::getPoint(int index, vecType type) {
-	if (colVec.size() <= index || index < 0)
+std::vector <glm::vec4> Figure::getPoint(int index) {
+	int realIndex = index * 3;
+	if (data.size() <= realIndex || realIndex < 0)
 		return {};
-	glm::vec4 realData;
-	if (type == col) 
-		realData = colVec[index];
-	else if (type == nor) 
-		realData = norVec[index];
-	else 
-		realData = posVec[index];
+	std::vector <glm::vec4> realData;
+	realData.push_back(data[realIndex]);
+	realData.push_back(data[realIndex + 1]);
+	realData.push_back(data[realIndex + 2]);
 	return realData;
 }
+
