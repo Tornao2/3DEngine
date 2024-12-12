@@ -13,13 +13,18 @@ class ObjectManager {
 private:
 	Shader* shader;
 	std::vector<Primitive*> primitiveList;
+	std::vector<Figure*> figureList;
 public:
 	ObjectManager(Shader* readShader);
 	ObjectManager();
-	void addFigure(Primitive* readFigure, int index = -1);
+	void addPrimitive(Primitive* readPrimitive, int index = -1);
+	void removePrimitive(int index = -1);
+	Primitive* getPrimitive(int index = -1);
+	void addFigure(Figure* readFigure, int index = -1);
 	void removeFigure(int index = -1);
-	Primitive* getFigure(int index = -1);
-	void clearList();
+	Figure* getFigure(int index = -1);
+	void clearFigureList();
+	void clearPrimitiveList();
 	void drawAll();
 	void setShader(Shader* readShader);
 	void refreshBuffer();

@@ -1,6 +1,8 @@
 #pragma once
-#include "Primitive.h"
+#include "Figure.h"
 
-class Cube : public Primitive {
-
+class Cube :public Figure {
+public:
+	Cube(std::vector <glm::vec4> posData, std::vector<float> readIndices);
+	void drawFigure();
 };

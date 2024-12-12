@@ -13,7 +13,7 @@ void TriangleFan::addPoint(std::vector <glm::vec4> point, int index) {
 	if (data.size() <= realIndex || realIndex < 0) {
 		data.push_back(point[0]);
 		data.push_back(point[1]);
-		data.push_back(point[3]);
+		data.push_back(point[2]);
 	}
 	else {
 		data.insert(data.begin() + realIndex, point[2]);
@@ -40,7 +40,7 @@ std::vector <glm::vec4> TriangleFan::getPoint(int index) {
 	std::vector <glm::vec4> realData;
 	realData.push_back(data[realIndex]);
 	realData.push_back(data[realIndex + 1]);
-	realData.push_back(data[realIndex + 3]);
+	realData.push_back(data[realIndex + 2]);
 	return realData;
 }
 

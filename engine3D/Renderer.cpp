@@ -21,23 +21,20 @@ void Renderer::setClearColor(Color readClearColor) {
 void Renderer::setUpShaders() {
 	shader = new Shader();
 	manager->setShader(shader);
-}
-
-void Renderer::prepareView() {
+	glUseProgram(shader->getProgramId());
+	GLint lightingDir = glGetUniformLocation(shader->getProgramId(), "lightDir");
+	glUniform4fv(lightingDir, 1, glm::value_ptr(lightDir));
 	float aspectRatio = (float)glutGet(GLUT_WINDOW_WIDTH) / glutGet(GLUT_WINDOW_HEIGHT);
-	if (orthogonalView) 
+	if (orthogonalView)
 		projectionMatrix = glm::ortho(-1.0f * aspectRatio, 1.0f * aspectRatio, -1.0f, 1.0f, 1.0f, 100.0f);
-	else 
+	else
 		projectionMatrix = glm::perspective(glm::radians(45.0f), aspectRatio, 3.0f, 100.0f);
 	GLint projectionLoc = glGetUniformLocation(shader->getProgramId(), "projectionMatrix");
 	glUniformMatrix4fv(projectionLoc, 1, GL_TRUE, glm::value_ptr(projectionMatrix));
-	GLint lightingDir = glGetUniformLocation(shader->getProgramId(), "lightDir");
-	glUniform4fv(lightingDir, 1, glm::value_ptr(lightDir));
 }
 
 void Renderer::renderProper() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	prepareView();
 	shader->use();
 	glBindVertexArray(shader->getVAO());
 	manager->drawAll();
@@ -72,6 +69,15 @@ bool Renderer::getOrthogonal() {
 
 void Renderer::setOrthogonal(bool shouldOrthogonal) {
 	orthogonalView = shouldOrthogonal;
+	glUseProgram(shader->getProgramId());
+	float aspectRatio = (float)glutGet(GLUT_WINDOW_WIDTH) / glutGet(GLUT_WINDOW_HEIGHT);
+	if (orthogonalView)
+		projectionMatrix = glm::ortho(-1.0f * aspectRatio, 1.0f * aspectRatio, -1.0f, 1.0f, 1.0f, 100.0f);
+	else
+		projectionMatrix = glm::perspective(glm::radians(45.0f), aspectRatio, 3.0f, 100.0f);
+	
+	GLint projectionLoc = glGetUniformLocation(shader->getProgramId(), "projectionMatrix");
+	glUniformMatrix4fv(projectionLoc, 1, GL_TRUE, glm::value_ptr(projectionMatrix));
 }
 
 ObjectManager* Renderer::getManager() {
@@ -93,4 +99,7 @@ glm::vec4 Renderer::getLightningVector() {
 
 void Renderer::setlightingVector(glm::vec4 readLighting) {
 	lightDir = readLighting;
+	glUseProgram(shader->getProgramId());
+	GLint lightingDir = glGetUniformLocation(shader->getProgramId(), "lightDir");
+	glUniform4fv(lightingDir, 1, glm::value_ptr(lightDir));
 }

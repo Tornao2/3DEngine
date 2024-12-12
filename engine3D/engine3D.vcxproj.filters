@@ -13,12 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Figures">
-      <UniqueIdentifier>{af2d1eec-5a8b-40f8-87a8-ff077e51f9b0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Figures">
-      <UniqueIdentifier>{72642682-04cf-48b0-932e-5d03c81de75d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Handlers">
       <UniqueIdentifier>{b6435cff-f037-4e29-8a81-9476e13c13eb}</UniqueIdentifier>
     </Filter>
@@ -36,6 +30,12 @@
     </Filter>
     <Filter Include="Source Files\BaseClasses">
       <UniqueIdentifier>{d3eb5cfd-b139-40bf-9fac-60d4fe8ab2f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Draw">
+      <UniqueIdentifier>{af2d1eec-5a8b-40f8-87a8-ff077e51f9b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Draw">
+      <UniqueIdentifier>{72642682-04cf-48b0-932e-5d03c81de75d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -64,37 +64,40 @@
       <Filter>Source Files\BaseClasses</Filter>
     </ClCompile>
     <ClCompile Include="Point.cpp">
-      <Filter>Source Files\Figures</Filter>
+      <Filter>Source Files\Draw</Filter>
     </ClCompile>
     <ClCompile Include="ObjectManager.cpp">
       <Filter>Source Files\Handlers</Filter>
     </ClCompile>
     <ClCompile Include="Line.cpp">
-      <Filter>Source Files\Figures</Filter>
+      <Filter>Source Files\Draw</Filter>
     </ClCompile>
     <ClCompile Include="ShaderHandler.cpp">
       <Filter>Source Files\Handlers</Filter>
     </ClCompile>
     <ClCompile Include="Triangle.cpp">
-      <Filter>Source Files\Figures</Filter>
+      <Filter>Source Files\Draw</Filter>
     </ClCompile>
     <ClCompile Include="CameraHandler.cpp">
       <Filter>Source Files\Handlers</Filter>
     </ClCompile>
     <ClCompile Include="PoliLine.cpp">
-      <Filter>Source Files\Figures</Filter>
+      <Filter>Source Files\Draw</Filter>
     </ClCompile>
     <ClCompile Include="TriangleStrip.cpp">
-      <Filter>Source Files\Figures</Filter>
+      <Filter>Source Files\Draw</Filter>
     </ClCompile>
     <ClCompile Include="TriangleFan.cpp">
-      <Filter>Source Files\Figures</Filter>
+      <Filter>Source Files\Draw</Filter>
     </ClCompile>
     <ClCompile Include="Quads.cpp">
-      <Filter>Source Files\Figures</Filter>
+      <Filter>Source Files\Draw</Filter>
     </ClCompile>
     <ClCompile Include="Cube.cpp">
-      <Filter>Source Files\Figures</Filter>
+      <Filter>Source Files\Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="Figure.cpp">
+      <Filter>Source Files\BaseClasses</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -125,37 +128,40 @@
       <Filter>Header Files\BaseClasses</Filter>
     </ClInclude>
     <ClInclude Include="Point.h">
-      <Filter>Header Files\Figures</Filter>
+      <Filter>Header Files\Draw</Filter>
     </ClInclude>
     <ClInclude Include="ObjectManager.h">
       <Filter>Header Files\Handlers</Filter>
     </ClInclude>
     <ClInclude Include="Line.h">
-      <Filter>Header Files\Figures</Filter>
+      <Filter>Header Files\Draw</Filter>
     </ClInclude>
     <ClInclude Include="ShaderHandler.h">
       <Filter>Header Files\Handlers</Filter>
     </ClInclude>
     <ClInclude Include="Triangle.h">
-      <Filter>Header Files\Figures</Filter>
+      <Filter>Header Files\Draw</Filter>
     </ClInclude>
     <ClInclude Include="CameraHandler.h">
       <Filter>Header Files\Handlers</Filter>
     </ClInclude>
     <ClInclude Include="PoliLine.h">
-      <Filter>Header Files\Figures</Filter>
+      <Filter>Header Files\Draw</Filter>
     </ClInclude>
     <ClInclude Include="TriangleStrip.h">
-      <Filter>Header Files\Figures</Filter>
+      <Filter>Header Files\Draw</Filter>
     </ClInclude>
     <ClInclude Include="TriangleFan.h">
-      <Filter>Header Files\Figures</Filter>
+      <Filter>Header Files\Draw</Filter>
     </ClInclude>
     <ClInclude Include="Quads.h">
-      <Filter>Header Files\Figures</Filter>
+      <Filter>Header Files\Draw</Filter>
     </ClInclude>
     <ClInclude Include="Cube.h">
-      <Filter>Header Files\Figures</Filter>
+      <Filter>Header Files\Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="Figure.h">
+      <Filter>Header Files\BaseClasses</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

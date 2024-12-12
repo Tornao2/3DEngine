@@ -8,17 +8,17 @@ ObjectManager::ObjectManager() {
 	shader = nullptr;
 }
 
-void ObjectManager::addFigure(Primitive* readFigure, int index) {
+void ObjectManager::addPrimitive(Primitive* readPrimitive, int index) {
 	if (index == -1 || index >= primitiveList.size())
-		primitiveList.push_back(readFigure);
+		primitiveList.push_back(readPrimitive);
 	else if (index >= 0)
-		primitiveList.insert(primitiveList.begin() + index, readFigure);
+		primitiveList.insert(primitiveList.begin() + index, readPrimitive);
 	else
 		return;
 	refreshBuffer();
 }
 
-void ObjectManager::removeFigure(int index) {
+void ObjectManager::removePrimitive(int index) {
 	if (index == -1) index = primitiveList.size() - 1;
 	if (primitiveList.size() <= index || index < 0)
 		return;
@@ -26,14 +26,14 @@ void ObjectManager::removeFigure(int index) {
 	refreshBuffer();
 }
 
-Primitive* ObjectManager::getFigure(int index) {
+Primitive* ObjectManager::getPrimitive(int index) {
 	if (index == -1) index = primitiveList.size() - 1;
 	if (primitiveList.size() <= index || index < 0)
 		return nullptr;
 	return primitiveList[index];
 }
 
-void ObjectManager::clearList() {
+void ObjectManager::clearPrimitiveList() {
 	primitiveList.clear();
 	refreshBuffer();
 }
@@ -52,6 +52,35 @@ void ObjectManager::drawAll() {
 		primitiveList[i]->drawFigure(index);
 		primitiveList[i]->updateIndex(index);
 	}
+	for (int i = 0; i < figureList.size(); i++)
+		figureList[i]->drawFigure();
+}
+
+void ObjectManager::addFigure(Figure* readFigure, int index = -1) {
+	if (index == -1 || index >= figureList.size())
+		figureList.push_back(readFigure);
+	else if (index >= 0)
+		figureList.insert(figureList.begin() + index, readFigure);
+	else
+		return;
+}
+
+void ObjectManager::removeFigure(int index = -1) {
+	if (index == -1) index = figureList.size() - 1;
+	if (figureList.size() <= index || index < 0)
+		return;
+	figureList.erase(figureList.begin() + index);
+}
+
+Figure* ObjectManager::getFigure(int index = -1) {
+	if (index == -1) index = figureList.size() - 1;
+	if (figureList.size() <= index || index < 0)
+		return nullptr;
+	return figureList[index];
+}
+
+void ObjectManager::clearFigureList() {
+	figureList.clear();
 }
 
 void ObjectManager::setShader(Shader* readShader) {

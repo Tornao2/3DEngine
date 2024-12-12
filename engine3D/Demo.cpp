@@ -91,7 +91,7 @@ public:
             int numb;
             std::cout << "Podaj numer figury do usuniecia ";
             getUserInput<int>(numb);
-            renderer->getManager()->removeFigure(numb);
+            renderer->getManager()->removePrimitive(numb);
         }
         else if (checkIfPressed('c')) {
             returnTheFunc = true;
@@ -107,7 +107,7 @@ public:
                 temp.push_back(getUserInput());
                 std::cout << "Podaj rozmiar punktu: ";
                 getUserInput <float>(size);
-                manager->addFigure(new Point(temp, size));
+                manager->addPrimitive(new Point(temp, size));
                 break;
             case line:
                 std::cout << "Podaj pozycje 1 linii w formacie: _ _ _ _: ";
@@ -122,7 +122,7 @@ public:
                 temp.push_back(getUserInput());
                 std::cout << "Podaj szerokosc linii: ";
                 getUserInput <float>(size);
-                manager->addFigure(new Line(temp, size));
+                manager->addPrimitive(new Line(temp, size));
                 break;
             case poliline:
                 check = 1;
@@ -147,7 +147,7 @@ public:
                     if (check == 1 || check == 0) break;
                 }
                 if (temp.size() >= 3)
-                    manager->addFigure(new PoliLine(temp, size, (bool) check));
+                    manager->addPrimitive(new PoliLine(temp, size, (bool) check));
                 break;
             case triangle:
                 for (int i = 1; i < 4; i++) {
@@ -157,7 +157,7 @@ public:
                     std::cout << "Podaj kolor(0-1) "<< i <<" punktu w formacie : _ _ _ _ : ";
                     temp.push_back(getUserInput());
                 }
-                manager->addFigure(new Triangle(temp));
+                manager->addPrimitive(new Triangle(temp));
                 break;
             case quad:
                 for (int i = 1; i < 5; i++) {
@@ -167,7 +167,7 @@ public:
                     std::cout << "Podaj kolor(0-1) " << i << " punktu w formacie : _ _ _ _ : ";
                     temp.push_back(getUserInput());
                 }
-                manager->addFigure(new Quads(temp));
+                manager->addPrimitive(new Quads(temp));
                 break;
             case triangleFan:
                 check = 1;
@@ -184,7 +184,7 @@ public:
                     }
                 }
                 if (temp.size() >= 9)
-                    manager->addFigure(new TriangleFan(temp));
+                    manager->addPrimitive(new TriangleFan(temp));
                 break;
             case triangleStrip: 
                 check = 1;
@@ -201,7 +201,7 @@ public:
                     }
                 }
                 if (temp.size() >= 9)
-                    manager->addFigure(new TriangleStrip(temp));
+                    manager->addPrimitive(new TriangleStrip(temp));
                 break;
             case cube:
                 //Po dodaniu
@@ -346,14 +346,16 @@ void fillManager(ObjectManager* managers) {
         glm::vec4(-2.5f,  -6.0f, -5.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f),
         glm::vec4(-2.5f, -0.5f, -5.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 1.0f, 0.0f, 1.0f),
     };
-    managers->addFigure(new Triangle(triangleData));
-    managers->addFigure(new Point(pointData, 40));
-    managers->addFigure(new Line(lineData, 10));
-    managers->addFigure(new PoliLine(poliLineData, 10, false));
-    managers->addFigure(new PoliLine(closedPoliLine, 5, true));
-    managers->addFigure(new TriangleStrip(triangleStripData));
-    managers->addFigure(new TriangleFan(triangleFanData));
-    managers->addFigure(new Quads(quadsData));
+
+    managers->addPrimitive(new Triangle(triangleData));
+    managers->addPrimitive(new Point(pointData, 40));
+    managers->addPrimitive(new Line(lineData, 10));
+    managers->addPrimitive(new PoliLine(poliLineData, 10, false));
+    managers->addPrimitive(new PoliLine(closedPoliLine, 5, true));
+    managers->addPrimitive(new TriangleStrip(triangleStripData));
+    managers->addPrimitive(new TriangleFan(triangleFanData));
+    managers->addPrimitive(new Quads(quadsData));
+    //managers->addFigure(new Cube())
 }
 
 int main(int argc, char** argv) {
