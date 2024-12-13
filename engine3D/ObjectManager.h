@@ -8,6 +8,7 @@
 #include "TriangleFan.h"
 #include "Quads.h"
 #include "Cube.h"
+#include "FigureE.h"
 
 class ObjectManager {
 private:

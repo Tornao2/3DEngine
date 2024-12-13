@@ -90,7 +90,7 @@
     <ClCompile Include="Figure.cpp">
       <Filter>Source Files\BaseClasses</Filter>
     </ClCompile>
-    <ClCompile Include="FigureA.cpp">
+    <ClCompile Include="FigureE.cpp">
       <Filter>Source Files\Draw</Filter>
     </ClCompile>
   </ItemGroup>
@@ -154,7 +154,7 @@
     <ClInclude Include="Figure.h">
       <Filter>Header Files\BaseClasses</Filter>
     </ClInclude>
-    <ClInclude Include="FigureA.h">
+    <ClInclude Include="FigureE.h">
       <Filter>Header Files\Draw</Filter>
     </ClInclude>
   </ItemGroup>

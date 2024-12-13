@@ -51,7 +51,7 @@ void MouseHandler::mouseCallback(int xpos, int ypos) {
 	float yoffset = instance->camera.lastY - ypos;
 	instance->camera.lastX = xpos;
 	instance->camera.lastY = ypos;
-	float sensitivity = 1.0f;
+	float sensitivity = 0.5f;
 	xoffset *= sensitivity;
 	yoffset *= sensitivity;
 	instance->camera.yaw -= xoffset;

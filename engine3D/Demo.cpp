@@ -1,6 +1,6 @@
 #include "Engine.h"
 
-#define NUMBEROFFIGURES 8
+#define NUMBEROFFIGURES 9
 typedef enum figureType {
     point,
     line,
@@ -9,7 +9,8 @@ typedef enum figureType {
     quad,
     triangleFan,
     triangleStrip,
-    cube
+    cube,
+    letterE
 }figureType;
 
 class CustomKeyboard :public KeyboardHandler {
@@ -213,7 +214,10 @@ public:
                     manager->addPrimitive(new TriangleStrip(temp));
                 break;
             case cube:
-                std::cout << "Podaj dlugosc boku szescianu: ";
+                do {
+                    std::cout << "Podaj dlugosc boku szecianu E: ";
+                    getUserInput<float>(size);
+                } while (size <= 0);
                 getUserInput<float>(size);
                 std::cout << "Podaj x szecianu: ";
                 getUserInput<float>(x);
@@ -226,6 +230,23 @@ public:
                 for (int i = 0; i < 23; i++)
                     temp.push_back(temp[0]);
                 manager->addFigure(new Cube(size, x, y, z, temp));
+                break;
+            case letterE:
+                do {
+                    std::cout << "Podaj dlugosc boku litery E: ";
+                    getUserInput<float>(size);
+                } while (size <= 0);
+                std::cout << "Podaj x litery E: ";
+                getUserInput<float>(x);
+                std::cout << "Podaj y litery E: ";
+                getUserInput<float>(y);
+                std::cout << "Podaj z litery E: ";
+                getUserInput<float>(z);
+                std::cout << "Podaj kolor(0-1) litery E w formacie: _ _ _ _: ";
+                temp.push_back(getUserInput());
+                for (int i = 0; i < 76; i++)
+                    temp.push_back(temp[0]);
+                manager->addFigure(new FigureE(size, x, y, z, temp));
                 break;
             }
         }
@@ -272,6 +293,9 @@ public:
                 break;
             case cube:
                 std::cout << "Szescian";
+                break;
+            case letterE:
+                std::cout << "Litera E";
                 break;
             }
             std::cout << std::endl;
@@ -383,10 +407,12 @@ void fillManager(ObjectManager* managers) {
     managers->addPrimitive(new TriangleStrip(triangleStripData));
     managers->addPrimitive(new TriangleFan(triangleFanData));
     managers->addPrimitive(new Quads(quadsData));
-    managers->addFigure(new Cube(0.5f, -3.75f, 1.25f, -1.0f, cubeColors));
     managers->addFigure(new Cube(1.5f, -1.75f, -3.25f, -1.0f, cubeColors));
-    managers->addFigure(new Cube(0.75f, 0.75f, 2.25f, -1.0f, cubeColors));
-    managers->addFigure(new Cube(0.25f, 3.75f, -1.25f, -1.0f, cubeColors));
+    std::vector <glm::vec4> EColors;
+    for (int i = 0; i < 76; i++) {
+        EColors.push_back({ 1, 1, 1, 1 });
+    }
+    managers->addFigure(new FigureE(1.5f, 0.5f, 0.0f, -1.0f, EColors));
 }
 
 int main(int argc, char** argv) {
