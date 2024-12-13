@@ -3,7 +3,7 @@
 
 Renderer* Renderer::instance = nullptr;
 
-Renderer::Renderer(ObjectManager* readManager, Color readClearColor, glm::vec4 lightingVector, bool zBuffer, bool shouldOrthogonal) {
+Renderer::Renderer(ObjectManager* readManager, glm::vec4 readClearColor, glm::vec4 lightingVector, bool zBuffer, bool shouldOrthogonal) {
 	instance = this;
 	shader = nullptr;
 	manager = readManager;
@@ -13,9 +13,13 @@ Renderer::Renderer(ObjectManager* readManager, Color readClearColor, glm::vec4 l
 	lightDir = lightingVector;
 }
 
-void Renderer::setClearColor(Color readClearColor) {
+void Renderer::setClearColor(glm::vec4 readClearColor) {
+	glm::vec4 ambientColor = readClearColor / 1.1f;
 	clearColor = readClearColor;
 	glClearColor(readClearColor.r, readClearColor.g, readClearColor.b, readClearColor.a);
+	glUseProgram(shader->getProgramId());
+	GLint ambientDir = glGetUniformLocation(shader->getProgramId(), "ambientDir");
+	glUniform4fv(ambientDir, 1, glm::value_ptr(ambientColor));
 }
 
 void Renderer::setUpShaders() {
@@ -47,7 +51,7 @@ void Renderer::render() {
 	instance->renderProper();
 }
 
-Color Renderer::getClearColor() {
+glm::vec4 Renderer::getClearColor() {
 	return clearColor;
 }
 

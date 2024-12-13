@@ -8,11 +8,11 @@ Engine::Engine(int* argc, char* argv[], Renderer& renderer, DisplayManager& disp
 	instance = this;
 	fpsCap = delay;
 	initializeLibrary(argc, argv, displayManager);
-	renderer.setClearColor(renderer.getClearColor());
 	renderer.setZBuffer(renderer.getZBuffer());
 	glutDisplayFunc(Renderer::render);
 	glutTimerFunc(1, timer, fpsCap);
 	renderer.setUpShaders();
+	renderer.setClearColor(renderer.getClearColor());
 }
 
 void Engine::initializeLibrary(int* argc, char* argv[], DisplayManager& displayManager) {
@@ -59,8 +59,8 @@ void Engine::toggleMouse(bool should, std::function<void(void)> function) {
 }
 
 void Engine::timer(int value) {
+	glutTimerFunc(1000 / instance->fpsCap, timer, instance->fpsCap);
 	glutPostRedisplay();
 	Engine::mouseFunc();
 	Engine::keyboardFunc();
-	glutTimerFunc(1000 / instance->fpsCap, timer, instance->fpsCap);
 }

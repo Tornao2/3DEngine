@@ -16,14 +16,8 @@
     <Filter Include="Source Files\Handlers">
       <UniqueIdentifier>{b6435cff-f037-4e29-8a81-9476e13c13eb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Helpers">
-      <UniqueIdentifier>{d057e078-acae-4c73-b1ab-c279d2bddea5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Handlers">
       <UniqueIdentifier>{5a225e73-fde7-4cfe-986c-2d04a3152b02}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Helpers">
-      <UniqueIdentifier>{bc005290-09c3-4baa-957b-bea23350bb88}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\BaseClasses">
       <UniqueIdentifier>{63a56ae6-fc60-4695-9ad1-3cf661a46b39}</UniqueIdentifier>
@@ -56,9 +50,6 @@
     </ClCompile>
     <ClCompile Include="Engine.cpp">
       <Filter>Source Files\Handlers</Filter>
-    </ClCompile>
-    <ClCompile Include="Color.cpp">
-      <Filter>Source Files\Helpers</Filter>
     </ClCompile>
     <ClCompile Include="Primitive.cpp">
       <Filter>Source Files\BaseClasses</Filter>
@@ -99,6 +90,9 @@
     <ClCompile Include="Figure.cpp">
       <Filter>Source Files\BaseClasses</Filter>
     </ClCompile>
+    <ClCompile Include="FigureA.cpp">
+      <Filter>Source Files\Draw</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -120,9 +114,6 @@
     </ClInclude>
     <ClInclude Include="Engine.h">
       <Filter>Header Files\Handlers</Filter>
-    </ClInclude>
-    <ClInclude Include="Color.h">
-      <Filter>Header Files\Helpers</Filter>
     </ClInclude>
     <ClInclude Include="Primitive.h">
       <Filter>Header Files\BaseClasses</Filter>
@@ -162,6 +153,9 @@
     </ClInclude>
     <ClInclude Include="Figure.h">
       <Filter>Header Files\BaseClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="FigureA.h">
+      <Filter>Header Files\Draw</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

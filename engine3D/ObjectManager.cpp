@@ -59,8 +59,10 @@ void ObjectManager::drawAll() {
 			}
 		}
 	}
-	glDrawElements(GL_TRIANGLES, totalIndices.size(), GL_UNSIGNED_SHORT, totalIndices.data());
-	int index = totalIndices.size();
+	glDrawElements(GL_TRIANGLES, totalIndices.size(), GL_UNSIGNED_SHORT, (void*) totalIndices.data());
+	int index = 0;
+	for (int i = 0; i < figureList.size(); i++) 
+		 index += figureList[i]->getDataCount()/3;
 	for (int i = 0; i < primitiveList.size(); i++) {
 		primitiveList[i]->drawFigure(index);
 		primitiveList[i]->updateIndex(index);
@@ -103,9 +105,10 @@ void ObjectManager::setShader(Shader* readShader) {
 
 void ObjectManager::refreshBuffer() {
 	std::vector <glm::vec4> allFigures;
+	totalIndices.clear();
 	unsigned short int index = 0;
 	for (int i = 0; i < figureList.size(); i++) {
-		for (int j = 0; j < figureList[i]->getDataCount() * 3; j++)
+		for (int j = 0; j < figureList[i]->getDataCount(); j++)
 			allFigures.push_back(figureList[i]->getData()[j]);
 		for (int j = 0; j < figureList[i]->getIndices().size(); j++) 
 			totalIndices.push_back(figureList[i]->getIndices()[j] + index);
@@ -115,6 +118,6 @@ void ObjectManager::refreshBuffer() {
 		for (int j = 0; j < primitiveList[i]->getDataCount() * 3; j++)
 			allFigures.push_back(primitiveList[i]->getData()[j]);
 	glBindBuffer(GL_ARRAY_BUFFER, shader->getVBO());
-	glBufferData(GL_ARRAY_BUFFER, allFigures.size() * sizeof(glm::vec4), allFigures.data(), GL_DYNAMIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, allFigures.size() * sizeof(glm::vec4) , allFigures.data(), GL_DYNAMIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }

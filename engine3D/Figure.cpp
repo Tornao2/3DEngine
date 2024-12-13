@@ -18,11 +18,11 @@ void Figure::setData(std::vector <glm::vec4> readData) {
 }
 
 int Figure::getDataCount() {
-	return indices.size();
+	return data.size();
 }
 
 void Figure::updateIndiceCount(unsigned short int& index) {
-	index += indices.size();
+	index += data.size()/3;
 }
 
 bool Figure::getIfRefresh() {

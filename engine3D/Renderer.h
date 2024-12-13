@@ -1,14 +1,12 @@
 #pragma once
-#include "Color.h"
 #include "ObjectManager.h"
 #include <glm/gtc/type_ptr.hpp>
 
 class Renderer {
 private:
 	void renderProper();
-	void prepareView();
 	static Renderer* instance;
-	Color clearColor;
+	glm::vec4 clearColor;
 	bool enableZBuffer;
 	bool orthogonalView;
 	ObjectManager* manager;
@@ -16,10 +14,10 @@ private:
 	glm::mat4 projectionMatrix;
 	glm::vec4 lightDir;
 public:
-	Renderer(ObjectManager* readManager, Color readClearColor = { 0, 0, 0, 0 }, glm::vec4 lightingVector = { 1, 1, 1, 0 }, bool zBuffer = true, bool shouldOrthogonal = true);
+	Renderer(ObjectManager* readManager, glm::vec4 readClearColor = { 0, 0, 0, 0 }, glm::vec4 lightingVector = { 1, 1, 1, 0 }, bool zBuffer = true, bool shouldOrthogonal = true);
 	static void render();
-	void setClearColor(Color readClearColor);
-	Color getClearColor();
+	void setClearColor(glm::vec4 readClearColor);
+	glm::vec4 getClearColor();
 	void setZBuffer(bool should);
 	bool getZBuffer();
 	bool getOrthogonal();

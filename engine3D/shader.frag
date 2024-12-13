@@ -5,9 +5,13 @@ in vec4 fragNormal;
 out vec4 color;
 
 uniform vec4 lightDir;
+uniform vec4 ambientDir;
 
 void main()
 {
-    float diff = max(dot(normalize(fragNormal), normalize(lightDir)), 0.0);
-    color = vec4(vertexColor.rgb * diff, vertexColor.a);
+    vec4 norm = normalize(fragNormal);
+    vec4 light = normalize(lightDir);
+    float diff = max(dot(norm, light), 0.0);
+    vec4 ambient = ambientDir * (1.0 - diff);
+    color = vec4(vertexColor.rgb * diff, vertexColor.a) + ambient;
 }

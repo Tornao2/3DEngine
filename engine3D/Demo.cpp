@@ -66,14 +66,14 @@ public:
         }
         else if (checkIfPressed('7')) {
             returnTheFunc = true;
-            float r, g, b, a;
-            std::cout << "Podaj czesc r(0-255) ";
+            float r, g, b;
+            std::cout << "Podaj czesc r(0-1) ";
             getUserInput<float>(r);
-            std::cout << "Podaj czesc g(0-255) ";
+            std::cout << "Podaj czesc g(0-1) ";
             getUserInput<float>(g);
-            std::cout << "Podaj czesc b(0-255) ";
+            std::cout << "Podaj czesc b(0-1) ";
             getUserInput<float>(b);
-            renderer->setClearColor(normalizeColors({ r, g, b, 255 }));
+            renderer->setClearColor({r, g, b, 1});
         }
         else if (checkIfPressed('8')) {
             returnTheFunc = true;
@@ -369,10 +369,10 @@ void fillManager(ObjectManager* managers) {
     };
     std::vector<glm::vec4> cubeColors = {
         {0, 0, 1, 1}, {0, 0, 1, 1}, {0, 0, 1, 1}, {0, 0, 1, 1},
-        {0, 1, 0, 1}, {0, 1, 0, 1}, {0, 1, 0, 1}, {0,1, 0, 1},
-        {1, 0, 0, 1}, {1, 0, 0, 1}, {1, 0, 0, 1}, {1, 0, 0, 1},
         {0, 0, 1, 1}, {0, 0, 1, 1}, {0, 0, 1, 1}, {0, 0, 1, 1},
         {0, 1, 0, 1}, {0, 1, 0, 1}, {0, 1, 0, 1}, {0, 1, 0, 1},
+        {0, 1, 0, 1}, {0, 1, 0, 1}, {0, 1, 0, 1}, {0, 1, 0, 1},
+        {1, 0, 0, 1}, {1, 0, 0, 1}, {1, 0, 0, 1}, {1, 0, 0, 1},
         {1, 0, 0, 1}, {1, 0, 0, 1}, {1, 0, 0, 1}, {1, 0, 0, 1},
     };
     managers->addPrimitive(new Triangle(triangleData));
@@ -383,7 +383,10 @@ void fillManager(ObjectManager* managers) {
     managers->addPrimitive(new TriangleStrip(triangleStripData));
     managers->addPrimitive(new TriangleFan(triangleFanData));
     managers->addPrimitive(new Quads(quadsData));
-    managers->addFigure(new Cube(0.5f, -3.75f, -0.25f, -1.0f, cubeColors));
+    managers->addFigure(new Cube(0.5f, -3.75f, 1.25f, -1.0f, cubeColors));
+    managers->addFigure(new Cube(1.5f, -1.75f, -3.25f, -1.0f, cubeColors));
+    managers->addFigure(new Cube(0.75f, 0.75f, 2.25f, -1.0f, cubeColors));
+    managers->addFigure(new Cube(0.25f, 3.75f, -1.25f, -1.0f, cubeColors));
 }
 
 int main(int argc, char** argv) {
@@ -405,7 +408,8 @@ int main(int argc, char** argv) {
     fillManager(&manager);
     CustomKeyboard key(&displayManager, &engine, &renderer, &manager);
     CustomMouse mouse(renderer.getShader());
-    renderer.setlightingVector({ 0.2, 0.2, 0.8, 0 });
+    renderer.setClearColor({ 0.3, 0.3, 0.7, 1 });
+    renderer.setlightingVector({ 1, 1, 1, 0 });
     engine.toggleMouse(true, std::bind(&CustomMouse::handleMouse, &mouse));
     engine.toggleKeyboard(true, std::bind(&CustomKeyboard::handleKeyboard, &key));
     glutMainLoop();
