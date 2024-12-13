@@ -32,7 +32,7 @@ void Renderer::setUpShaders() {
 	if (orthogonalView)
 		projectionMatrix = glm::ortho(-1.0f * aspectRatio, 1.0f * aspectRatio, -1.0f, 1.0f, 1.0f, 100.0f);
 	else
-		projectionMatrix = glm::perspective(glm::radians(45.0f), aspectRatio, 3.0f, 100.0f);
+		projectionMatrix = glm::perspective(glm::radians(60.0f), aspectRatio, 3.0f, 100.0f);
 	GLint projectionLoc = glGetUniformLocation(shader->getProgramId(), "projectionMatrix");
 	glUniformMatrix4fv(projectionLoc, 1, GL_TRUE, glm::value_ptr(projectionMatrix));
 }
