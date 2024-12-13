@@ -14,12 +14,11 @@ Renderer::Renderer(ObjectManager* readManager, glm::vec4 readClearColor, glm::ve
 }
 
 void Renderer::setClearColor(glm::vec4 readClearColor) {
-	glm::vec4 ambientColor = readClearColor / 1.1f;
 	clearColor = readClearColor;
 	glClearColor(readClearColor.r, readClearColor.g, readClearColor.b, readClearColor.a);
 	glUseProgram(shader->getProgramId());
 	GLint ambientDir = glGetUniformLocation(shader->getProgramId(), "ambientDir");
-	glUniform4fv(ambientDir, 1, glm::value_ptr(ambientColor));
+	glUniform4fv(ambientDir, 1, glm::value_ptr(clearColor));
 }
 
 void Renderer::setUpShaders() {

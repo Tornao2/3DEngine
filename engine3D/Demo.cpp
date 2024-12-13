@@ -347,19 +347,19 @@ public:
 
 void fillManager(ObjectManager* managers) {
     std::vector<glm::vec4> triangleData = {
-        glm::vec4(-3.0f,  0.5f, -3.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.0f, 1.0f, 1.0f, 1.0f),
-        glm::vec4(-5.5f, -5.5f, -3.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 0.0f),glm::vec4(0.0f, 1.0f, 1.0f, 1.0f),
-        glm::vec4(3.5f, -0.5f, -3.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 0.0f),glm::vec4(0.0f, 1.0f, 1.0f, 1.0f)
+        glm::vec4(-3.0f,  5.5f, -3.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.0f, 1.0f, 1.0f, 1.0f),
+        glm::vec4(-5.5f, 0.5f, -3.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 0.0f),glm::vec4(0.0f, 1.0f, 1.0f, 1.0f),
+        glm::vec4(3.5f, 0.5f, -3.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 0.0f),glm::vec4(0.0f, 1.0f, 1.0f, 1.0f)
     };
     std::vector<glm::vec4> lineData = {
         glm::vec4(-10.5f,  0.0f, -30.0f, 1.0), glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 1.0f, 0.0, 1.0f),
         glm::vec4(0.5f,  5.0f, -30.0f, 1.0), glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 1.0f, 0.0, 1.0f)
     };
     std::vector<glm::vec4> pointData = {
-        glm::vec4(2.0f,  0.0f, -3.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 0.0f),glm::vec4(0.0f, 1.0f, 1.0f, 1.0f)
+        glm::vec4(2.0f,  2.0f, -3.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 0.0f),glm::vec4(0.0f, 1.0f, 1.0f, 1.0f)
     };
     std::vector<glm::vec4> poliLineData = {
-        glm::vec4(2.0f,  0.0f, -3.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f),
+        glm::vec4(2.0f,  2.0f, -3.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f),
         glm::vec4(0.0f,  1.0f,  1.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f),
         glm::vec4(-1.0f, 0.5f,  2.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f),
     };
@@ -399,6 +399,12 @@ void fillManager(ObjectManager* managers) {
         {1, 0, 0, 1}, {1, 0, 0, 1}, {1, 0, 0, 1}, {1, 0, 0, 1},
         {1, 0, 0, 1}, {1, 0, 0, 1}, {1, 0, 0, 1}, {1, 0, 0, 1},
     };
+    std::vector<glm::vec4> baseData = {
+    glm::vec4(100.5f, -8.0f, -100.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.8f, 0.8f, 0.8f, 1.0f),
+    glm::vec4(-100.5f,  -8.0f, -100.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.8f, 0.8f, 0.8f, 1.0f),
+    glm::vec4(-100.5f, -8.0f, 100.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.8f, 0.8f, 0.8f, 1.0f),
+    glm::vec4(100.5f,  -8.0f, 100.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.8f, 0.8f, 0.8f, 1.0f),
+    };
     managers->addPrimitive(new Triangle(triangleData));
     managers->addPrimitive(new Point(pointData, 40));
     managers->addPrimitive(new Line(lineData, 10));
@@ -413,6 +419,7 @@ void fillManager(ObjectManager* managers) {
         EColors.push_back({ 1, 1, 1, 1 });
     }
     managers->addFigure(new FigureE(1.5f, 0.5f, 0.0f, -1.0f, EColors));
+    managers->addPrimitive(new Quads(baseData));
 }
 
 int main(int argc, char** argv) {
@@ -434,8 +441,8 @@ int main(int argc, char** argv) {
     fillManager(&manager);
     CustomKeyboard key(&displayManager, &engine, &renderer, &manager);
     CustomMouse mouse(renderer.getShader());
-    renderer.setClearColor({ 0.3, 0.3, 0.7, 1 });
-    renderer.setlightingVector({ 1, 1, 1, 0 });
+    renderer.setClearColor({ 0.3, 0.5, 0.9, 1 });
+    renderer.setlightingVector({ 0.4, 0.7, 0.7, 0 });
     engine.toggleMouse(true, std::bind(&CustomMouse::handleMouse, &mouse));
     engine.toggleKeyboard(true, std::bind(&CustomKeyboard::handleKeyboard, &key));
     glutMainLoop();
