@@ -2,6 +2,8 @@
 #include <GL/glut.h>
 #include <glm/glm.hpp>
 #include <vector>
+#include "Refreshable.h"
+#include "EngineObject.h"
 
 typedef enum vecType {
 	pos,
@@ -9,20 +11,13 @@ typedef enum vecType {
 	nor
 }vecType;
 
-class Figure{
+class Figures: public Refreshable, public EngineObject {
 protected:
-	std::vector<unsigned short int> indices;
 	std::vector <glm::vec4> data;
-	int callForRefresh;
 public:
-	std::vector<unsigned short int> getIndices();
-	void setIndices(std::vector<unsigned short int> readIndices);
 	std::vector <glm::vec4> getData();
 	void setData(std::vector <glm::vec4> readData);
-	void updateIndiceCount(unsigned short int& index);
 	int getDataCount();
-	bool getIfRefresh();
-	void setIfRefresh(bool readRefresh);
 	void changePoint(std::vector <glm::vec4> point, int index);
 	std::vector <glm::vec4> getPoint(int index);
 };

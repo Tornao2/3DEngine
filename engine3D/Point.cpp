@@ -1,11 +1,11 @@
 #include "Point.h"
 
-Point::Point(std::vector <glm::vec4> readData, int readSize) {
+Point::Point(std::vector <glm::vec4> readData, float readSize) {
 	data = readData;
 	size = readSize;
 }
 
 void Point::drawFigure(int index) {
-	glPointSize(size);
+	glPointSize((GLfloat)size);
 	glDrawArrays(GL_POINTS, index, 1);
 }

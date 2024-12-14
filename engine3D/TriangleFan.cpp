@@ -5,7 +5,7 @@ TriangleFan::TriangleFan(std::vector <glm::vec4> readData) {
 }
 
 void TriangleFan::drawFigure(int index) {
-	glDrawArrays(GL_TRIANGLE_FAN, index, data.size() / 3);
+	glDrawArrays(GL_TRIANGLE_FAN, index, (GLsizei)data.size() / 3);
 }
 
 void TriangleFan::addPoint(std::vector <glm::vec4> point, int index) {

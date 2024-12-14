@@ -6,7 +6,7 @@
 
 class Engine {
 public:
-	Engine(int* argc, char* argv[], Renderer& renderer, DisplayManager& displayManager, int delay = 60);
+	Engine(int* argc, char* argv[], Renderer& renderer, DisplayManager& displayManager, int delay = 300);
 	int getFpsCap();
 	void setFpsCap(int delay);
 	void toggleKeyboard(bool should, std::function<void(void)> function);

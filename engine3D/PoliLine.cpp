@@ -1,17 +1,17 @@
 #include "PoliLine.h"
 
-PoliLine::PoliLine(std::vector <glm::vec4> readData, int readSize, bool readClosed) {
+PoliLine::PoliLine(std::vector <glm::vec4> readData, float readSize, bool readClosed) {
 	data = readData;
 	size = readSize;
 	closed = readClosed;
 }
 
 void PoliLine::drawFigure(int index) {
-	glLineWidth(size);
+	glLineWidth((GLfloat) size);
 	if (closed) 
-		glDrawArrays(GL_LINE_LOOP, index, data.size() / 3);
+		glDrawArrays(GL_LINE_LOOP, index, (GLsizei)data.size() / 3);
 	else 
-		glDrawArrays(GL_LINE_STRIP, index, data.size() / 3);
+		glDrawArrays(GL_LINE_STRIP, index, (GLsizei)data.size() / 3);
 }
 
 void PoliLine::addPoint(std::vector <glm::vec4> point, int index) {

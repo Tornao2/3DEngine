@@ -77,6 +77,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -91,6 +92,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -105,6 +107,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -119,6 +122,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,22 +132,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="EngineObject.cpp" />
+    <ClCompile Include="Figures.cpp" />
     <ClCompile Include="Observer.cpp" />
     <ClCompile Include="Cube.cpp" />
-    <ClCompile Include="Figure.cpp" />
+    <ClCompile Include="IndiceDraw.cpp" />
     <ClCompile Include="FigureE.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="PoliLine.cpp" />
-    <ClCompile Include="Primitive.cpp" />
+    <ClCompile Include="DirectDraw.cpp" />
     <ClCompile Include="DisplayManager.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Demo.cpp" />
     <ClCompile Include="KeyboardHandler.cpp" />
     <ClCompile Include="MouseHandler.cpp" />
     <ClCompile Include="Quads.cpp" />
+    <ClCompile Include="Refreshable.cpp" />
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="Resizable.cpp" />
     <ClCompile Include="ShaderHandler.cpp" />
     <ClCompile Include="Triangle.cpp" />
     <ClCompile Include="TriangleFan.cpp" />
@@ -155,21 +163,25 @@
     <None Include="shader.vert" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Figures.h" />
+    <ClInclude Include="EngineObject.h" />
     <ClInclude Include="Observer.h" />
     <ClInclude Include="Cube.h" />
-    <ClInclude Include="Figure.h" />
+    <ClInclude Include="IndiceDraw.h" />
     <ClInclude Include="FigureE.h" />
     <ClInclude Include="Line.h" />
     <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="PoliLine.h" />
-    <ClInclude Include="Primitive.h" />
+    <ClInclude Include="DirectDraw.h" />
     <ClInclude Include="DisplayManager.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="KeyboardHandler.h" />
     <ClInclude Include="MouseHandler.h" />
     <ClInclude Include="Quads.h" />
+    <ClInclude Include="Refreshable.h" />
     <ClInclude Include="Renderer.h" />
+    <ClInclude Include="Resizable.h" />
     <ClInclude Include="ShaderHandler.h" />
     <ClInclude Include="Triangle.h" />
     <ClInclude Include="TriangleFan.h" />

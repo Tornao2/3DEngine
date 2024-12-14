@@ -1,8 +1,9 @@
 #pragma once
-#include "Primitive.h"
+#include "DirectDraw.h"
+#include "Resizable.h"
 
-class Point :public Primitive {
+class Point :public DirectDraw, public Resizable {
 public:
-	Point(std::vector <glm::vec4> readData, int readSize);
+	Point(std::vector <glm::vec4> readData, float readSize);
 	void drawFigure(int index);
 };

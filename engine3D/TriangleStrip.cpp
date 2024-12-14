@@ -5,7 +5,7 @@ TriangleStrip::TriangleStrip(std::vector <glm::vec4> readData) {
 }
 
 void TriangleStrip::drawFigure(int index) {
-	glDrawArrays(GL_TRIANGLE_STRIP, index, data.size() / 3);
+	glDrawArrays(GL_TRIANGLE_STRIP, index, (GLsizei)data.size() / 3);
 }
 
 void TriangleStrip::addPoint(std::vector <glm::vec4> point, int index) {

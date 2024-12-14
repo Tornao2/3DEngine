@@ -46,7 +46,7 @@ GLuint Shader::compileShader(const char* path, GLenum shaderType) {
         shaderCode = shaderStream.str();
     }
     catch (std::ifstream::failure& e) {
-        std::cerr << "ERROR::SHADER::FILE_NOT_READABLE: " << path << std::endl;
+        std::cerr << "ERROR::SHADER::FILE_NOT_READABLE: " << e.what() << path << std::endl;
     }
     const char* shaderCodeCStr = shaderCode.c_str();
     GLuint shaderID = glCreateShader(shaderType);

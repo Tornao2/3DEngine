@@ -47,17 +47,17 @@ bool MouseHandler::checkIfPressed(unsigned char button) {
 }
 
 void MouseHandler::mouseCallback(int xpos, int ypos) {
-	float xoffset = xpos - instance->camera->lastX;
-	float yoffset = instance->camera->lastY - ypos;
-	instance->camera->lastX = xpos;
-	instance->camera->lastY = ypos;
+	float xoffset = xpos - instance->camera->getLastX();
+	float yoffset = instance->camera->getLastY() - ypos;
+	instance->camera->setLastX((float) xpos);
+	instance->camera->setLastY((float)ypos);
 	float sensitivity = 0.5f;
 	xoffset *= sensitivity;
 	yoffset *= sensitivity;
-	instance->camera->yaw -= xoffset;
-	instance->camera->pitch -= yoffset;
-	if (instance->camera->pitch > 89.0f) instance->camera->pitch = 89.0f;
-	if (instance->camera->pitch < -89.0f) instance->camera->pitch = -89.0f;
+	instance->camera->setYaw(instance->camera->getYaw() - xoffset);
+	instance->camera->setPitch(instance->camera->getPitch() - yoffset);
+	if (instance->camera->getPitch() > 89.0f) instance->camera->setPitch(89.0f);
+	if (instance->camera->getPitch() < -89.0f) instance->camera->setPitch( - 89.0f);
 	instance->camera->updateCamera();
 }
 

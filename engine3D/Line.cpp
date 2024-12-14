@@ -1,12 +1,12 @@
 #include "Line.h"
 
-Line::Line(std::vector <glm::vec4> readData, int readSize) {
+Line::Line(std::vector <glm::vec4> readData, float readSize) {
 	data = readData;
 	size = readSize;
 }
 
 void Line::drawFigure(int index) {
-	glLineWidth(size);
+	glLineWidth((GLfloat)size);
 	glDrawArrays(GL_LINES, index, 2);
 }
 

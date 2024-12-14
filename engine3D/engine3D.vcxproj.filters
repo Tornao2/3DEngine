@@ -51,7 +51,7 @@
     <ClCompile Include="Engine.cpp">
       <Filter>Source Files\Handlers</Filter>
     </ClCompile>
-    <ClCompile Include="Primitive.cpp">
+    <ClCompile Include="DirectDraw.cpp">
       <Filter>Source Files\BaseClasses</Filter>
     </ClCompile>
     <ClCompile Include="Point.cpp">
@@ -84,13 +84,25 @@
     <ClCompile Include="Cube.cpp">
       <Filter>Source Files\Draw</Filter>
     </ClCompile>
-    <ClCompile Include="Figure.cpp">
+    <ClCompile Include="IndiceDraw.cpp">
       <Filter>Source Files\BaseClasses</Filter>
     </ClCompile>
     <ClCompile Include="FigureE.cpp">
       <Filter>Source Files\Draw</Filter>
     </ClCompile>
     <ClCompile Include="Observer.cpp">
+      <Filter>Source Files\BaseClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="Resizable.cpp">
+      <Filter>Source Files\BaseClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="Figures.cpp">
+      <Filter>Source Files\BaseClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="Refreshable.cpp">
+      <Filter>Source Files\BaseClasses</Filter>
+    </ClCompile>
+    <ClCompile Include="EngineObject.cpp">
       <Filter>Source Files\BaseClasses</Filter>
     </ClCompile>
   </ItemGroup>
@@ -115,7 +127,7 @@
     <ClInclude Include="Engine.h">
       <Filter>Header Files\Handlers</Filter>
     </ClInclude>
-    <ClInclude Include="Primitive.h">
+    <ClInclude Include="DirectDraw.h">
       <Filter>Header Files\BaseClasses</Filter>
     </ClInclude>
     <ClInclude Include="Point.h">
@@ -148,13 +160,25 @@
     <ClInclude Include="Cube.h">
       <Filter>Header Files\Draw</Filter>
     </ClInclude>
-    <ClInclude Include="Figure.h">
+    <ClInclude Include="IndiceDraw.h">
       <Filter>Header Files\BaseClasses</Filter>
     </ClInclude>
     <ClInclude Include="FigureE.h">
       <Filter>Header Files\Draw</Filter>
     </ClInclude>
     <ClInclude Include="Observer.h">
+      <Filter>Header Files\BaseClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="Resizable.h">
+      <Filter>Header Files\BaseClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="Figures.h">
+      <Filter>Header Files\BaseClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="Refreshable.h">
+      <Filter>Header Files\BaseClasses</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineObject.h">
       <Filter>Header Files\BaseClasses</Filter>
     </ClInclude>
   </ItemGroup>

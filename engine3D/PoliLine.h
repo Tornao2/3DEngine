@@ -1,11 +1,12 @@
 #pragma once
-#include "Primitive.h"
+#include "DirectDraw.h"
+#include "Resizable.h"
 
-class PoliLine :public Primitive {
+class PoliLine :public DirectDraw, public Resizable {
 private:
 	bool closed;
 public:
-	PoliLine(std::vector <glm::vec4> readData, int readSize, bool readClosed);
+	PoliLine(std::vector <glm::vec4> readData, float readSize, bool readClosed);
 	void drawFigure(int index);
 	void changePoint(std::vector <glm::vec4> point, int index);
 	void addPoint(std::vector <glm::vec4> point, int index);

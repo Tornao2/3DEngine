@@ -35,7 +35,7 @@ void Renderer::setUpShaders() {
 	GLint projectionLoc = glGetUniformLocation(shader->getProgramId(), "projectionMatrix");
 	glUniformMatrix4fv(projectionLoc, 1, GL_TRUE, glm::value_ptr(projectionMatrix));
 }
-
+#include <chrono>
 void Renderer::renderProper() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	shader->use();

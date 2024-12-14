@@ -1,7 +1,7 @@
 #pragma once
-#include "Primitive.h"
+#include "DirectDraw.h"
 
-class TriangleStrip :public Primitive {
+class TriangleStrip :public DirectDraw {
 public:
 	TriangleStrip(std::vector <glm::vec4> readData);
 	void drawFigure(int index);

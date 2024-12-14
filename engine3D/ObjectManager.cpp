@@ -8,7 +8,7 @@ ObjectManager::ObjectManager() {
 	shader = nullptr;
 }
 
-void ObjectManager::addPrimitive(Primitive* readPrimitive, int index) {
+void ObjectManager::addPrimitive(DirectDraw* readPrimitive, int index) {
 	if (index == -1 || index >= primitiveList.size())
 		primitiveList.push_back(readPrimitive);
 	else if (index >= 0)
@@ -19,15 +19,15 @@ void ObjectManager::addPrimitive(Primitive* readPrimitive, int index) {
 }
 
 void ObjectManager::removePrimitive(int index) {
-	if (index == -1) index = primitiveList.size() - 1;
+	if (index == -1) index = (int) primitiveList.size() - 1;
 	if (primitiveList.size() <= index || index < 0)
 		return;
 	primitiveList.erase(primitiveList.begin() + index);
 	refreshBuffer();
 }
 
-Primitive* ObjectManager::getPrimitive(int index) {
-	if (index == -1) index = primitiveList.size() - 1;
+DirectDraw* ObjectManager::getPrimitive(int index) {
+	if (index == -1) index = (int) primitiveList.size() - 1;
 	if (primitiveList.size() <= index || index < 0)
 		return nullptr;
 	return primitiveList[index];
@@ -59,17 +59,17 @@ void ObjectManager::drawAll() {
 			}
 		}
 	}
-	glDrawElements(GL_TRIANGLES, totalIndices.size(), GL_UNSIGNED_SHORT, (void*) totalIndices.data());
+	glDrawElements(GL_TRIANGLES, (GLsizei) totalIndices.size(), GL_UNSIGNED_SHORT, (void*) totalIndices.data());
 	int index = 0;
 	for (int i = 0; i < figureList.size(); i++) 
-		 index += figureList[i]->getDataCount()/3;
+		 index += figureList[i]->getDataCount();
 	for (int i = 0; i < primitiveList.size(); i++) {
 		primitiveList[i]->drawFigure(index);
 		primitiveList[i]->updateIndex(index);
 	}
 }
 
-void ObjectManager::addFigure(Figure* readFigure, int index) {
+void ObjectManager::addFigure(IndiceDraw* readFigure, int index) {
 	if (index == -1 || index >= figureList.size())
 		figureList.push_back(readFigure);
 	else if (index >= 0)
@@ -80,15 +80,15 @@ void ObjectManager::addFigure(Figure* readFigure, int index) {
 }
 
 void ObjectManager::removeFigure(int index) {
-	if (index == -1) index = figureList.size() - 1;
+	if (index == -1) index = (int) figureList.size() - 1;
 	if (figureList.size() <= index || index < 0)
 		return;
 	figureList.erase(figureList.begin() + index);
 	refreshBuffer();
 }
 
-Figure* ObjectManager::getFigure(int index) {
-	if (index == -1) index = figureList.size() - 1;
+IndiceDraw* ObjectManager::getFigure(int index) {
+	if (index == -1) index = (int) figureList.size() - 1;
 	if (figureList.size() <= index || index < 0)
 		return nullptr;
 	return figureList[index];
@@ -108,7 +108,7 @@ void ObjectManager::refreshBuffer() {
 	totalIndices.clear();
 	unsigned short int index = 0;
 	for (int i = 0; i < figureList.size(); i++) {
-		for (int j = 0; j < figureList[i]->getDataCount(); j++)
+		for (int j = 0; j < figureList[i]->getDataCount()*3; j++)
 			allFigures.push_back(figureList[i]->getData()[j]);
 		for (int j = 0; j < figureList[i]->getIndices().size(); j++) 
 			totalIndices.push_back(figureList[i]->getIndices()[j] + index);

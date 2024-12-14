@@ -47,22 +47,22 @@ public:
         if (checkIfPressed('1')) {
             returnTheFunc = true;
             std::cout << "Podaj liczbe klatek na sekunde ";
-            float fps;
-            getUserInput<float>(fps);
+            int fps;
+            getUserInput<int>(fps);
             engine->setFpsCap(fps);
         }
         else if (checkIfPressed('2')) {
             returnTheFunc = true;
             std::cout << "Podaj szerokosc okna ";
-            float width;
-            getUserInput<float>(width);
+            int width;
+            getUserInput<int>(width);
             display->setWindowWidth(width);
         }
         else if (checkIfPressed('3')) {
             returnTheFunc = true;
             std::cout << "Podaj wysokosc okna ";
-            float height;
-            getUserInput<float>(height);
+            int height;
+            getUserInput<int>(height);
             display->setWindowHeight(height);
         }
         else if (checkIfPressed('7')) {
@@ -218,7 +218,6 @@ public:
                     std::cout << "Podaj dlugosc boku szecianu E: ";
                     getUserInput<float>(size);
                 } while (size <= 0);
-                getUserInput<float>(size);
                 std::cout << "Podaj x szecianu: ";
                 getUserInput<float>(x);
                 std::cout << "Podaj y szecianu: ";
@@ -437,7 +436,7 @@ int main(int argc, char** argv) {
     ObjectManager manager;
     Renderer renderer(&manager);
     DisplayManager displayManager;;
-    Engine engine(&argc, argv, renderer, displayManager);
+    Engine engine(&argc, argv, renderer, displayManager, 300);
     fillManager(&manager);
     CustomKeyboard key(&displayManager, &engine, &renderer, &manager);
     CustomMouse mouse(renderer.getShader());
