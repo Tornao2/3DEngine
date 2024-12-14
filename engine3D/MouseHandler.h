@@ -1,5 +1,5 @@
 #pragma once
-#include "CameraHandler.h"
+#include "Observer.h"
 #include "KeyboardHandler.h"
 
 typedef enum mouseButtons {
@@ -10,7 +10,7 @@ typedef enum mouseButtons {
 
 class MouseHandler {
 private:
-	CameraHandler camera = NULL;
+	Observer* camera = nullptr;
 	static MouseHandler* instance;
 	KeyStates buttonStates[3] = { notClicked };
 	bool ifButtonsRefresh[3] = { true };
@@ -24,4 +24,6 @@ public:
 	void static buttonHandle(int button, int state, int x, int y);
 	bool checkIfPressed(unsigned char button);
 	static void mouseCallback(int xpos, int ypos);
+	Observer* getCamera();
+	void setCamera(Observer* readCamera);
 };
