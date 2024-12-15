@@ -20,12 +20,14 @@ class CustomKeyboard :public KeyboardHandler {
     ObjectManager* manager;
     bool returnTheFunc;
     figureType createFigure;
+    std::vector <Transformable*>* transformable;
 public:
-    CustomKeyboard(DisplayManager* readDisplay, Engine* readEngine, Renderer* readRenderer, ObjectManager* readManager) {
+    CustomKeyboard(DisplayManager* readDisplay, Engine* readEngine, Renderer* readRenderer, ObjectManager* readManager, std::vector <Transformable*>* transformables) {
         display = readDisplay;
         engine = readEngine;
         renderer = readRenderer;
         manager = readManager;
+        transformable = transformables;
         returnTheFunc = false;
         setIfShouldRefresh('4', true);
         setIfShouldRefresh('5', true);
@@ -90,17 +92,65 @@ public:
         else if (checkIfPressed('d')) {
             returnTheFunc = true;
             int numb;
-            std::cout << "Podaj czy chcesz usunac figure - 1, czy primityw - 0 ";
+            std::cout << "Podaj czy chcesz usunac figure indeksowa - 1, czy figure wierzcholkowa - 0 ";
             getUserInput<int>(numb);
             if (numb == 1) {
-                std::cout << "Podaj numer figury do usuniecia ";
+                std::cout << "Podaj indeks do usuniecia ";
                 getUserInput<int>(numb);
                 renderer->getManager()->removeFigure(numb);
             }
             else if(numb == 0){
-                std::cout << "Podaj numer primitywu do usuniecia ";
+                std::cout << "Podaj indeks do usuniecia ";
                 getUserInput<int>(numb);
-                renderer->getManager()->removePrimitive(numb);
+                renderer->getManager()->removeDirectDrawable(numb);
+            }
+        } else if (checkIfPressed('s')) {
+            returnTheFunc = true;
+            int numb;
+            std::cout << "Podaj indeks obiektu do skalowania: ";
+            getUserInput<int>(numb);
+            if (numb >= 0 && transformable->size() > numb) {
+                float scaleX, scaleY, scaleZ;
+                std::cout << "Podaj wartosc skalowania X: ";
+                getUserInput<float>(scaleX);
+                std::cout << "Podaj wartosc skalowania Y: ";
+                getUserInput<float>(scaleY);
+                std::cout << "Podaj wartosc skalowania Z: ";
+                getUserInput<float>(scaleZ);
+                transformable->at(numb)->scale({scaleX, scaleY, scaleZ});
+            }
+        } else if (checkIfPressed('t')) {
+            returnTheFunc = true;
+            int numb;
+            std::cout << "Podaj indeks obiektu do translacji: ";
+            getUserInput<int>(numb);
+            if (numb >= 0 && transformable->size() > numb) {
+                float transX, transY, transZ;
+                std::cout << "Podaj wartosc translacji X: ";
+                getUserInput<float>(transX);
+                std::cout << "Podaj wartosc translacji Y: ";
+                getUserInput<float>(transY);
+                std::cout << "Podaj wartosc translacji Z: ";
+                getUserInput<float>(transZ);
+                transformable->at(numb)->translate({ transX, transY, transZ });
+            }
+        } else if (checkIfPressed('r')) {
+            returnTheFunc = true;
+            int numb;
+            std::cout << "Podaj indeks obiektu do rotacji: ";
+            getUserInput<int>(numb);
+            if (numb >= 0 && transformable->size() > numb) {
+                glm::vec3 axis;
+                float rotate;
+                std::cout << "Podaj wartosc osi X: ";
+                getUserInput<float>(axis.x);
+                std::cout << "Podaj wartosc osi Y: ";
+                getUserInput<float>(axis.y);
+                std::cout << "Podaj wartosc osi Z: ";
+                getUserInput<float>(axis.z);
+                std::cout << "Podaj rotacji: ";
+                getUserInput<float>(rotate);
+                transformable->at(numb)->rotate(rotate, axis);
             }
         }
         else if (checkIfPressed('c')) {
@@ -117,7 +167,7 @@ public:
                 temp.push_back(getUserInput());
                 std::cout << "Podaj rozmiar punktu: ";
                 getUserInput <float>(size);
-                manager->addPrimitive(new Point(temp, size));
+                manager->addDirectDrawable(new Point(temp, size));
                 break;
             case line:
                 std::cout << "Podaj pozycje 1 linii w formacie: _ _ _ _: ";
@@ -132,7 +182,7 @@ public:
                 temp.push_back(getUserInput());
                 std::cout << "Podaj szerokosc linii: ";
                 getUserInput <float>(size);
-                manager->addPrimitive(new Line(temp, size));
+                manager->addDirectDrawable(new Line(temp, size));
                 break;
             case poliline:
                 check = 1;
@@ -157,7 +207,7 @@ public:
                     if (check == 1 || check == 0) break;
                 }
                 if (temp.size() >= 3)
-                    manager->addPrimitive(new PoliLine(temp, size, (bool) check));
+                    manager->addDirectDrawable(new PoliLine(temp, size, (bool) check));
                 break;
             case triangle:
                 for (int i = 1; i < 4; i++) {
@@ -167,7 +217,7 @@ public:
                     std::cout << "Podaj kolor(0-1) "<< i <<" punktu w formacie : _ _ _ _ : ";
                     temp.push_back(getUserInput());
                 }
-                manager->addPrimitive(new Triangle(temp));
+                manager->addDirectDrawable(new Triangle(temp));
                 break;
             case quad:
                 for (int i = 1; i < 5; i++) {
@@ -177,7 +227,7 @@ public:
                     std::cout << "Podaj kolor(0-1) " << i << " punktu w formacie : _ _ _ _ : ";
                     temp.push_back(getUserInput());
                 }
-                manager->addPrimitive(new Quads(temp));
+                manager->addDirectDrawable(new Quads(temp));
                 break;
             case triangleFan:
                 check = 1;
@@ -194,7 +244,7 @@ public:
                     }
                 }
                 if (temp.size() >= 9)
-                    manager->addPrimitive(new TriangleFan(temp));
+                    manager->addDirectDrawable(new TriangleFan(temp));
                 break;
             case triangleStrip: 
                 check = 1;
@@ -211,7 +261,7 @@ public:
                     }
                 }
                 if (temp.size() >= 9)
-                    manager->addPrimitive(new TriangleStrip(temp));
+                    manager->addDirectDrawable(new TriangleStrip(temp));
                 break;
             case cube:
                 do {
@@ -228,7 +278,7 @@ public:
                 temp.push_back(getUserInput());
                 for (int i = 0; i < 23; i++)
                     temp.push_back(temp[0]);
-                manager->addFigure(new Cube(size, x, y, z, temp));
+                manager->addIndicedDrawable(new Cube(size, x, y, z, temp));
                 break;
             case letterE:
                 do {
@@ -245,7 +295,7 @@ public:
                 temp.push_back(getUserInput());
                 for (int i = 0; i < 76; i++)
                     temp.push_back(temp[0]);
-                manager->addFigure(new FigureE(size, x, y, z, temp));
+                manager->addIndicedDrawable(new FigureE(size, x, y, z, temp));
                 break;
             }
         }
@@ -344,7 +394,7 @@ public:
     }
 };
 
-void fillManager(ObjectManager* managers) {
+void fillManager(ObjectManager* managers, std::vector <Transformable*>* transformables) {
     std::vector<glm::vec4> triangleData = {
         glm::vec4(-3.0f,  5.5f, -3.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.0f, 1.0f, 1.0f, 1.0f),
         glm::vec4(-5.5f, 0.5f, -3.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 0.0f),glm::vec4(0.0f, 1.0f, 1.0f, 1.0f),
@@ -404,21 +454,22 @@ void fillManager(ObjectManager* managers) {
     glm::vec4(-100.5f, -8.0f, 100.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.8f, 0.8f, 0.8f, 1.0f),
     glm::vec4(100.5f,  -8.0f, 100.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.8f, 0.8f, 0.8f, 1.0f),
     };
-    managers->addPrimitive(new Triangle(triangleData));
-    managers->addPrimitive(new Point(pointData, 40));
-    managers->addPrimitive(new Line(lineData, 10));
-    managers->addPrimitive(new PoliLine(poliLineData, 10, false));
-    managers->addPrimitive(new PoliLine(closedPoliLine, 5, true));
-    managers->addPrimitive(new TriangleStrip(triangleStripData));
-    managers->addPrimitive(new TriangleFan(triangleFanData));
-    managers->addPrimitive(new Quads(quadsData));
-    managers->addFigure(new Cube(1.5f, -1.75f, -3.25f, -1.0f, cubeColors));
+    managers->addDirectDrawable(new Triangle(triangleData));
+    managers->addDirectDrawable(new Point(pointData, 40));
+    managers->addDirectDrawable(new Line(lineData, 10));
+    managers->addDirectDrawable(new PoliLine(poliLineData, 10, false));
+    managers->addDirectDrawable(new PoliLine(closedPoliLine, 5, true));
+    managers->addDirectDrawable(new TriangleStrip(triangleStripData));
+    managers->addDirectDrawable(new TriangleFan(triangleFanData));
+    managers->addDirectDrawable(new Quads(quadsData));
+    managers->addIndicedDrawable(new Cube(1.5f, -1.75f, -3.25f, -1.0f, cubeColors));
+    transformables->push_back((Cube*)managers->getIndicedDrawable(0));
     std::vector <glm::vec4> EColors;
     for (int i = 0; i < 76; i++) {
         EColors.push_back({ 1, 1, 1, 1 });
     }
-    managers->addFigure(new FigureE(1.5f, 0.5f, 0.0f, -1.0f, EColors));
-    managers->addPrimitive(new Quads(baseData));
+    managers->addIndicedDrawable(new FigureE(1.5f, 0.5f, 0.0f, -1.0f, EColors));
+    managers->addDirectDrawable(new Quads(baseData));
 }
 
 int main(int argc, char** argv) {
@@ -432,13 +483,17 @@ int main(int argc, char** argv) {
     std::cout << "Nacisnij 8 zeby zmienic wektor oswietlenia" << std::endl;
     std::cout << "Nacisnij d zeby usunac obiekt rysowany" << std::endl;
     std::cout << "Nacisnij c aby stworzyc obiekt rysowany" << std::endl;
+    std::cout << "Nacisnij r aby obrocic obiekt" << std::endl;
+    std::cout << "Nacisnij s aby skalowac obiekt" << std::endl;
+    std::cout << "Nacisnij t aby przeprowadzic translacje obiektu" << std::endl;
     std::cout << "Nacisnij , lub . aby przechodzic miedzy typami obiektu rysowanego do stworzenia" << std::endl;
     ObjectManager manager;
     Renderer renderer(&manager);
     DisplayManager displayManager;;
     Engine engine(&argc, argv, renderer, displayManager, 300);
-    fillManager(&manager);
-    CustomKeyboard key(&displayManager, &engine, &renderer, &manager);
+    std::vector <Transformable*> transformables;
+    fillManager(&manager, &transformables);
+    CustomKeyboard key(&displayManager, &engine, &renderer, &manager, &transformables);
     CustomMouse mouse(renderer.getShader());
     renderer.setClearColor({ 0.3, 0.5, 0.9, 1 });
     renderer.setlightingVector({ 0.4, 0.7, 0.7, 0 });

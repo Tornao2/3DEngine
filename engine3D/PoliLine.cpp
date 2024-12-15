@@ -6,7 +6,7 @@ PoliLine::PoliLine(std::vector <glm::vec4> readData, float readSize, bool readCl
 	closed = readClosed;
 }
 
-void PoliLine::drawFigure(int index) {
+void PoliLine::drawDirect(int index) {
 	glLineWidth((GLfloat) size);
 	if (closed) 
 		glDrawArrays(GL_LINE_LOOP, index, (GLsizei)data.size() / 3);

@@ -88,8 +88,8 @@ ObjectManager* Renderer::getManager() {
 }
 
 void Renderer::replaceManager(ObjectManager* readManager) {
-	manager->clearPrimitiveList();
-	manager->clearFigureList();
+	manager->clearDirectListList();
+	manager->clearIndicedList();
 	manager = readManager;
 }
 

@@ -5,7 +5,7 @@ Line::Line(std::vector <glm::vec4> readData, float readSize) {
 	size = readSize;
 }
 
-void Line::drawFigure(int index) {
+void Line::drawDirect(int index) {
 	glLineWidth((GLfloat)size);
 	glDrawArrays(GL_LINES, index, 2);
 }

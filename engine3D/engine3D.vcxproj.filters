@@ -181,5 +181,8 @@
     <ClInclude Include="EngineObject.h">
       <Filter>Header Files\BaseClasses</Filter>
     </ClInclude>
+    <ClInclude Include="Transformable.h">
+      <Filter>Header Files\BaseClasses</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

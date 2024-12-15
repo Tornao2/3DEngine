@@ -4,7 +4,7 @@
 class Triangle :public DirectDraw {
 public:
 	Triangle(std::vector <glm::vec4> readData);
-	void drawFigure(int index);
+	void drawDirect(int index);
 	void changeFirstPoint(std::vector <glm::vec4> firstPoint);
 	void changeSecondPoint(std::vector <glm::vec4> secondPoint);
 	void changeThirdPoint(std::vector <glm::vec4> thirdPoint);

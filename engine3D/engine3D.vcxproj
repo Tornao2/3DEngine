@@ -183,6 +183,7 @@
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Resizable.h" />
     <ClInclude Include="ShaderHandler.h" />
+    <ClInclude Include="Transformable.h" />
     <ClInclude Include="Triangle.h" />
     <ClInclude Include="TriangleFan.h" />
     <ClInclude Include="TriangleStrip.h" />

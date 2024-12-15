@@ -5,7 +5,7 @@ Point::Point(std::vector <glm::vec4> readData, float readSize) {
 	size = readSize;
 }
 
-void Point::drawFigure(int index) {
+void Point::drawDirect(int index) {
 	glPointSize((GLfloat)size);
 	glDrawArrays(GL_POINTS, index, 1);
 }

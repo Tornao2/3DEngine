@@ -4,7 +4,7 @@ TriangleFan::TriangleFan(std::vector <glm::vec4> readData) {
 	data = readData;
 }
 
-void TriangleFan::drawFigure(int index) {
+void TriangleFan::drawDirect(int index) {
 	glDrawArrays(GL_TRIANGLE_FAN, index, (GLsizei)data.size() / 3);
 }
 

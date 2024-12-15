@@ -4,7 +4,7 @@ TriangleStrip::TriangleStrip(std::vector <glm::vec4> readData) {
 	data = readData;
 }
 
-void TriangleStrip::drawFigure(int index) {
+void TriangleStrip::drawDirect(int index) {
 	glDrawArrays(GL_TRIANGLE_STRIP, index, (GLsizei)data.size() / 3);
 }
 
