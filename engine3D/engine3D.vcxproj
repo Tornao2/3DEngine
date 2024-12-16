@@ -140,6 +140,7 @@
     <ClCompile Include="FigureE.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="PoliLine.cpp" />
     <ClCompile Include="DirectDraw.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="FigureE.h" />
     <ClInclude Include="Line.h" />
     <ClInclude Include="ObjectManager.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="PoliLine.h" />
     <ClInclude Include="DirectDraw.h" />

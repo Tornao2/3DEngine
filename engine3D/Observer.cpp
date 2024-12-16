@@ -9,6 +9,7 @@ Observer::Observer(Shader* readHandler){
 	pitch = 0.0f;
     lastX = 0.0;
     lastY = 0.0;
+    viewMatrix = glm::mat4(1.0f);
 }
 
 void Observer::updateCamera() {
@@ -16,18 +17,18 @@ void Observer::updateCamera() {
     direction.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
     direction.y = sin(glm::radians(pitch));
     direction.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
-    target = cameraPos + direction;
-    modelViewMatrix = glm::lookAt(cameraPos, target, up);
-    GLint modelViewLoc = glGetUniformLocation(shader->getProgramId(), "modelViewMatrix");
-    glUniformMatrix4fv(modelViewLoc, 1, GL_TRUE, glm::value_ptr(modelViewMatrix));
+    target =  direction;
+    viewMatrix = glm::lookAt(cameraPos, target, up);
+    GLint viewLoc = glGetUniformLocation(shader->getProgramId(), "viewMatrix");
+    glUniformMatrix4fv(viewLoc, 1, GL_TRUE, glm::value_ptr(viewMatrix));
 }
 
 Shader* Observer::getShader() { 
     return shader; 
 }
 
-glm::mat4 Observer::getModelViewMatrix() { 
-    return modelViewMatrix; 
+glm::mat4 Observer::getviewMatrix() { 
+    return viewMatrix; 
 }
 
 glm::vec3 Observer::getCameraPos() { 
@@ -62,8 +63,8 @@ void Observer::setShader(Shader* shaderPtr) {
     shader = shaderPtr; 
 }
 
-void Observer::setModelViewMatrix(glm::mat4 matrix) { 
-    modelViewMatrix = matrix; 
+void Observer::setviewMatrix(glm::mat4 matrix) { 
+    viewMatrix = matrix; 
 }
 
 void Observer::setCameraPos(glm::vec3 pos) { 
@@ -74,8 +75,7 @@ void Observer::setTarget(glm::vec3 targetVec) {
     target = targetVec; 
 }
 
-void Observer::setUp(glm::vec3 upVec) 
-{ 
+void Observer::setUp(glm::vec3 upVec) { 
     up = upVec; 
 }
 

@@ -24,18 +24,9 @@ void Renderer::setClearColor(glm::vec4 readClearColor) {
 void Renderer::setUpShaders() {
 	shader = new Shader();
 	manager->setShader(shader);
-	glUseProgram(shader->getProgramId());
-	GLint lightingDir = glGetUniformLocation(shader->getProgramId(), "lightDir");
-	glUniform4fv(lightingDir, 1, glm::value_ptr(lightDir));
-	float aspectRatio = (float)glutGet(GLUT_WINDOW_WIDTH) / glutGet(GLUT_WINDOW_HEIGHT);
-	if (orthogonalView)
-		projectionMatrix = glm::ortho(-1.0f * aspectRatio, 1.0f * aspectRatio, -1.0f, 1.0f, 1.0f, 100.0f);
-	else
-		projectionMatrix = glm::perspective(glm::radians(45.0f), aspectRatio, 0.1f, 100.0f);
-	GLint projectionLoc = glGetUniformLocation(shader->getProgramId(), "projectionMatrix");
-	glUniformMatrix4fv(projectionLoc, 1, GL_TRUE, glm::value_ptr(projectionMatrix));
+	setOrthogonal(orthogonalView);
 }
-#include <chrono>
+
 void Renderer::renderProper() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	shader->use();
@@ -71,8 +62,11 @@ bool Renderer::getOrthogonal() {
 }
 
 void Renderer::setOrthogonal(bool shouldOrthogonal) {
+	glViewport(0, 0, glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT));
 	orthogonalView = shouldOrthogonal;
 	glUseProgram(shader->getProgramId());
+	GLint lightingDir = glGetUniformLocation(shader->getProgramId(), "lightDir");
+	glUniform4fv(lightingDir, 1, glm::value_ptr(lightDir));
 	float aspectRatio = (float)glutGet(GLUT_WINDOW_WIDTH) / glutGet(GLUT_WINDOW_HEIGHT);
 	if (orthogonalView)
 		projectionMatrix = glm::ortho(-1.0f * aspectRatio, 1.0f * aspectRatio, -1.0f, 1.0f, 1.0f, 100.0f);
@@ -88,7 +82,7 @@ ObjectManager* Renderer::getManager() {
 }
 
 void Renderer::replaceManager(ObjectManager* readManager) {
-	manager->clearDirectListList();
+	manager->clearDirectList();
 	manager->clearIndicedList();
 	manager = readManager;
 }

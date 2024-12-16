@@ -4,7 +4,6 @@ MouseHandler* MouseHandler::instance = nullptr;
 
 MouseHandler::MouseHandler(Shader* shader) {
 	instance = this;
-	camera = new Observer(shader);
 	glutMouseFunc(buttonHandle);
 }
 
@@ -47,18 +46,20 @@ bool MouseHandler::checkIfPressed(unsigned char button) {
 }
 
 void MouseHandler::mouseCallback(int xpos, int ypos) {
-	float xoffset = xpos - instance->camera->getLastX();
-	float yoffset = instance->camera->getLastY() - ypos;
-	instance->camera->setLastX((float) xpos);
-	instance->camera->setLastY((float)ypos);
-	float sensitivity = 0.5f;
-	xoffset *= sensitivity;
-	yoffset *= sensitivity;
-	instance->camera->setYaw(instance->camera->getYaw() - xoffset);
-	instance->camera->setPitch(instance->camera->getPitch() - yoffset);
-	if (instance->camera->getPitch() > 89.0f) instance->camera->setPitch(89.0f);
-	if (instance->camera->getPitch() < -89.0f) instance->camera->setPitch( - 89.0f);
-	instance->camera->updateCamera();
+	if (instance->camera != nullptr) {
+		float xoffset = xpos - instance->camera->getLastX();
+		float yoffset = instance->camera->getLastY() - ypos;
+		instance->camera->setLastX((float)xpos);
+		instance->camera->setLastY((float)ypos);
+		float sensitivity = 0.5f;
+		xoffset *= sensitivity;
+		yoffset *= sensitivity;
+		instance->camera->setYaw(instance->camera->getYaw() - xoffset);
+		instance->camera->setPitch(instance->camera->getPitch() - yoffset);
+		if (instance->camera->getPitch() > 89.0f) instance->camera->setPitch(89.0f);
+		if (instance->camera->getPitch() < -89.0f) instance->camera->setPitch(-89.0f);
+		instance->camera->updateCamera();
+	}
 }
 
 Observer* MouseHandler::getCamera() {

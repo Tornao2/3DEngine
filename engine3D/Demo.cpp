@@ -1,5 +1,8 @@
 #include "Engine.h"
 
+//DO REFACTORA
+//USTAWIC ZEBY TRANSFORMACJE BYLY W MIEJSCU
+
 #define NUMBEROFFIGURES 9
 typedef enum figureType {
     point,
@@ -21,8 +24,9 @@ class CustomKeyboard :public KeyboardHandler {
     bool returnTheFunc;
     figureType createFigure;
     std::vector <Transformable*>* transformable;
+    Player* player;
 public:
-    CustomKeyboard(DisplayManager* readDisplay, Engine* readEngine, Renderer* readRenderer, ObjectManager* readManager, std::vector <Transformable*>* transformables) {
+    CustomKeyboard(DisplayManager* readDisplay, Engine* readEngine, Renderer* readRenderer, ObjectManager* readManager, std::vector <Transformable*>* transformables, Player* readPlayer) {
         display = readDisplay;
         engine = readEngine;
         renderer = readRenderer;
@@ -35,6 +39,7 @@ public:
         setIfShouldRefresh(',', true);
         setIfShouldRefresh('.', true);
         createFigure = point;
+        player = readPlayer;
     }
     void handleKeyboard() {
         glutKeyboardFunc(NULL);
@@ -42,6 +47,18 @@ public:
             glutKeyboardFunc(KeyboardHandler::keyDown);
             returnTheFunc = false;
         }
+        if (checkIfPressed('a')) 
+            player->setMsX(-0.03);
+        if (checkIfPressed('d')) 
+            player->setMsX(0.03);
+        if (checkIfPressed('s')) 
+            player->setMsZ(0.03);
+        if (checkIfPressed('w')) 
+            player->setMsZ(-0.03);
+        if (checkIfPressed(' '))
+            player->setMsY(0.03);
+        if (checkIfPressed('z'))
+            player->setMsY(-0.03);
         if (checkIfPressed(27)) {
             glutDestroyWindow(glutGetWindow());
             exit(0);
@@ -89,7 +106,7 @@ public:
             getUserInput<float>(z);
             renderer->setlightingVector({ x, y, z, 0 });
         }
-        else if (checkIfPressed('d')) {
+        else if (checkIfPressed('f')) {
             returnTheFunc = true;
             int numb;
             std::cout << "Podaj czy chcesz usunac figure indeksowa - 1, czy figure wierzcholkowa - 0 ";
@@ -97,14 +114,14 @@ public:
             if (numb == 1) {
                 std::cout << "Podaj indeks do usuniecia ";
                 getUserInput<int>(numb);
-                renderer->getManager()->removeFigure(numb);
+                renderer->getManager()->removeIndicedDrawable(numb);
             }
             else if(numb == 0){
                 std::cout << "Podaj indeks do usuniecia ";
                 getUserInput<int>(numb);
                 renderer->getManager()->removeDirectDrawable(numb);
             }
-        } else if (checkIfPressed('s')) {
+        } else if (checkIfPressed('v')) {
             returnTheFunc = true;
             int numb;
             std::cout << "Podaj indeks obiektu do skalowania: ";
@@ -383,18 +400,18 @@ public:
         rightTrim(s);
     }
 };
-
+ 
 class CustomMouse :public MouseHandler {
 public:
     CustomMouse(Shader* shader) : MouseHandler(shader) {};
     void handleMouse() {
         if (checkIfPressed(leftButton))
-            printf("3\n");
+            printf("Clicked\n");
         refresh();
     }
 };
 
-void fillManager(ObjectManager* managers, std::vector <Transformable*>* transformables) {
+void fillManager(ObjectManager* managers, std::vector <Transformable*>* transformables, Player** player) {
     std::vector<glm::vec4> triangleData = {
         glm::vec4(-3.0f,  5.5f, -3.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.0f, 1.0f, 1.0f, 1.0f),
         glm::vec4(-5.5f, 0.5f, -3.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 0.0f),glm::vec4(0.0f, 1.0f, 1.0f, 1.0f),
@@ -448,6 +465,9 @@ void fillManager(ObjectManager* managers, std::vector <Transformable*>* transfor
         {1, 0, 0, 1}, {1, 0, 0, 1}, {1, 0, 0, 1}, {1, 0, 0, 1},
         {1, 0, 0, 1}, {1, 0, 0, 1}, {1, 0, 0, 1}, {1, 0, 0, 1},
     };
+    std::vector<glm::vec4> playerColors;
+    for (int i = 0; i < 24; i++)
+        playerColors.push_back({ 1, 1, 1, 1 });
     std::vector<glm::vec4> baseData = {
     glm::vec4(100.5f, -8.0f, -100.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.8f, 0.8f, 0.8f, 1.0f),
     glm::vec4(-100.5f,  -8.0f, -100.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.8f, 0.8f, 0.8f, 1.0f),
@@ -462,6 +482,8 @@ void fillManager(ObjectManager* managers, std::vector <Transformable*>* transfor
     managers->addDirectDrawable(new TriangleStrip(triangleStripData));
     managers->addDirectDrawable(new TriangleFan(triangleFanData));
     managers->addDirectDrawable(new Quads(quadsData));
+    *player = new Player(0.2f, 1.0f, 1.0f, -2.0f, playerColors);
+    managers->addIndicedDrawable(*player);
     managers->addIndicedDrawable(new Cube(1.5f, -1.75f, -3.25f, -1.0f, cubeColors));
     transformables->push_back((Cube*)managers->getIndicedDrawable(0));
     std::vector <glm::vec4> EColors;
@@ -473,6 +495,7 @@ void fillManager(ObjectManager* managers, std::vector <Transformable*>* transfor
 }
 
 int main(int argc, char** argv) {
+    std::cout << "Nacisnij esc aby wyjsc" << std::endl;
     std::cout << "Nacisnij 1 zeby wybrac liczbe klatek na sekunde" << std::endl;
     std::cout << "Nacisnij 2 zeby wybrac szerokosc okna" << std::endl;
     std::cout << "Nacisnij 3 zeby wybrac wysokosc okna" << std::endl;
@@ -481,20 +504,24 @@ int main(int argc, char** argv) {
     std::cout << "Nacisnij 6 zeby wlaczyc/wylaczyc widok ortogonalny" << std::endl;
     std::cout << "Nacisnij 7 zeby zmienic kolor odswiezania" << std::endl;
     std::cout << "Nacisnij 8 zeby zmienic wektor oswietlenia" << std::endl;
-    std::cout << "Nacisnij d zeby usunac obiekt rysowany" << std::endl;
+    std::cout << "Nacisnij f zeby usunac obiekt rysowany" << std::endl;
     std::cout << "Nacisnij c aby stworzyc obiekt rysowany" << std::endl;
     std::cout << "Nacisnij r aby obrocic obiekt" << std::endl;
-    std::cout << "Nacisnij s aby skalowac obiekt" << std::endl;
+    std::cout << "Nacisnij v aby skalowac obiekt" << std::endl;
     std::cout << "Nacisnij t aby przeprowadzic translacje obiektu" << std::endl;
     std::cout << "Nacisnij , lub . aby przechodzic miedzy typami obiektu rysowanego do stworzenia" << std::endl;
+    std::cout << "Nacisnij a/s/d/w/spacji/z aby sterowac graczem" << std::endl;
     ObjectManager manager;
     Renderer renderer(&manager);
     DisplayManager displayManager;;
     Engine engine(&argc, argv, renderer, displayManager, 300);
     std::vector <Transformable*> transformables;
-    fillManager(&manager, &transformables);
-    CustomKeyboard key(&displayManager, &engine, &renderer, &manager, &transformables);
+    Player* player = nullptr;
+    fillManager(&manager, &transformables, &player);
     CustomMouse mouse(renderer.getShader());
+    Observer camera = Observer(renderer.getShader());
+    CustomKeyboard key(&displayManager, &engine, &renderer, &manager, &transformables, player);
+    mouse.setCamera(&camera);
     renderer.setClearColor({ 0.3, 0.5, 0.9, 1 });
     renderer.setlightingVector({ 0.4, 0.7, 0.7, 0 });
     engine.toggleMouse(true, std::bind(&CustomMouse::handleMouse, &mouse));

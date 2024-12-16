@@ -3,8 +3,9 @@
 #include <glm/gtc/type_ptr.hpp>
 
 class Observer {
+protected:
 	Shader* shader;
-	glm::mat4 modelViewMatrix;
+	glm::mat4 viewMatrix;
 	glm::vec3 cameraPos;
 	glm::vec3 target;
 	glm::vec3 up;
@@ -13,7 +14,7 @@ public:
 	Observer(Shader* readHandler);
 	void updateCamera();
     Shader* getShader();
-    glm::mat4 getModelViewMatrix();
+    glm::mat4 getviewMatrix();
     glm::vec3 getCameraPos();
     glm::vec3 getTarget();
     glm::vec3 getUp();
@@ -22,7 +23,7 @@ public:
     float getYaw();
     float getPitch();
     void setShader(Shader* shaderPtr);
-    void setModelViewMatrix(glm::mat4 matrix);
+    void setviewMatrix(glm::mat4 matrix);
     void setCameraPos(glm::vec3 pos);
     void setTarget(glm::vec3 targetVec);
     void setUp(glm::vec3 upVec);

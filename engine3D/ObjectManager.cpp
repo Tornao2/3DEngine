@@ -33,7 +33,7 @@ DirectDraw* ObjectManager::getDirectDrawable(int index) {
 	return directList[index];
 }
 
-void ObjectManager::clearDirectListList() {
+void ObjectManager::clearDirectList() {
 	directList.clear();
 	refreshBuffer();
 }
@@ -79,7 +79,7 @@ void ObjectManager::addIndicedDrawable(IndiceDraw* readFigure, int index) {
 	refreshBuffer();
 }
 
-void ObjectManager::removeFigure(int index) {
+void ObjectManager::removeIndicedDrawable(int index) {
 	if (index == -1) index = (int) indicedList.size() - 1;
 	if (indicedList.size() <= index || index < 0)
 		return;

@@ -9,6 +9,7 @@
 #include "Quads.h"
 #include "Cube.h"
 #include "FigureE.h"
+#include "Player.h"
 
 class ObjectManager {
 private:
@@ -23,10 +24,10 @@ public:
 	void removeDirectDrawable(int index = -1);
 	DirectDraw* getDirectDrawable(int index = -1);
 	void addIndicedDrawable(IndiceDraw* readFigure, int index = -1);
-	void removeFigure(int index = -1);
+	void removeIndicedDrawable(int index = -1);
 	IndiceDraw* getIndicedDrawable(int index = -1);
 	void clearIndicedList();
-	void clearDirectListList();
+	void clearDirectList();
 	void drawAll();
 	void setShader(Shader* readShader);
 	void refreshBuffer();

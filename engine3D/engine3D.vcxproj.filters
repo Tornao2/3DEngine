@@ -31,19 +31,40 @@
     <Filter Include="Source Files\Draw">
       <UniqueIdentifier>{72642682-04cf-48b0-932e-5d03c81de75d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Draw\Indiced">
+      <UniqueIdentifier>{7e928e2f-cfc8-4b36-a512-a7a4aaea28db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Draw\Direct">
+      <UniqueIdentifier>{6f81c897-7532-4cbd-b1eb-c2a656e5027b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Draw\Direct">
+      <UniqueIdentifier>{9072beb8-57f4-4888-a08d-a2899ef988dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Draw\Indiced">
+      <UniqueIdentifier>{1a13e946-0a77-461d-8dcb-f57838e8327c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Handlers\I/O">
+      <UniqueIdentifier>{30a91e05-f3d6-4d83-b0dd-528c4c2d6fa4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Handlers\I/O">
+      <UniqueIdentifier>{37cd42bf-42a8-40b2-a824-e4a6681e44d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\BaseClasses\Main">
+      <UniqueIdentifier>{d902b77e-4e11-48a5-8ca3-e7416811c49a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\BaseClasses\Modificators">
+      <UniqueIdentifier>{0e349e86-cf7a-4e82-8683-1d09ed1fdcff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\BaseClasses\Main">
+      <UniqueIdentifier>{578dc017-ac02-469f-990a-46e33e23ee41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\BaseClasses\Modificators">
+      <UniqueIdentifier>{f0492984-753e-4793-80e1-f40064765439}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Demo.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DisplayManager.cpp">
-      <Filter>Source Files\Handlers</Filter>
-    </ClCompile>
-    <ClCompile Include="KeyboardHandler.cpp">
-      <Filter>Source Files\Handlers</Filter>
-    </ClCompile>
-    <ClCompile Include="MouseHandler.cpp">
-      <Filter>Source Files\Handlers</Filter>
     </ClCompile>
     <ClCompile Include="Renderer.cpp">
       <Filter>Source Files\Handlers</Filter>
@@ -51,59 +72,71 @@
     <ClCompile Include="Engine.cpp">
       <Filter>Source Files\Handlers</Filter>
     </ClCompile>
-    <ClCompile Include="DirectDraw.cpp">
-      <Filter>Source Files\BaseClasses</Filter>
-    </ClCompile>
-    <ClCompile Include="Point.cpp">
-      <Filter>Source Files\Draw</Filter>
-    </ClCompile>
     <ClCompile Include="ObjectManager.cpp">
       <Filter>Source Files\Handlers</Filter>
-    </ClCompile>
-    <ClCompile Include="Line.cpp">
-      <Filter>Source Files\Draw</Filter>
     </ClCompile>
     <ClCompile Include="ShaderHandler.cpp">
       <Filter>Source Files\Handlers</Filter>
     </ClCompile>
-    <ClCompile Include="Triangle.cpp">
-      <Filter>Source Files\Draw</Filter>
-    </ClCompile>
-    <ClCompile Include="PoliLine.cpp">
-      <Filter>Source Files\Draw</Filter>
-    </ClCompile>
-    <ClCompile Include="TriangleStrip.cpp">
-      <Filter>Source Files\Draw</Filter>
-    </ClCompile>
-    <ClCompile Include="TriangleFan.cpp">
-      <Filter>Source Files\Draw</Filter>
-    </ClCompile>
-    <ClCompile Include="Quads.cpp">
-      <Filter>Source Files\Draw</Filter>
-    </ClCompile>
     <ClCompile Include="Cube.cpp">
-      <Filter>Source Files\Draw</Filter>
-    </ClCompile>
-    <ClCompile Include="IndiceDraw.cpp">
-      <Filter>Source Files\BaseClasses</Filter>
+      <Filter>Source Files\Draw\Indiced</Filter>
     </ClCompile>
     <ClCompile Include="FigureE.cpp">
-      <Filter>Source Files\Draw</Filter>
+      <Filter>Source Files\Draw\Indiced</Filter>
     </ClCompile>
-    <ClCompile Include="Observer.cpp">
-      <Filter>Source Files\BaseClasses</Filter>
+    <ClCompile Include="Line.cpp">
+      <Filter>Source Files\Draw\Direct</Filter>
     </ClCompile>
-    <ClCompile Include="Resizable.cpp">
-      <Filter>Source Files\BaseClasses</Filter>
+    <ClCompile Include="Point.cpp">
+      <Filter>Source Files\Draw\Direct</Filter>
     </ClCompile>
-    <ClCompile Include="Figures.cpp">
-      <Filter>Source Files\BaseClasses</Filter>
+    <ClCompile Include="PoliLine.cpp">
+      <Filter>Source Files\Draw\Direct</Filter>
     </ClCompile>
-    <ClCompile Include="Refreshable.cpp">
-      <Filter>Source Files\BaseClasses</Filter>
+    <ClCompile Include="Quads.cpp">
+      <Filter>Source Files\Draw\Direct</Filter>
+    </ClCompile>
+    <ClCompile Include="Triangle.cpp">
+      <Filter>Source Files\Draw\Direct</Filter>
+    </ClCompile>
+    <ClCompile Include="TriangleFan.cpp">
+      <Filter>Source Files\Draw\Direct</Filter>
+    </ClCompile>
+    <ClCompile Include="TriangleStrip.cpp">
+      <Filter>Source Files\Draw\Direct</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyboardHandler.cpp">
+      <Filter>Source Files\Handlers\I/O</Filter>
+    </ClCompile>
+    <ClCompile Include="MouseHandler.cpp">
+      <Filter>Source Files\Handlers\I/O</Filter>
+    </ClCompile>
+    <ClCompile Include="DisplayManager.cpp">
+      <Filter>Source Files\Handlers\I/O</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectDraw.cpp">
+      <Filter>Source Files\BaseClasses\Main</Filter>
     </ClCompile>
     <ClCompile Include="EngineObject.cpp">
-      <Filter>Source Files\BaseClasses</Filter>
+      <Filter>Source Files\BaseClasses\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Figures.cpp">
+      <Filter>Source Files\BaseClasses\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="IndiceDraw.cpp">
+      <Filter>Source Files\BaseClasses\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Observer.cpp">
+      <Filter>Source Files\BaseClasses\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Refreshable.cpp">
+      <Filter>Source Files\BaseClasses\Modificators</Filter>
+    </ClCompile>
+    <ClCompile Include="Resizable.cpp">
+      <Filter>Source Files\BaseClasses\Modificators</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Source Files\BaseClasses\Main</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -112,77 +145,80 @@
     <None Include="shader.frag" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DisplayManager.h">
-      <Filter>Header Files\Handlers</Filter>
-    </ClInclude>
-    <ClInclude Include="KeyboardHandler.h">
-      <Filter>Header Files\Handlers</Filter>
-    </ClInclude>
-    <ClInclude Include="MouseHandler.h">
-      <Filter>Header Files\Handlers</Filter>
-    </ClInclude>
     <ClInclude Include="Renderer.h">
       <Filter>Header Files\Handlers</Filter>
     </ClInclude>
     <ClInclude Include="Engine.h">
       <Filter>Header Files\Handlers</Filter>
     </ClInclude>
-    <ClInclude Include="DirectDraw.h">
-      <Filter>Header Files\BaseClasses</Filter>
-    </ClInclude>
-    <ClInclude Include="Point.h">
-      <Filter>Header Files\Draw</Filter>
-    </ClInclude>
     <ClInclude Include="ObjectManager.h">
       <Filter>Header Files\Handlers</Filter>
-    </ClInclude>
-    <ClInclude Include="Line.h">
-      <Filter>Header Files\Draw</Filter>
     </ClInclude>
     <ClInclude Include="ShaderHandler.h">
       <Filter>Header Files\Handlers</Filter>
     </ClInclude>
-    <ClInclude Include="Triangle.h">
-      <Filter>Header Files\Draw</Filter>
-    </ClInclude>
-    <ClInclude Include="PoliLine.h">
-      <Filter>Header Files\Draw</Filter>
-    </ClInclude>
-    <ClInclude Include="TriangleStrip.h">
-      <Filter>Header Files\Draw</Filter>
-    </ClInclude>
-    <ClInclude Include="TriangleFan.h">
-      <Filter>Header Files\Draw</Filter>
-    </ClInclude>
-    <ClInclude Include="Quads.h">
-      <Filter>Header Files\Draw</Filter>
-    </ClInclude>
     <ClInclude Include="Cube.h">
-      <Filter>Header Files\Draw</Filter>
-    </ClInclude>
-    <ClInclude Include="IndiceDraw.h">
-      <Filter>Header Files\BaseClasses</Filter>
+      <Filter>Header Files\Draw\Indiced</Filter>
     </ClInclude>
     <ClInclude Include="FigureE.h">
-      <Filter>Header Files\Draw</Filter>
+      <Filter>Header Files\Draw\Indiced</Filter>
     </ClInclude>
-    <ClInclude Include="Observer.h">
-      <Filter>Header Files\BaseClasses</Filter>
+    <ClInclude Include="Line.h">
+      <Filter>Header Files\Draw\Direct</Filter>
     </ClInclude>
-    <ClInclude Include="Resizable.h">
-      <Filter>Header Files\BaseClasses</Filter>
+    <ClInclude Include="Point.h">
+      <Filter>Header Files\Draw\Direct</Filter>
     </ClInclude>
-    <ClInclude Include="Figures.h">
-      <Filter>Header Files\BaseClasses</Filter>
+    <ClInclude Include="PoliLine.h">
+      <Filter>Header Files\Draw\Direct</Filter>
     </ClInclude>
-    <ClInclude Include="Refreshable.h">
-      <Filter>Header Files\BaseClasses</Filter>
+    <ClInclude Include="Quads.h">
+      <Filter>Header Files\Draw\Direct</Filter>
+    </ClInclude>
+    <ClInclude Include="Triangle.h">
+      <Filter>Header Files\Draw\Direct</Filter>
+    </ClInclude>
+    <ClInclude Include="TriangleFan.h">
+      <Filter>Header Files\Draw\Direct</Filter>
+    </ClInclude>
+    <ClInclude Include="TriangleStrip.h">
+      <Filter>Header Files\Draw\Direct</Filter>
+    </ClInclude>
+    <ClInclude Include="DisplayManager.h">
+      <Filter>Header Files\Handlers\I/O</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyboardHandler.h">
+      <Filter>Header Files\Handlers\I/O</Filter>
+    </ClInclude>
+    <ClInclude Include="MouseHandler.h">
+      <Filter>Header Files\Handlers\I/O</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectDraw.h">
+      <Filter>Header Files\BaseClasses\Main</Filter>
     </ClInclude>
     <ClInclude Include="EngineObject.h">
-      <Filter>Header Files\BaseClasses</Filter>
+      <Filter>Header Files\BaseClasses\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Figures.h">
+      <Filter>Header Files\BaseClasses\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="IndiceDraw.h">
+      <Filter>Header Files\BaseClasses\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Observer.h">
+      <Filter>Header Files\BaseClasses\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Refreshable.h">
+      <Filter>Header Files\BaseClasses\Modificators</Filter>
+    </ClInclude>
+    <ClInclude Include="Resizable.h">
+      <Filter>Header Files\BaseClasses\Modificators</Filter>
     </ClInclude>
     <ClInclude Include="Transformable.h">
-      <Filter>Header Files\BaseClasses</Filter>
+      <Filter>Header Files\BaseClasses\Modificators</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files\BaseClasses\Main</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
