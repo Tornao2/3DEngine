@@ -65,21 +65,21 @@ public:
         }
         if (checkIfPressed('1')) {
             returnTheFunc = true;
-            std::cout << "Podaj liczbe klatek na sekunde ";
+            std::cout << "Podaj liczbe klatek na sekunde: ";
             int fps;
             getUserInput<int>(fps);
             engine->setFpsCap(fps);
         }
         else if (checkIfPressed('2')) {
             returnTheFunc = true;
-            std::cout << "Podaj szerokosc okna ";
+            std::cout << "Podaj szerokosc okna: ";
             int width;
             getUserInput<int>(width);
             display->setWindowWidth(width);
         }
         else if (checkIfPressed('3')) {
             returnTheFunc = true;
-            std::cout << "Podaj wysokosc okna ";
+            std::cout << "Podaj wysokosc okna: ";
             int height;
             getUserInput<int>(height);
             display->setWindowHeight(height);
@@ -87,37 +87,65 @@ public:
         else if (checkIfPressed('7')) {
             returnTheFunc = true;
             float r, g, b;
-            std::cout << "Podaj czesc r(0-1) ";
+            std::cout << "Podaj czesc r(0-1): ";
             getUserInput<float>(r);
-            std::cout << "Podaj czesc g(0-1) ";
+            std::cout << "Podaj czesc g(0-1): ";
             getUserInput<float>(g);
-            std::cout << "Podaj czesc b(0-1) ";
+            std::cout << "Podaj czesc b(0-1): ";
             getUserInput<float>(b);
-            renderer->setClearColor({r, g, b, 1});
+            renderer->setClearColor({r, g, b});
         }
         else if (checkIfPressed('8')) {
             returnTheFunc = true;
             float x, y, z;
-            std::cout << "Podaj czesc x ";
+            std::cout << "Podaj czesc x: ";
             getUserInput<float>(x);
-            std::cout << "Podaj czesc y ";
+            std::cout << "Podaj czesc y: ";
             getUserInput<float>(y);
-            std::cout << "Podaj czesc z ";
+            std::cout << "Podaj czesc z: ";
             getUserInput<float>(z);
-            renderer->setlightingVector({ x, y, z, 0 });
+            renderer->setlightingPos({ x, y, z });
+        }
+        else if (checkIfPressed('p')) {
+            returnTheFunc = true;
+            float read;
+            std::cout << "Podaj wspolczynnik: ";
+            getUserInput<float>(read);
+            renderer->setAmbientStrength(read);
+        }
+        else if (checkIfPressed('o')) {
+            returnTheFunc = true;
+            int read;
+            std::cout << "Podaj wspolczynnik: ";
+            getUserInput<int>(read);
+            renderer->setScatterStrength(read);
+        }
+        else if (checkIfPressed('u')) {
+            returnTheFunc = true;
+            float read;
+            std::cout << "Podaj wspolczynnik: ";
+            getUserInput<float>(read);
+            renderer->setSpecularStrength(read);
+        }
+        else if (checkIfPressed('l')) {
+            returnTheFunc = true;
+            float read;
+            std::cout << "Podaj wspolczynnik: ";
+            getUserInput<float>(read);
+            renderer->setBoostColor(read);
         }
         else if (checkIfPressed('f')) {
             returnTheFunc = true;
             int numb;
-            std::cout << "Podaj czy chcesz usunac figure indeksowa - 1, czy figure wierzcholkowa - 0 ";
+            std::cout << "Podaj czy chcesz usunac figure indeksowa - 1, czy figure wierzcholkowa - 0: ";
             getUserInput<int>(numb);
             if (numb == 1) {
-                std::cout << "Podaj indeks do usuniecia ";
+                std::cout << "Podaj indeks do usuniecia: ";
                 getUserInput<int>(numb);
                 renderer->getManager()->removeIndicedDrawable(numb);
             }
             else if(numb == 0){
-                std::cout << "Podaj indeks do usuniecia ";
+                std::cout << "Podaj indeks do usuniecia: ";
                 getUserInput<int>(numb);
                 renderer->getManager()->removeDirectDrawable(numb);
             }
@@ -482,7 +510,7 @@ void fillManager(ObjectManager* managers, std::vector <Transformable*>* transfor
     managers->addDirectDrawable(new TriangleStrip(triangleStripData));
     managers->addDirectDrawable(new TriangleFan(triangleFanData));
     managers->addDirectDrawable(new Quads(quadsData));
-    *player = new Player(0.2f, 1.0f, 1.0f, -2.0f, playerColors);
+    *player = new Player(0.2f, 0.0f, 1.0f, -2.0f, playerColors);
     managers->addIndicedDrawable(*player);
     managers->addIndicedDrawable(new Cube(1.5f, -1.75f, -3.25f, -1.0f, cubeColors));
     transformables->push_back((Cube*)managers->getIndicedDrawable(0));
@@ -503,7 +531,11 @@ int main(int argc, char** argv) {
     std::cout << "Nacisnij 5 zeby wlaczyc/wylaczyc zBuffer" << std::endl;
     std::cout << "Nacisnij 6 zeby wlaczyc/wylaczyc widok ortogonalny" << std::endl;
     std::cout << "Nacisnij 7 zeby zmienic kolor odswiezania" << std::endl;
-    std::cout << "Nacisnij 8 zeby zmienic wektor oswietlenia" << std::endl;
+    std::cout << "Nacisnij 8 zeby zmienic pozycje oswietlenia" << std::endl;
+    std::cout << "Nacisnij p aby zmienic wspolczynnik oswietlenia ambientowego" << std::endl;
+    std::cout << "Nacisnij o aby zmienic wspolczynnik rozproszenia" << std::endl;
+    std::cout << "Nacisnij u aby zmienic wspolczynnik odblasku" << std::endl;
+    std::cout << "Nacisnij l aby zmienic zwiekszenie koloru" << std::endl;
     std::cout << "Nacisnij f zeby usunac obiekt rysowany" << std::endl;
     std::cout << "Nacisnij c aby stworzyc obiekt rysowany" << std::endl;
     std::cout << "Nacisnij r aby obrocic obiekt" << std::endl;
@@ -522,8 +554,6 @@ int main(int argc, char** argv) {
     Observer camera = Observer(renderer.getShader());
     CustomKeyboard key(&displayManager, &engine, &renderer, &manager, &transformables, player);
     mouse.setCamera(&camera);
-    renderer.setClearColor({ 0.3, 0.5, 0.9, 1 });
-    renderer.setlightingVector({ 0.4, 0.7, 0.7, 0 });
     engine.toggleMouse(true, std::bind(&CustomMouse::handleMouse, &mouse));
     engine.toggleKeyboard(true, std::bind(&CustomKeyboard::handleKeyboard, &key));
     glutMainLoop();

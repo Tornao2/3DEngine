@@ -7,12 +7,14 @@ layout(location = 2) in vec4 color;
 uniform mat4 projectionMatrix = mat4(1.0f);
 uniform mat4 viewMatrix = mat4(1.0f);
 
-out vec4 vertexColor;
-out vec4 fragNormal;
+out vec3 vertexColor;
+out vec3 fragNormal;
+out vec3 fragPos;
 
 void main()
 {
     gl_Position = projectionMatrix * viewMatrix * position;
-    vertexColor = color;
-    fragNormal = normal;
+    vertexColor = color.xyz;
+    fragNormal = normal.xyz;
+    fragPos = position.xyz;
 }

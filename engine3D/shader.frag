@@ -1,17 +1,28 @@
 #version 460 core
 
-in vec4 vertexColor;
-in vec4 fragNormal;
-out vec4 color;
+in vec3 vertexColor;
+in vec3 fragNormal;
+in vec3 fragPos;
+out vec3 color;
 
-uniform vec4 lightDir;
-uniform vec4 ambientDir;
+uniform vec3 lightPos;
+uniform vec3 lightColor;
+
+uniform float ambientStrength;
+uniform float specularStrength;
+uniform int scatterStrength;
+uniform float boostColor;
 
 void main()
 {
-    vec4 norm = normalize(fragNormal);
-    vec4 light = normalize(lightDir);
-    float diff = max(dot(norm, light), 0.0);
-    vec4 ambient = ambientDir * (1.0 - diff)/2;
-    color = vec4(vertexColor.rgb * diff, vertexColor.a) + ambient;
+    vec3 ambientResult = ambientStrength * lightColor;
+    vec3 norm = normalize(fragNormal);
+    vec3 diffDir = normalize(lightPos - fragPos);
+    float diff = max(dot(norm, diffDir), 0.0);
+    vec3 diffResult = diff * lightColor;
+    vec3 viewDir = normalize(-fragPos);
+    vec3 reflectDir = reflect(-diffDir, norm);  
+    float spec = pow(max(dot(viewDir, reflectDir), 0.0), scatterStrength);
+    vec3 specular = specularStrength * spec * lightColor;  
+    color = (ambientResult + diffResult + specular) * boostColor * vertexColor;
 }
