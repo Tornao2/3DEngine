@@ -1,7 +1,7 @@
 #pragma once
 #include "Figures.h"
 
-class IndiceDraw: public Figures{
+class IndiceDraw: public virtual Figures{
 protected:
 	std::vector<unsigned short int> indices;
 public:

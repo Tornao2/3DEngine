@@ -1,21 +1,8 @@
 #include "ShaderHandler.h"
 
 Shader::Shader() {
-    vertexShaderID = compileShader("shader.vert", GL_VERTEX_SHADER);
-    fragmentShaderID = compileShader("shader.frag", GL_FRAGMENT_SHADER);
-    programID = glCreateProgram();
-    glAttachShader(programID, vertexShaderID);
-    glAttachShader(programID, fragmentShaderID);
-    glLinkProgram(programID);
-    GLint success;
-    glGetProgramiv(programID, GL_LINK_STATUS, &success);
-    if (!success) {
-        char infoLog[4096];
-        glGetProgramInfoLog(programID, sizeof(infoLog), NULL, infoLog);
-        std::cerr << "ERROR::SHADER::PROGRAM::LINKING_FAILED " << infoLog << std::endl;
-    }
-    glDeleteShader(vertexShaderID);
-    glDeleteShader(fragmentShaderID);
+    createFlatProgram();
+    createSmoothProgram();
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
     glBindVertexArray(VAO);
@@ -28,10 +15,50 @@ Shader::Shader() {
     glEnableVertexAttribArray(2);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
+    isSmooth = true;
+}
+
+void Shader::createFlatProgram() {
+    vertexShaderID = compileShader("flatShader.vert", GL_VERTEX_SHADER);
+    fragmentShaderID = compileShader("flatShader.frag", GL_FRAGMENT_SHADER);
+    flatProgramID = glCreateProgram();
+    glAttachShader(flatProgramID, vertexShaderID);
+    glAttachShader(flatProgramID, fragmentShaderID);
+    glLinkProgram(flatProgramID);
+    GLint success;
+    glGetProgramiv(flatProgramID, GL_LINK_STATUS, &success);
+    if (!success) {
+        char infoLog[4096];
+        glGetProgramInfoLog(flatProgramID, sizeof(infoLog), NULL, infoLog);
+        std::cerr << "ERROR::SHADER::PROGRAM::LINKING_FAILED " << infoLog << std::endl;
+    }
+    glDeleteShader(vertexShaderID);
+    glDeleteShader(fragmentShaderID);
+}
+
+void Shader::createSmoothProgram() {
+    vertexShaderID = compileShader("shader.vert", GL_VERTEX_SHADER);
+    fragmentShaderID = compileShader("shader.frag", GL_FRAGMENT_SHADER);
+    smoothProgramID = glCreateProgram();
+    glAttachShader(smoothProgramID, vertexShaderID);
+    glAttachShader(smoothProgramID, fragmentShaderID);
+    glLinkProgram(smoothProgramID);
+    GLint success;
+    glGetProgramiv(smoothProgramID, GL_LINK_STATUS, &success);
+    if (!success) {
+        char infoLog[4096];
+        glGetProgramInfoLog(smoothProgramID, sizeof(infoLog), NULL, infoLog);
+        std::cerr << "ERROR::SHADER::PROGRAM::LINKING_FAILED " << infoLog << std::endl;
+    }
+    glDeleteShader(vertexShaderID);
+    glDeleteShader(fragmentShaderID);
 }
 
 void Shader::use() {
-    glUseProgram(programID);
+    if (isSmooth)
+        glUseProgram(smoothProgramID);
+    else 
+        glUseProgram(flatProgramID);
 }
 
 GLuint Shader::compileShader(const char* path, GLenum shaderType) {
@@ -71,5 +98,12 @@ int Shader::getVAO() {
 }
 
 int Shader::getProgramId() {
-    return programID;
+    if (isSmooth)
+        return smoothProgramID;
+    else
+        return flatProgramID;
+}
+
+void Shader::switchShading() {
+    isSmooth = !isSmooth;
 }

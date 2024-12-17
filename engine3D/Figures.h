@@ -11,7 +11,7 @@ typedef enum vecType {
 	nor
 }vecType;
 
-class Figures: public Refreshable, public EngineObject {
+class Figures: public virtual Refreshable, public virtual EngineObject {
 protected:
 	std::vector <glm::vec4> data;
 public:

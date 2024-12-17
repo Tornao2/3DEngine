@@ -61,7 +61,7 @@ void Engine::toggleMouse(bool should, std::function<void(void)> function) {
 void Engine::timer(int value) {
 	glutTimerFunc(1000 / instance->fpsCap, timer, instance->fpsCap);
 	glutPostRedisplay();
-	if (Player::getInstance) Player::move();
+	if (Player::getInstance()) Player::move();
 	Engine::mouseFunc();
 	Engine::keyboardFunc();
 }

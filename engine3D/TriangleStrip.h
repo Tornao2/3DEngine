@@ -1,7 +1,8 @@
 #pragma once
 #include "DirectDraw.h"
+#include "TransformableFigure.h"
 
-class TriangleStrip :public DirectDraw {
+class TriangleStrip :public DirectDraw, public TransformableFigure {
 public:
 	TriangleStrip(std::vector <glm::vec4> readData);
 	void drawDirect(int index);

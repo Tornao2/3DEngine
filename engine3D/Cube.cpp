@@ -40,39 +40,3 @@ Cube::Cube(float rSideLength, float rx, float ry, float rz, std::vector <glm::ve
         20, 21, 22, 20, 22, 23
     };
 }
-
-void Cube::translate(glm::vec3 readChange) {
-    for (int i = 0; i < data.size(); i += 3) {
-        data[i].x += readChange.x;
-        data[i].y += readChange.y;
-        data[i].z += readChange.z;
-    }
-    callForRefresh = true;
-};
-
-void Cube::rotate(float angle, glm::vec3 axis) {
-    glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(angle), axis);
-    for (int i = 0; i < data.size(); i += 3)
-        data[i] = rotationMatrix * data[i];
-    callForRefresh = true;
-};
-
-void Cube::scale(glm::vec3 readChange) {
-    if (readChange.x < 0) readChange.x = 1;
-    if (readChange.y < 0) readChange.y = 1;
-    if (readChange.z < 0) readChange.z = 1;
-    if (readChange.x == readChange.z && readChange.x == readChange.y && readChange.x == readChange.z) {
-        for (int i = 0; i < data.size(); i += 3) {
-            data[i].x *= readChange.x;
-            data[i].y *= readChange.x;
-            data[i].z *= readChange.x;
-        }
-        callForRefresh = true;
-    }
-};
-
-void Cube::freeTransform(glm::mat4 readMatr) {
-    for (int i = 0; i < data.size(); i += 3)
-        data[i] = readMatr * data[i];
-    callForRefresh = true;
-}

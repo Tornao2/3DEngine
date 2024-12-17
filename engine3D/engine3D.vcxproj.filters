@@ -138,11 +138,15 @@
     <ClCompile Include="Player.cpp">
       <Filter>Source Files\BaseClasses\Main</Filter>
     </ClCompile>
+    <ClCompile Include="TransformableFigure.cpp">
+      <Filter>Source Files\BaseClasses\Modificators</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="shader.vert" />
     <None Include="shader.frag" />
+    <None Include="flatShader.vert" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Renderer.h">
@@ -214,11 +218,14 @@
     <ClInclude Include="Resizable.h">
       <Filter>Header Files\BaseClasses\Modificators</Filter>
     </ClInclude>
-    <ClInclude Include="Transformable.h">
+    <ClInclude Include="TransformableFigure.h">
       <Filter>Header Files\BaseClasses\Modificators</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Header Files\BaseClasses\Main</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="flatShader.frag" />
   </ItemGroup>
 </Project>

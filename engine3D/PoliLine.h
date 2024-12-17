@@ -1,8 +1,9 @@
 #pragma once
 #include "DirectDraw.h"
 #include "Resizable.h"
+#include "TransformableFigure.h"
 
-class PoliLine :public DirectDraw, public Resizable {
+class PoliLine :public DirectDraw, public Resizable, public TransformableFigure {
 private:
 	bool closed;
 public:

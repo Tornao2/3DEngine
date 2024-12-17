@@ -24,12 +24,14 @@ void Renderer::setUpShaders() {
 	shader = new Shader();
 	manager->setShader(shader);
 	setOrthogonal(orthogonalView);
-	setlightingPos({6, 30, 20});
-	setAmbientStrength(0.1);
+	setLightingPos({0, 1, 0});
+	setAmbientStrength(0.1f);
 	setScatterStrength(24);
-	setBoostColor(1.1);
-	setSpecularStrength(0.4);
-	setClearColor({ 1, 0.95, 0.95 });
+	setBoostColor(1.1f);
+	setSpecularStrength(0.4f);
+	setClearColor({ 1.0f, 0.95f, 0.95f });
+	setWarnCutOff(25);
+	setWarnIntensity(20);
 }
 
 void Renderer::renderProper() {
@@ -92,10 +94,15 @@ Shader* Renderer::getShader() {
 	return shader;
 }
 
-void Renderer::setlightingPos(glm::vec3 readLighting) {
+void Renderer::setLightingPos(glm::vec3 readLighting) {
+	lightPos = readLighting;
 	glUseProgram(shader->getProgramId());
 	GLint lightingDir = glGetUniformLocation(shader->getProgramId(), "lightPos");
 	glUniform3fv(lightingDir, 1, glm::value_ptr(readLighting));
+}
+
+glm::vec3 Renderer::getLightingPos() {
+	return lightPos;
 }
 
 void Renderer::setAmbientStrength(float readStrength) {
@@ -140,4 +147,53 @@ void Renderer::setBoostColor(float readBoost) {
 
 float Renderer::getBoostColor() {
 	return boostColor;
+}
+
+void Renderer::toggleIfFlatShading() {
+	shader->switchShading();
+	setClearColor(getClearColor());
+	setOrthogonal(getOrthogonal());
+	setLightingPos(getLightingPos());
+	setAmbientStrength(getAmbientStrength());
+	setSpecularStrength(getSpecularStrength());
+	setScatterStrength(getScatterStrength());
+	setBoostColor(getBoostColor());
+	setWarnModel(getWarnModel());
+	setWarnCutOff(getWarnCutOff());
+	setWarnIntensity(getWarnIntensity());
+	if (manager->getCamera() != nullptr)
+		manager->getCamera()->updateCamera();
+}
+
+bool Renderer::getWarnModel() {
+	return warnModel;
+}
+
+void Renderer::setWarnModel(bool readVal) {
+	warnModel = readVal;
+	glUseProgram(shader->getProgramId());
+	GLint warnModelInt = glGetUniformLocation(shader->getProgramId(), "warnModel");
+	glUniform1i(warnModelInt, warnModel);
+}
+
+void Renderer::setWarnCutOff(float readCutOff) {
+	angleWarnCutOff = readCutOff;
+	glUseProgram(shader->getProgramId());
+	GLint warnAngle = glGetUniformLocation(shader->getProgramId(), "cutOff");
+	glUniform1f(warnAngle, glm::cos(glm::radians(angleWarnCutOff)));
+}
+
+float Renderer::getWarnCutOff() {
+	return angleWarnCutOff;
+}
+
+void Renderer::setWarnIntensity(float readIntensity) {
+	intensityWarn = readIntensity;
+	glUseProgram(shader->getProgramId());
+	GLint warnIntensity = glGetUniformLocation(shader->getProgramId(), "intensity");
+	glUniform1f(warnIntensity, intensityWarn);
+}
+
+float Renderer::getWarnIntensity() {
+	return intensityWarn;
 }

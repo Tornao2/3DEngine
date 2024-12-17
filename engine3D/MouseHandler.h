@@ -17,7 +17,7 @@ private:
 	bool ifPressedOnThisFrame[3] = { false };
 	void buttonHandleProper(int button, int state, int x, int y);
 public:
-	MouseHandler(Shader* shader);
+	MouseHandler();
 	void refresh();
 	void setIfShouldRefresh(unsigned char button, bool should);
 	bool getIfShouldRefresh(unsigned char button);

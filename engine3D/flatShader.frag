@@ -1,7 +1,7 @@
 #version 460 core
 
-in vec3 vertexColor;
-in vec3 fragNormal;
+flat in vec3 vertexColor;
+flat in vec3 fragNormal;
 in vec3 fragPos;
 out vec3 color;
 

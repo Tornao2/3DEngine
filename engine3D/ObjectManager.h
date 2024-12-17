@@ -10,6 +10,7 @@
 #include "Cube.h"
 #include "FigureE.h"
 #include "Player.h"
+#include "Observer.h"
 
 class ObjectManager {
 private:
@@ -17,6 +18,7 @@ private:
 	std::vector<DirectDraw*> directList;
 	std::vector<IndiceDraw*> indicedList;
 	std::vector<unsigned short int> totalIndices;
+	Observer* camera;
 public:
 	ObjectManager(Shader* readShader);
 	ObjectManager();
@@ -31,4 +33,6 @@ public:
 	void drawAll();
 	void setShader(Shader* readShader);
 	void refreshBuffer();
+	void setCamera(Observer* readCamera);
+	Observer* getCamera();
 };

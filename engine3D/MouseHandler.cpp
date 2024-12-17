@@ -2,7 +2,7 @@
 
 MouseHandler* MouseHandler::instance = nullptr;
 
-MouseHandler::MouseHandler(Shader* shader) {
+MouseHandler::MouseHandler() {
 	instance = this;
 	glutMouseFunc(buttonHandle);
 }

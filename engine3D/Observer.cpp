@@ -17,10 +17,14 @@ void Observer::updateCamera() {
     direction.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
     direction.y = sin(glm::radians(pitch));
     direction.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
-    target =  direction;
+    target = direction;
     viewMatrix = glm::lookAt(cameraPos, target, up);
+    shader->use();
     GLint viewLoc = glGetUniformLocation(shader->getProgramId(), "viewMatrix");
     glUniformMatrix4fv(viewLoc, 1, GL_TRUE, glm::value_ptr(viewMatrix));
+    GLint dirLoc = glGetUniformLocation(shader->getProgramId(), "spotlightDir");
+    glm::vec3 spotlightDir = { -target.x, -target.y, target.z };
+    glUniform3fv(dirLoc, 1, glm::value_ptr(spotlightDir));
 }
 
 Shader* Observer::getShader() { 

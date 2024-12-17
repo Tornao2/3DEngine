@@ -16,6 +16,10 @@ private:
 	float specularStrength;
 	int scatterStrength;
 	float boostColor;
+	glm::vec3 lightPos;
+	bool warnModel;
+	float angleWarnCutOff;
+	float intensityWarn;
 public:
 	Renderer(ObjectManager* readManager, glm::vec3 readClearColor = { 0, 0, 0 }, bool zBuffer = true, bool shouldOrthogonal = true);
 	static void render();
@@ -29,7 +33,8 @@ public:
 	void replaceManager(ObjectManager* readManager);
 	void setUpShaders();
 	Shader* getShader();
-	void setlightingPos(glm::vec3 readLighting);
+	void setLightingPos(glm::vec3 readLighting);
+	glm::vec3 getLightingPos();
 	void setAmbientStrength(float readStrength);
 	float getAmbientStrength();
 	void setSpecularStrength(float readStrength);
@@ -38,4 +43,11 @@ public:
 	int getScatterStrength();
 	void setBoostColor(float readBoost);
 	float getBoostColor();
+	void toggleIfFlatShading();
+	bool getWarnModel();
+	void setWarnModel(bool readVal);
+	void setWarnCutOff(float readCutOff);
+	float getWarnCutOff();
+	void setWarnIntensity(float readIntensity);
+	float getWarnIntensity();
 };

@@ -121,3 +121,11 @@ void ObjectManager::refreshBuffer() {
 	glBufferData(GL_ARRAY_BUFFER, allFigures.size() * sizeof(glm::vec4) , allFigures.data(), GL_DYNAMIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
+
+void ObjectManager::setCamera(Observer* readCamera) {
+	camera = readCamera;
+}
+
+Observer* ObjectManager::getCamera() {
+	return camera;
+}

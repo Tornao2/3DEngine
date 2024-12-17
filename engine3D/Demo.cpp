@@ -1,8 +1,5 @@
 #include "Engine.h"
 
-//DO REFACTORA
-//USTAWIC ZEBY TRANSFORMACJE BYLY W MIEJSCU
-
 #define NUMBEROFFIGURES 9
 typedef enum figureType {
     point,
@@ -23,10 +20,10 @@ class CustomKeyboard :public KeyboardHandler {
     ObjectManager* manager;
     bool returnTheFunc;
     figureType createFigure;
-    std::vector <Transformable*>* transformable;
+    std::vector <TransformableFigure*>* transformable;
     Player* player;
 public:
-    CustomKeyboard(DisplayManager* readDisplay, Engine* readEngine, Renderer* readRenderer, ObjectManager* readManager, std::vector <Transformable*>* transformables, Player* readPlayer) {
+    CustomKeyboard(DisplayManager* readDisplay, Engine* readEngine, Renderer* readRenderer, ObjectManager* readManager, std::vector <TransformableFigure*>* transformables, Player* readPlayer) {
         display = readDisplay;
         engine = readEngine;
         renderer = readRenderer;
@@ -38,6 +35,8 @@ public:
         setIfShouldRefresh('6', true);
         setIfShouldRefresh(',', true);
         setIfShouldRefresh('.', true);
+        setIfShouldRefresh('[', true);
+        setIfShouldRefresh(']', true);
         createFigure = point;
         player = readPlayer;
     }
@@ -47,18 +46,22 @@ public:
             glutKeyboardFunc(KeyboardHandler::keyDown);
             returnTheFunc = false;
         }
+        if (checkIfPressed('['))
+            renderer->toggleIfFlatShading();
+        if (checkIfPressed(']'))
+            renderer->setWarnModel(!renderer->getWarnModel());
         if (checkIfPressed('a')) 
-            player->setMsX(-0.03);
+            player->setMsX(-0.03f);
         if (checkIfPressed('d')) 
-            player->setMsX(0.03);
+            player->setMsX(0.03f);
         if (checkIfPressed('s')) 
-            player->setMsZ(0.03);
+            player->setMsZ(0.03f);
         if (checkIfPressed('w')) 
-            player->setMsZ(-0.03);
+            player->setMsZ(-0.03f);
         if (checkIfPressed(' '))
-            player->setMsY(0.03);
+            player->setMsY(0.03f);
         if (checkIfPressed('z'))
-            player->setMsY(-0.03);
+            player->setMsY(-0.03f);
         if (checkIfPressed(27)) {
             glutDestroyWindow(glutGetWindow());
             exit(0);
@@ -104,7 +107,7 @@ public:
             getUserInput<float>(y);
             std::cout << "Podaj czesc z: ";
             getUserInput<float>(z);
-            renderer->setlightingPos({ x, y, z });
+            renderer->setLightingPos({ x, y, z });
         }
         else if (checkIfPressed('p')) {
             returnTheFunc = true;
@@ -155,14 +158,10 @@ public:
             std::cout << "Podaj indeks obiektu do skalowania: ";
             getUserInput<int>(numb);
             if (numb >= 0 && transformable->size() > numb) {
-                float scaleX, scaleY, scaleZ;
-                std::cout << "Podaj wartosc skalowania X: ";
-                getUserInput<float>(scaleX);
-                std::cout << "Podaj wartosc skalowania Y: ";
-                getUserInput<float>(scaleY);
-                std::cout << "Podaj wartosc skalowania Z: ";
-                getUserInput<float>(scaleZ);
-                transformable->at(numb)->scale({scaleX, scaleY, scaleZ});
+                float scale;;
+                std::cout << "Podaj wartosc skalowania: ";
+                getUserInput<float>(scale);
+                transformable->at(numb)->scale({scale});
             }
         } else if (checkIfPressed('t')) {
             returnTheFunc = true;
@@ -344,7 +343,7 @@ public:
                 break;
             }
         }
-        if (checkIfPressed('4'))
+        if (checkIfPressed('4')) 
             display->setFullscreen(!display->ifFullscreen());
         if (checkIfPressed('5')) {
             renderer->setZBuffer(!renderer->getZBuffer());
@@ -431,7 +430,7 @@ public:
  
 class CustomMouse :public MouseHandler {
 public:
-    CustomMouse(Shader* shader) : MouseHandler(shader) {};
+    CustomMouse() : MouseHandler() {};
     void handleMouse() {
         if (checkIfPressed(leftButton))
             printf("Clicked\n");
@@ -439,7 +438,7 @@ public:
     }
 };
 
-void fillManager(ObjectManager* managers, std::vector <Transformable*>* transformables, Player** player) {
+void fillManager(ObjectManager* managers, std::vector <TransformableFigure*>* transformables, Player** player) {
     std::vector<glm::vec4> triangleData = {
         glm::vec4(-3.0f,  5.5f, -3.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.0f, 1.0f, 1.0f, 1.0f),
         glm::vec4(-5.5f, 0.5f, -3.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 0.0f),glm::vec4(0.0f, 1.0f, 1.0f, 1.0f),
@@ -466,10 +465,13 @@ void fillManager(ObjectManager* managers, std::vector <Transformable*>* transfor
     std::vector<glm::vec4> triangleStripData = {
         glm::vec4(-1.0f, -3.5f,  -4.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f),
         glm::vec4(-1.0f,  2.5f,  -5.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f),
-        glm::vec4(0.0f, -3.5f,  -4.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f),
-        glm::vec4(0.0f,  2.5f,  -5.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f),
-        glm::vec4(1.0f, -3.5f,  -4.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f),
-        glm::vec4(1.0f,  1.0f,  -5.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f)
+        glm::vec4(0.0f, -3.5f,  -4.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.6f, 0.0f, 1.0f, 1.0f),
+        glm::vec4(0.0f,  2.5f,  -1.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.1f, 0.0f, 1.0f, 1.0f),
+        glm::vec4(1.0f, -3.5f,  -4.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.4f, 1.0f, 0.0f, 1.0f),
+        glm::vec4(1.0f,  1.0f,  -2.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.1f, 1.0f, 0.2f, 1.0f),
+        glm::vec4(0.5f,  2.0f,  -3.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.2f, 1.0f, 0.3f, 1.0f),
+        glm::vec4(1.75f,  -1.0f,  -2.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.1f, 1.0f, 0.1f, 1.0f),
+        glm::vec4(0.25f,  0.0f,  -5.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.3f, 1.0f, 0.0f, 1.0f)
     };
     std::vector<glm::vec4> triangleFanData = {
         glm::vec4(3.0f, 0.0f,  -3.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 1.0f, 1.0f, 1.0f),
@@ -496,30 +498,31 @@ void fillManager(ObjectManager* managers, std::vector <Transformable*>* transfor
     std::vector<glm::vec4> playerColors;
     for (int i = 0; i < 24; i++)
         playerColors.push_back({ 1, 1, 1, 1 });
-    std::vector<glm::vec4> baseData = {
-    glm::vec4(100.5f, -8.0f, -100.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.8f, 0.8f, 0.8f, 1.0f),
-    glm::vec4(-100.5f,  -8.0f, -100.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.8f, 0.8f, 0.8f, 1.0f),
-    glm::vec4(-100.5f, -8.0f, 100.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.8f, 0.8f, 0.8f, 1.0f),
-    glm::vec4(100.5f,  -8.0f, 100.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.8f, 0.8f, 0.8f, 1.0f),
-    };
     managers->addDirectDrawable(new Triangle(triangleData));
+    transformables->push_back((Triangle*)managers->getDirectDrawable());
     managers->addDirectDrawable(new Point(pointData, 40));
+    transformables->push_back((Point*)managers->getDirectDrawable());
     managers->addDirectDrawable(new Line(lineData, 10));
+    transformables->push_back((Line*)managers->getDirectDrawable());
     managers->addDirectDrawable(new PoliLine(poliLineData, 10, false));
+    transformables->push_back((PoliLine*)managers->getDirectDrawable());
     managers->addDirectDrawable(new PoliLine(closedPoliLine, 5, true));
+    transformables->push_back((PoliLine*)managers->getDirectDrawable());
     managers->addDirectDrawable(new TriangleStrip(triangleStripData));
+    transformables->push_back((TriangleStrip*)managers->getDirectDrawable());
     managers->addDirectDrawable(new TriangleFan(triangleFanData));
+    transformables->push_back((TriangleFan*)managers->getDirectDrawable());
     managers->addDirectDrawable(new Quads(quadsData));
+    transformables->push_back((Quads*)managers->getDirectDrawable());
     *player = new Player(0.2f, 0.0f, 1.0f, -2.0f, playerColors);
     managers->addIndicedDrawable(*player);
     managers->addIndicedDrawable(new Cube(1.5f, -1.75f, -3.25f, -1.0f, cubeColors));
-    transformables->push_back((Cube*)managers->getIndicedDrawable(0));
+    transformables->push_back((Cube*)managers->getIndicedDrawable(1));
     std::vector <glm::vec4> EColors;
     for (int i = 0; i < 76; i++) {
         EColors.push_back({ 1, 1, 1, 1 });
     }
     managers->addIndicedDrawable(new FigureE(1.5f, 0.5f, 0.0f, -1.0f, EColors));
-    managers->addDirectDrawable(new Quads(baseData));
 }
 
 int main(int argc, char** argv) {
@@ -543,17 +546,20 @@ int main(int argc, char** argv) {
     std::cout << "Nacisnij t aby przeprowadzic translacje obiektu" << std::endl;
     std::cout << "Nacisnij , lub . aby przechodzic miedzy typami obiektu rysowanego do stworzenia" << std::endl;
     std::cout << "Nacisnij a/s/d/w/spacji/z aby sterowac graczem" << std::endl;
+    std::cout << "Nacisnij [ aby przelaczac miedzy trybami cieniowania" << std::endl;
+    std::cout << "Nacisnij ] aby przelaczac miedzy modelami oswietlenia" << std::endl;
     ObjectManager manager;
     Renderer renderer(&manager);
     DisplayManager displayManager;;
     Engine engine(&argc, argv, renderer, displayManager, 300);
-    std::vector <Transformable*> transformables;
+    std::vector <TransformableFigure*> transformables;
     Player* player = nullptr;
     fillManager(&manager, &transformables, &player);
-    CustomMouse mouse(renderer.getShader());
-    Observer camera = Observer(renderer.getShader());
+    CustomMouse mouse;
     CustomKeyboard key(&displayManager, &engine, &renderer, &manager, &transformables, player);
+    Observer camera = Observer(renderer.getShader());
     mouse.setCamera(&camera);
+    manager.setCamera(&camera);
     engine.toggleMouse(true, std::bind(&CustomMouse::handleMouse, &mouse));
     engine.toggleKeyboard(true, std::bind(&CustomKeyboard::handleKeyboard, &key));
     glutMainLoop();
