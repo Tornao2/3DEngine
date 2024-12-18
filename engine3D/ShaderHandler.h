@@ -16,6 +16,7 @@ private:
     GLuint compileShader(const char* path, GLenum shaderType);
     void createFlatProgram();
     void createSmoothProgram();
+    void createVAO();
     bool isSmooth;
 public:
     Shader();

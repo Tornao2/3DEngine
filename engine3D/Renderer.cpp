@@ -1,5 +1,4 @@
 #include "Renderer.h"
-#include "Point.h"
 
 Renderer* Renderer::instance = nullptr;
 
@@ -37,9 +36,7 @@ void Renderer::setUpShaders() {
 void Renderer::renderProper() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	shader->use();
-	glBindVertexArray(shader->getVAO());
 	manager->drawAll();
-	glBindVertexArray(0);
 	if (glutGet(GLUT_WINDOW_DOUBLEBUFFER)) glutSwapBuffers();
 	else glFlush();
 }

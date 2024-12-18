@@ -3,6 +3,7 @@
 #include "Renderer.h"
 #include "DisplayManager.h"
 #include <functional>
+#include "BitmapHandler.h"
 
 class Engine {
 public:

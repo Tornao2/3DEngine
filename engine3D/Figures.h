@@ -13,6 +13,7 @@ typedef enum vecType {
 
 class Figures: public virtual Refreshable, public virtual EngineObject {
 protected:
+	bool isTextured;
 	std::vector <glm::vec4> data;
 public:
 	std::vector <glm::vec4> getData();
@@ -20,4 +21,6 @@ public:
 	int getDataCount();
 	void changePoint(std::vector <glm::vec4> point, int index);
 	std::vector <glm::vec4> getPoint(int index);
+	void setTextured(bool readVal);
+	bool getTextured();
 };

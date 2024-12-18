@@ -132,6 +132,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BitmapHandler.cpp" />
+    <ClCompile Include="CubeTextured.cpp" />
     <ClCompile Include="EngineObject.cpp" />
     <ClCompile Include="Figures.cpp" />
     <ClCompile Include="Observer.cpp" />
@@ -150,10 +152,12 @@
     <ClCompile Include="KeyboardHandler.cpp" />
     <ClCompile Include="MouseHandler.cpp" />
     <ClCompile Include="Quads.cpp" />
+    <ClCompile Include="QuadsTextured.cpp" />
     <ClCompile Include="Refreshable.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Resizable.cpp" />
     <ClCompile Include="ShaderHandler.cpp" />
+    <ClCompile Include="Textured.cpp" />
     <ClCompile Include="TransformableFigure.cpp" />
     <ClCompile Include="Triangle.cpp" />
     <ClCompile Include="TriangleFan.cpp" />
@@ -166,6 +170,8 @@
     <None Include="shader.vert" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BitmapHandler.h" />
+    <ClInclude Include="CubeTextured.h" />
     <ClInclude Include="Figures.h" />
     <ClInclude Include="EngineObject.h" />
     <ClInclude Include="Observer.h" />
@@ -183,10 +189,12 @@
     <ClInclude Include="KeyboardHandler.h" />
     <ClInclude Include="MouseHandler.h" />
     <ClInclude Include="Quads.h" />
+    <ClInclude Include="QuadsTextured.h" />
     <ClInclude Include="Refreshable.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Resizable.h" />
     <ClInclude Include="ShaderHandler.h" />
+    <ClInclude Include="Textured.h" />
     <ClInclude Include="TransformableFigure.h" />
     <ClInclude Include="Triangle.h" />
     <ClInclude Include="TriangleFan.h" />

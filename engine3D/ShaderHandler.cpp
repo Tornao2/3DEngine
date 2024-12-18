@@ -3,8 +3,13 @@
 Shader::Shader() {
     createFlatProgram();
     createSmoothProgram();
-    glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
+    createVAO();
+    isSmooth = true;
+}
+
+void Shader::createVAO() {
+    glGenVertexArrays(1, &VAO);
     glBindVertexArray(VAO);
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, sizeof(float) * 12, (GLvoid*)0);
@@ -15,7 +20,6 @@ Shader::Shader() {
     glEnableVertexAttribArray(2);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
-    isSmooth = true;
 }
 
 void Shader::createFlatProgram() {

@@ -18,6 +18,9 @@ uniform float cutOff;
 uniform float intensity;
 uniform vec3 spotlightDir = normalize(vec3(0.0, -1.0, -1.0));
 
+uniform bool useTexture;
+uniform sampler2D usedTexture;
+
 void main()
 {  
     vec3 ambientResult = ambientStrength * lightColor;
@@ -30,11 +33,21 @@ void main()
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), scatterStrength);
     vec3 specular = specularStrength * spec * lightColor;
     if (!warnModel){
-        color = (ambientResult + diffResult + specular) * boostColor * vertexColor;
+        if (useTexture) {
+            vec4 textureColor = texture(usedTexture, vertexColor.xy);
+            color = (ambientResult + diffResult + specular) * textureColor.rgb * boostColor;
+        } else {
+            color = (ambientResult + diffResult + specular) * boostColor * vertexColor;
+        }
     } else { 
         vec3 lightDirection = normalize(fragPos - lightPos);
         float theta = dot(lightDirection, spotlightDir);
         float spotlightIntensity = pow(theta, intensity);
-        color = (ambientResult + diffResult + specular) * spotlightIntensity * boostColor * vertexColor;
+        if (useTexture) {
+            vec4 textureColor = texture(usedTexture, vertexColor.xy);
+            color = (ambientResult + diffResult + specular) * spotlightIntensity * boostColor * textureColor.rgb;
+        } else {
+            color = (ambientResult + diffResult + specular) * spotlightIntensity * boostColor * vertexColor;
+        }
     }
 }

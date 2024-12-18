@@ -34,3 +34,11 @@ std::vector<glm::vec4> Figures::getPoint(int index) {
 	realData.push_back(data[realIndex + 2]);
 	return realData;
 }
+
+void Figures::setTextured(bool readVal) {
+	isTextured = readVal;
+}
+
+bool Figures::getTextured() {
+	return isTextured;
+}

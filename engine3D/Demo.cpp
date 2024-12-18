@@ -1,6 +1,7 @@
+#define STB_IMAGE_IMPLEMENTATION
 #include "Engine.h"
 
-#define NUMBEROFFIGURES 9
+#define NUMBEROFFIGURES 11
 typedef enum figureType {
     point,
     line,
@@ -10,7 +11,9 @@ typedef enum figureType {
     triangleFan,
     triangleStrip,
     cube,
-    letterE
+    letterE,
+    texturedQuad,
+    texturedCube
 }figureType;
 
 class CustomKeyboard :public KeyboardHandler {
@@ -140,9 +143,13 @@ public:
         else if (checkIfPressed('f')) {
             returnTheFunc = true;
             int numb;
-            std::cout << "Podaj czy chcesz usunac figure indeksowa - 1, czy figure wierzcholkowa - 0: ";
+            std::cout << "Podaj czy chcesz usunac figure indeksowa teksturowana - 2, figure indeksowa - 1, czy figure wierzcholkowa - 0: ";
             getUserInput<int>(numb);
-            if (numb == 1) {
+            if (numb == 2) {
+                std::cout << "Podaj indeks do usuniecia: ";
+                getUserInput<int>(numb);
+                renderer->getManager()->removeIndicedDrawableTextured(numb);
+            } else if (numb == 1) {
                 std::cout << "Podaj indeks do usuniecia: ";
                 getUserInput<int>(numb);
                 renderer->getManager()->removeIndicedDrawable(numb);
@@ -201,6 +208,7 @@ public:
             returnTheFunc = true;
             std::vector <glm::vec4> temp;
             float size, x, y, z;
+            BitmapHandler tempBitmap;
             int check;
             switch (createFigure) {
             case point:
@@ -341,6 +349,35 @@ public:
                     temp.push_back(temp[0]);
                 manager->addIndicedDrawable(new FigureE(size, x, y, z, temp));
                 break;
+            case texturedCube:
+                do {
+                    std::cout << "Podaj dlugosc boku szecianu E: ";
+                    getUserInput<float>(size);
+                } while (size <= 0);
+                std::cout << "Podaj x szecianu: ";
+                getUserInput<float>(x);
+                std::cout << "Podaj y szecianu: ";
+                getUserInput<float>(y);
+                std::cout << "Podaj z szecianu: ";
+                getUserInput<float>(z);              
+                check = tempBitmap.loadBitmap("dirt.png");
+                manager->addIndicedDrawableTextured(new CubeTextured(size, x, y, z));
+                manager->getIndicedDrawableTextured()->setTextured(check);
+                break;
+            case texturedQuad:
+                for (int i = 1; i < 5; i++) {
+                    std::cout << "Podaj pozycje " << i << " punktu w formacie : _ _ _ _ : ";
+                    temp.push_back(getUserInput());
+                    temp.push_back({ 0, 0, 1, 0 });
+                }
+                temp.insert(temp.begin()+2, glm::vec4{0, 0, 0, 0});
+                temp.insert(temp.begin() + 5, glm::vec4{ 1, 0, 0, 0 });
+                temp.insert(temp.begin() + 8, glm::vec4{ 1, 1, 0, 0 });
+                temp.push_back(glm::vec4{ 0, 1, 0, 0 });
+                check = tempBitmap.loadBitmap("dirt.png");
+                manager->addDirectDrawable(new QuadsTextured(temp));
+                manager->getDirectDrawable()->setTextured(check);
+                break;
             }
         }
         if (checkIfPressed('4')) 
@@ -389,6 +426,12 @@ public:
                 break;
             case letterE:
                 std::cout << "Litera E";
+                break;
+            case texturedCube:
+                std::cout << "Szescian oteksturowany";
+                break;
+            case texturedQuad:
+                std::cout << "Czworokat oteksturowany";
                 break;
             }
             std::cout << std::endl;
@@ -487,6 +530,12 @@ void fillManager(ObjectManager* managers, std::vector <TransformableFigure*>* tr
         glm::vec4(-2.5f,  -6.0f, -5.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 1.0f, 0.0f, 1.0f),
         glm::vec4(-2.5f, -0.5f, -5.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 1.0f, 0.0f, 1.0f),
     };
+    std::vector<glm::vec4> quadsTexturedData = {
+        glm::vec4(30.5f, -14.5f, -30.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.0f, 0.0f, 0.0f, 0.0f),
+        glm::vec4(30.5f,  -14.5f, 30.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 0.0f, 0.0f, 0.0f),
+        glm::vec4(-30.5f,  -14.5f, 30.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 1.0f, 0.0f, 0.0f),
+        glm::vec4(-30.5f, -14.5f, -30.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.0f, 1.0f, 0.0f, 0.0f),
+    };
     std::vector<glm::vec4> cubeColors = {
         {0, 0, 1, 1}, {0, 0, 1, 1}, {0, 0, 1, 1}, {0, 0, 1, 1},
         {0, 0, 1, 1}, {0, 0, 1, 1}, {0, 0, 1, 1}, {0, 0, 1, 1},
@@ -514,6 +563,14 @@ void fillManager(ObjectManager* managers, std::vector <TransformableFigure*>* tr
     transformables->push_back((TriangleFan*)managers->getDirectDrawable());
     managers->addDirectDrawable(new Quads(quadsData));
     transformables->push_back((Quads*)managers->getDirectDrawable());
+    BitmapHandler tempBitmap;
+    int dirtId = tempBitmap.loadBitmap("dirt.png");
+    managers->addDirectDrawable(new QuadsTextured(quadsTexturedData));
+    transformables->push_back((QuadsTextured*)managers->getDirectDrawable());
+    managers->getDirectDrawable()->setTextured(dirtId);
+    managers->addIndicedDrawableTextured(new CubeTextured(2.0f, 1.0f, -2.25f, -1.0f));
+    managers->getIndicedDrawableTextured(0)->setTextured(dirtId);
+    transformables->push_back((CubeTextured*)managers->getIndicedDrawableTextured(0));
     *player = new Player(0.2f, 0.0f, 1.0f, -2.0f, playerColors);
     managers->addIndicedDrawable(*player);
     managers->addIndicedDrawable(new Cube(1.5f, -1.75f, -3.25f, -1.0f, cubeColors));

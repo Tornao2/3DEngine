@@ -40,3 +40,5 @@ Cube::Cube(float rSideLength, float rx, float ry, float rz, std::vector <glm::ve
         20, 21, 22, 20, 22, 23
     };
 }
+
+Cube::Cube() {}

@@ -141,6 +141,18 @@
     <ClCompile Include="TransformableFigure.cpp">
       <Filter>Source Files\BaseClasses\Modificators</Filter>
     </ClCompile>
+    <ClCompile Include="BitmapHandler.cpp">
+      <Filter>Source Files\Handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="Textured.cpp">
+      <Filter>Source Files\BaseClasses\Modificators</Filter>
+    </ClCompile>
+    <ClCompile Include="CubeTextured.cpp">
+      <Filter>Source Files\Draw\Indiced</Filter>
+    </ClCompile>
+    <ClCompile Include="QuadsTextured.cpp">
+      <Filter>Source Files\Draw\Direct</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -223,6 +235,18 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Header Files\BaseClasses\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="BitmapHandler.h">
+      <Filter>Header Files\Handlers</Filter>
+    </ClInclude>
+    <ClInclude Include="Textured.h">
+      <Filter>Header Files\BaseClasses\Modificators</Filter>
+    </ClInclude>
+    <ClInclude Include="CubeTextured.h">
+      <Filter>Header Files\Draw\Indiced</Filter>
+    </ClInclude>
+    <ClInclude Include="QuadsTextured.h">
+      <Filter>Header Files\Draw\Direct</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

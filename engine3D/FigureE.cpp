@@ -123,3 +123,4 @@ FigureE::FigureE(float sideLength, float x, float y, float z, std::vector<glm::v
     };
 }
 
+FigureE::FigureE(){}
