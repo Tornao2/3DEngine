@@ -2,7 +2,7 @@
 #include "Cube.h"
 
 class Player: public Cube {
-private:
+protected:
 	static Player* instance;
 	float msX, msY, msZ;
 public:
