@@ -3,6 +3,5 @@
 
 class FigureE: public IndiceDraw {
 public:
-	FigureE(float sideLength, float x, float y, float z, std::vector<glm::vec4> colors);
-	FigureE();
+	FigureE(float readSideLength, float readX, float readY, float readZ, std::vector<glm::vec4> readColors);
 };

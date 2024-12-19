@@ -1,9 +1,9 @@
 #include "BitmapHandler.h"
 
 
-int BitmapHandler::loadBitmap(std::string path) {
+int BitmapHandler::loadBitmap(std::string readPath) {
 	int height, width, channels;
-	unsigned char* temp = stbi_load(path.c_str(), &height, &width, &channels, 0);
+	unsigned char* temp = stbi_load(readPath.c_str(), &height, &width, &channels, 0);
 	GLuint textureID;
 	glGenTextures(1, &textureID);    
 	glBindTexture(GL_TEXTURE_2D, textureID); 
@@ -24,7 +24,7 @@ int BitmapHandler::loadBitmap(std::string path) {
 	return textureID;
 }
 
-void BitmapHandler::deleteBitmap(int& textureId) {
-	glDeleteTextures(1, (GLuint*) &textureId);
-	textureId = 0;
+void BitmapHandler::deleteBitmap(int& readTextureId) {
+	glDeleteTextures(1, (GLuint*) &readTextureId);
+	readTextureId = 0;
 }

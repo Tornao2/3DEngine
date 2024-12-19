@@ -569,12 +569,13 @@ void fillManager(ObjectManager* managers, std::vector <TransformableFigure*>* tr
     transformables->push_back((QuadsTextured*)managers->getDirectDrawable());
     managers->getDirectDrawable()->setTextured(dirtId);
     managers->addIndicedDrawableTextured(new CubeTextured(2.0f, 1.0f, -2.25f, -1.0f));
-    managers->getIndicedDrawableTextured(0)->setTextured(dirtId);
-    transformables->push_back((CubeTextured*)managers->getIndicedDrawableTextured(0));
+    managers->getIndicedDrawableTextured()->setTextured(dirtId);
+    transformables->push_back((CubeTextured*)managers->getIndicedDrawableTextured());
     *player = new Player(0.2f, 0.0f, 1.0f, -2.0f, playerColors);
     managers->addIndicedDrawable(*player);
+    transformables->push_back((Player*)managers->getIndicedDrawable());
     managers->addIndicedDrawable(new Cube(1.5f, -1.75f, -3.25f, -1.0f, cubeColors));
-    transformables->push_back((Cube*)managers->getIndicedDrawable(1));
+    transformables->push_back((Cube*)managers->getIndicedDrawable());
     std::vector <glm::vec4> EColors;
     for (int i = 0; i < 76; i++) {
         EColors.push_back({ 1, 1, 1, 1 });
@@ -588,7 +589,7 @@ int main(int argc, char** argv) {
     std::cout << "Nacisnij 2 zeby wybrac szerokosc okna" << std::endl;
     std::cout << "Nacisnij 3 zeby wybrac wysokosc okna" << std::endl;
     std::cout << "Nacisnij 4 zeby wlaczyc/wylaczyc fullscreen" << std::endl;
-    std::cout << "Nacisnij 5 zeby wlaczyc/wylaczyc zBuffer" << std::endl;
+    std::cout << "Nacisnij 5 zeby wlaczyc/wylaczyc readZBuffer" << std::endl;
     std::cout << "Nacisnij 6 zeby wlaczyc/wylaczyc widok ortogonalny" << std::endl;
     std::cout << "Nacisnij 7 zeby zmienic kolor odswiezania" << std::endl;
     std::cout << "Nacisnij 8 zeby zmienic pozycje oswietlenia" << std::endl;

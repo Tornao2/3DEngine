@@ -4,20 +4,20 @@ std::function<void()> Engine::mouseFunc = nullptr;
 std::function<void()> Engine::keyboardFunc = nullptr;
 Engine* Engine::instance = nullptr;
 
-Engine::Engine(int* argc, char* argv[], Renderer& renderer, DisplayManager& displayManager, int delay) {
+Engine::Engine(int* argc, char* argv[], Renderer& readRenderer, DisplayManager& readDisplayManager, int readDelay) {
 	instance = this;
-	fpsCap = delay;
-	initializeLibrary(argc, argv, displayManager);
-	renderer.setZBuffer(renderer.getZBuffer());
+	fpsCap = readDelay;
+	initializeLibrary(argc, argv, readDisplayManager);
+	readRenderer.setZBuffer(readRenderer.getZBuffer());
 	glutDisplayFunc(Renderer::render);
 	glutTimerFunc(1, timer, fpsCap);
-	renderer.setUpShaders();
-	renderer.setClearColor(renderer.getClearColor());
+	readRenderer.setUpShaders();
+	readRenderer.setClearColor(readRenderer.getClearColor());
 }
 
-void Engine::initializeLibrary(int* argc, char* argv[], DisplayManager& displayManager) {
+void Engine::initializeLibrary(int* argc, char* argv[], DisplayManager& readDisplayManager) {
 	glutInit(argc, argv);
-	displayManager.initializeWindow();
+	readDisplayManager.initializeWindow();
 	GLenum glewInitResult = glewInit();
 	if (glewInitResult != GLEW_OK) {
 		std::cerr << "GLEW initialization failed: " << glewGetErrorString(glewInitResult) << std::endl;
@@ -29,13 +29,13 @@ int Engine::getFpsCap() {
 	return fpsCap;
 }
 
-void Engine::setFpsCap(int delay) {
-	if (delay > 0)
-		this->fpsCap = delay;
+void Engine::setFpsCap(int readDelay) {
+	if (readDelay > 0)
+		this->fpsCap = readDelay;
 }
 
-void Engine::toggleKeyboard(bool should, std::function<void(void)> function) {
-	if (should) {
+void Engine::toggleKeyboard(bool readShould, std::function<void(void)> readFunction) {
+	if (readShould) {
 		glutKeyboardFunc(KeyboardHandler::keyDown);
 		glutKeyboardUpFunc(KeyboardHandler::keyUp);
 	}
@@ -43,11 +43,11 @@ void Engine::toggleKeyboard(bool should, std::function<void(void)> function) {
 		glutKeyboardFunc(NULL);
 		glutKeyboardUpFunc(NULL);
 	}
-	keyboardFunc = function;
+	keyboardFunc = readFunction;
 }
 
-void Engine::toggleMouse(bool should, std::function<void(void)> function) {
-	if (should) {
+void Engine::toggleMouse(bool readShould, std::function<void(void)> readFunction) {
+	if (readShould) {
 		glutMouseFunc(MouseHandler::buttonHandle);
 		glutPassiveMotionFunc(MouseHandler::mouseCallback);
 	}
@@ -55,10 +55,10 @@ void Engine::toggleMouse(bool should, std::function<void(void)> function) {
 		glutMouseFunc(NULL);
 		glutPassiveMotionFunc(NULL);
 	}
-	mouseFunc = function;
+	mouseFunc = readFunction;
 }
 
-void Engine::timer(int value) {
+void Engine::timer(int readDummy) {
 	glutTimerFunc(1000 / instance->fpsCap, timer, instance->fpsCap);
 	glutPostRedisplay();
 	if (Player::getInstance()) Player::move();

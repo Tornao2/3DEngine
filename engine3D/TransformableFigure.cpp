@@ -9,8 +9,8 @@ void TransformableFigure::translate(glm::vec3 readChange) {
     callForRefresh = true;
 }
 
-void TransformableFigure::rotate(float angle, glm::vec3 axis) {
-    glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(angle), axis);
+void TransformableFigure::rotate(float readAngle, glm::vec3 readAxis) {
+    glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), glm::radians(readAngle), readAxis);
     for (int i = 0; i < data.size(); i += 3)
         data[i] = rotationMatrix * data[i];
     callForRefresh = true;
@@ -26,8 +26,8 @@ void TransformableFigure::scale(float readScale) {
         callForRefresh = true;
 }
 
-void TransformableFigure::freeTransform(glm::mat4 readMatr) {
+void TransformableFigure::freeTransform(glm::mat4 readMatrix) {
     for (int i = 0; i < data.size(); i += 3)
-        data[i] = readMatr * data[i];
+        data[i] = readMatrix * data[i];
     callForRefresh = true;
 }

@@ -1,6 +1,10 @@
 #pragma once
 #include "Figures.h"
 
+int Figures::getDataCount() {
+	return (int)data.size() / 3;
+}
+
 std::vector <glm::vec4> Figures::getData() {
 	return data;
 }
@@ -8,10 +12,6 @@ std::vector <glm::vec4> Figures::getData() {
 void Figures::setData(std::vector <glm::vec4> readData) {
 	data = readData;
 	callForRefresh = true;
-}
-
-int Figures::getDataCount() {
-	return (int)data.size() / 3;
 }
 
 void Figures::changePoint(std::vector <glm::vec4> point, int index) {
@@ -35,10 +35,10 @@ std::vector<glm::vec4> Figures::getPoint(int index) {
 	return realData;
 }
 
-void Figures::setTextured(bool readVal) {
-	isTextured = readVal;
-}
-
 bool Figures::getTextured() {
 	return isTextured;
+}
+
+void Figures::setTextured(bool readVal) {
+	isTextured = readVal;
 }

@@ -65,22 +65,22 @@ void Shader::use() {
         glUseProgram(flatProgramID);
 }
 
-GLuint Shader::compileShader(const char* path, GLenum shaderType) {
+GLuint Shader::compileShader(const char* readPath, GLenum readShaderType) {
     std::string shaderCode;
     std::ifstream shaderFile;
     shaderFile.exceptions(std::ifstream::failbit | std::ifstream::badbit);
     try {
-        shaderFile.open(path);
+        shaderFile.open(readPath);
         std::stringstream shaderStream;
         shaderStream << shaderFile.rdbuf();
         shaderFile.close();
         shaderCode = shaderStream.str();
     }
     catch (std::ifstream::failure& e) {
-        std::cerr << "ERROR::SHADER::FILE_NOT_READABLE: " << e.what() << path << std::endl;
+        std::cerr << "ERROR::SHADER::FILE_NOT_READABLE: " << e.what() << readPath << std::endl;
     }
     const char* shaderCodeCStr = shaderCode.c_str();
-    GLuint shaderID = glCreateShader(shaderType);
+    GLuint shaderID = glCreateShader(readShaderType);
     glShaderSource(shaderID, 1, &shaderCodeCStr, NULL);
     glCompileShader(shaderID);
     GLint success;

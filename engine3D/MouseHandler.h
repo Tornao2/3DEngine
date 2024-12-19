@@ -15,15 +15,15 @@ private:
 	KeyStates buttonStates[3] = { notClicked };
 	bool ifButtonsRefresh[3] = { true };
 	bool ifPressedOnThisFrame[3] = { false };
-	void buttonHandleProper(int button, int state, int x, int y);
+	void buttonHandleProper(int readButton, int readState, int readX, int readY);
 public:
 	MouseHandler();
 	void refresh();
-	void setIfShouldRefresh(unsigned char button, bool should);
-	bool getIfShouldRefresh(unsigned char button);
-	void static buttonHandle(int button, int state, int x, int y);
-	bool checkIfPressed(unsigned char button);
-	static void mouseCallback(int xpos, int ypos);
+	void setIfShouldRefresh(unsigned char readButton, bool readShould);
+	bool getIfShouldRefresh(unsigned char readButton);
+	void static buttonHandle(int readButton, int readState, int readX, int readY);
+	bool checkIfPressed(unsigned char readButton);
+	static void mouseCallback(int readX, int readY);
 	Observer* getCamera();
 	void setCamera(Observer* readCamera);
 };

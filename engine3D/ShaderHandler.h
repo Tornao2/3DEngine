@@ -13,7 +13,7 @@ private:
     GLuint fragmentShaderID;
     GLuint VBO;
     GLuint VAO;
-    GLuint compileShader(const char* path, GLenum shaderType);
+    GLuint compileShader(const char* readPath, GLenum readShaderType);
     void createFlatProgram();
     void createSmoothProgram();
     void createVAO();

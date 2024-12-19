@@ -1,10 +1,10 @@
 #include "CubeTextured.h"
 
-CubeTextured::CubeTextured(float rSideLength, float rx, float ry, float rz) {
-    sideLength = rSideLength;
-    x = rx;
-    y = ry;
-    z = rz;
+CubeTextured::CubeTextured(float readSideLength, float readX, float readY, float readZ) : Cube(readSideLength, readX, readY, readZ){
+    sideLength = readSideLength;
+    x = readX;
+    y = readY;
+    z = readZ;
     data = {
     { x, y, z, 1.0f }, {  0.0f,  0.0f, -1.0f, 0.0f }, {0.0f, 0.0f, 0.0f, 0.0f},
     { x + sideLength, y, z, 1.0f }, {  0.0f,  0.0f, -1.0f, 0.0f }, {1.0f, 0.0f, 0.0f, 0.0f},

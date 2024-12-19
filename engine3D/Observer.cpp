@@ -63,38 +63,38 @@ float Observer::getPitch() {
     return pitch; 
 }
 
-void Observer::setShader(Shader* shaderPtr) { 
-    shader = shaderPtr; 
+void Observer::setShader(Shader* readShader) { 
+    shader = readShader;
 }
 
-void Observer::setviewMatrix(glm::mat4 matrix) { 
-    viewMatrix = matrix; 
+void Observer::setviewMatrix(glm::mat4 readMatrix) { 
+    viewMatrix = readMatrix;
 }
 
-void Observer::setCameraPos(glm::vec3 pos) { 
-    cameraPos = pos; 
+void Observer::setCameraPos(glm::vec3 readPos) { 
+    cameraPos = readPos;
 }
 
-void Observer::setTarget(glm::vec3 targetVec) { 
-    target = targetVec; 
+void Observer::setTarget(glm::vec3 readTarget) { 
+    target = readTarget;
 }
 
-void Observer::setUp(glm::vec3 upVec) { 
-    up = upVec; 
+void Observer::setUp(glm::vec3 readUp) { 
+    up = readUp;
 }
 
-void Observer::setLastX(float x) { 
-    lastX = x; 
+void Observer::setLastX(float readX) { 
+    lastX = readX;
 }
 
-void Observer::setLastY(float y) { 
-    lastY = y; 
+void Observer::setLastY(float readY) { 
+    lastY = readY;
 }
 
-void Observer::setYaw(float y) { 
-    yaw = y; 
+void Observer::setYaw(float readYaw) {
+    yaw = readYaw;
 }
 
-void Observer::setPitch(float p) { 
-    pitch = p; 
+void Observer::setPitch(float readPitch) { 
+    pitch = readPitch;
 }

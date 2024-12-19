@@ -9,9 +9,7 @@ private:
 public:
 	PoliLine(std::vector <glm::vec4> readData, float readSize, bool readClosed);
 	void drawDirect(int index);
-	void changePoint(std::vector <glm::vec4> point, int index);
-	void addPoint(std::vector <glm::vec4> point, int index);
-	std::vector <glm::vec4> getPoint(int index);
+	void addPoint(std::vector <glm::vec4> readPoint, int index);
 	void removePoint(int index);
 	bool getIfClosed();
 	void setIfClosed(bool readClosed);

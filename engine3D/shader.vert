@@ -8,13 +8,13 @@ uniform mat4 projectionMatrix = mat4(1.0f);
 uniform mat4 viewMatrix = mat4(1.0f);
 
 out vec3 vertexColor;
-out vec3 fragNormal;
-out vec3 fragPos;
+out vec3 vertexNormal;
+out vec3 vertexPos;
 
 void main()
 {
     gl_Position = projectionMatrix * viewMatrix * position;
     vertexColor = color.xyz;
-    fragNormal = normal.xyz;
-    fragPos = position.xyz;
+    vertexNormal = normal.xyz;
+    vertexPos = position.xyz;
 }

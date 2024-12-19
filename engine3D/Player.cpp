@@ -2,7 +2,7 @@
 
 Player* Player::instance = nullptr;
 
-Player::Player(float rSideLength, float rx, float ry, float rz, std::vector <glm::vec4> colors) : Cube(rSideLength, rx, ry, rz, colors) {
+Player::Player(float readSideLength, float readX, float readY, float readZ, std::vector <glm::vec4> readColors) : Cube(readSideLength, readX, readY, readZ, readColors) {
 	instance = this;
 	msX = msY = msZ = 0;
 }

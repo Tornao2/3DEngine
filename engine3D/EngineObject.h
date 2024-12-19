@@ -8,5 +8,5 @@ public:
     int getId();
     void setId(int id);
     bool isActive();
-    void setActive(bool active);
+    void setActive(bool readActive);
 };

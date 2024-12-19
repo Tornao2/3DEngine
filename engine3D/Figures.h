@@ -16,11 +16,11 @@ protected:
 	bool isTextured;
 	std::vector <glm::vec4> data;
 public:
+	int getDataCount();
 	std::vector <glm::vec4> getData();
 	void setData(std::vector <glm::vec4> readData);
-	int getDataCount();
 	void changePoint(std::vector <glm::vec4> point, int index);
 	std::vector <glm::vec4> getPoint(int index);
-	void setTextured(bool readVal);
 	bool getTextured();
+	void setTextured(bool readVal);
 };

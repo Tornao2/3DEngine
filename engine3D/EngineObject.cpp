@@ -12,6 +12,6 @@ bool EngineObject::isActive() {
     return active;
 }
 
-void EngineObject::setActive(bool active) {
-    active = active;
+void EngineObject::setActive(bool readActive) {
+    active = readActive;
 }

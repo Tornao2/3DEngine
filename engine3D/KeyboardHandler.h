@@ -3,7 +3,7 @@
 
 typedef enum KeyStates {
 	notClicked,
-	removeLater,
+	removeInFuture,
 	pressing
 }KeyStates;
 
@@ -13,14 +13,14 @@ private:
 	KeyStates keyStates[256] = { notClicked };
 	bool ifKeyRefresh[256] = { false };
 	bool ifKeyPressedThisFrame[256];
-	void keyDownProper(unsigned char key, int x, int y);
-	void keyUpProper(unsigned char key, int x, int y);
+	void keyDownProper(unsigned char readKey, int readX, int readY);
+	void keyUpProper(unsigned char readKey, int readX, int readY);
 public:
 	KeyboardHandler();
 	void refresh();
-	void setIfShouldRefresh(unsigned char key, bool should);
-	bool getIfShouldRefresh(unsigned char key);
-	void static keyDown(unsigned char key, int x, int y);
-	void static keyUp(unsigned char key, int x, int y);
-	bool checkIfPressed(unsigned char key);
+	void setIfShouldRefresh(unsigned char readKey, bool readShould);
+	bool getIfShouldRefresh(unsigned char readKey);
+	void static keyDown(unsigned char readKey, int readX, int readY);
+	void static keyUp(unsigned char readKey, int readX, int readY);
+	bool checkIfPressed(unsigned char readKey);
 };

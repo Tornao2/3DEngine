@@ -6,7 +6,7 @@
 class TransformableFigure: public virtual Figures {
 public:
 	void translate(glm::vec3 readChange);
-	void rotate(float angle, glm::vec3 axis);
+	void rotate(float readAngle, glm::vec3 readAxis);
 	void scale(float readScale);
-	void freeTransform(glm::mat4 readMatr);
+	void freeTransform(glm::mat4 readMatrix);
 };

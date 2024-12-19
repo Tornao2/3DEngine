@@ -1,11 +1,11 @@
 #include "DisplayManager.h"
 
-DisplayManager::DisplayManager(int width, int height, bool shouldFullscreen, bool shouldDoubleBuffer, std::string title) {
-	windowHeight = height;
-	windowWidth = width;
-	fullscreen = shouldFullscreen;
-	doubleBuffer = shouldDoubleBuffer;
-	programTitle = title;
+DisplayManager::DisplayManager(int readWidth, int readHeight, bool readFullscreen, bool readDoubleBuffer, std::string readTitle) {
+	windowHeight = readHeight;
+	windowWidth = readWidth;
+	fullscreen = readFullscreen;
+	doubleBuffer = readDoubleBuffer;
+	programTitle = readTitle;
 }
 
 void DisplayManager::initializeWindow() {
@@ -27,17 +27,17 @@ int DisplayManager::GetWindowHeight() {
 	return windowHeight;
 }
 
-void DisplayManager::setWindowWidth(int width) {
-	windowWidth = width;
-	if (width > 1) {
+void DisplayManager::setWindowWidth(int readWidth) {
+	windowWidth = readWidth;
+	if (readWidth > 1) {
 		glutReshapeWindow(windowWidth, windowHeight);
 		glutPositionWindow((glutGet(GLUT_SCREEN_WIDTH) - windowWidth) / 2, (glutGet(GLUT_SCREEN_HEIGHT) - windowHeight) / 2);
 	}
 }
 
-void DisplayManager::setWindowHeight(int height) {
-	windowHeight = height;
-	if (height > 1) {
+void DisplayManager::setWindowHeight(int readHeight) {
+	windowHeight = readHeight;
+	if (readHeight > 1) {
 		glutReshapeWindow(windowWidth, windowHeight);
 		glutPositionWindow((glutGet(GLUT_SCREEN_WIDTH) - windowWidth) / 2, (glutGet(GLUT_SCREEN_HEIGHT) - windowHeight) / 2);
 	}
@@ -47,8 +47,8 @@ bool DisplayManager::ifFullscreen() {
 	return fullscreen;
 }
 
-void DisplayManager::setFullscreen(bool shouldFullscreen) {
-	if (shouldFullscreen) {
+void DisplayManager::setFullscreen(bool readFullscreen) {
+	if (readFullscreen) {
 		glutFullScreen();
 		fullscreen = true;
 	}

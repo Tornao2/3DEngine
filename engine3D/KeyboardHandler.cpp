@@ -9,46 +9,46 @@ KeyboardHandler::KeyboardHandler() {
 	glutIgnoreKeyRepeat(GL_TRUE);
 }
 
-void KeyboardHandler::keyDownProper(unsigned char key, int x, int y) {
-	if (keyStates[key] != removeLater) {
-		keyStates[key] = pressing;
-		ifKeyPressedThisFrame[key] = true;
+void KeyboardHandler::keyDownProper(unsigned char readKey, int readX, int readY) {
+	if (keyStates[readKey] != removeInFuture) {
+		keyStates[readKey] = pressing;
+		ifKeyPressedThisFrame[readKey] = true;
 	}
 }
 
-void KeyboardHandler::keyUpProper(unsigned char key, int x, int y) {
-	if (ifKeyPressedThisFrame[key])
-		keyStates[key] = removeLater;
+void KeyboardHandler::keyUpProper(unsigned char readKey, int readX, int readY) {
+	if (ifKeyPressedThisFrame[readKey])
+		keyStates[readKey] = removeInFuture;
 	else
-		keyStates[key] = notClicked;
+		keyStates[readKey] = notClicked;
 }
 
-void KeyboardHandler::keyDown(unsigned char key, int x, int y) {
-	instance->keyDownProper(key, x, y);
+void KeyboardHandler::keyDown(unsigned char readKey, int readX, int readY) {
+	instance->keyDownProper(readKey, readX, readY);
 }
 
-void KeyboardHandler::keyUp(unsigned char key, int x, int y) {
-	instance->keyUpProper(key, x, y);
+void KeyboardHandler::keyUp(unsigned char readKey, int readX, int readY) {
+	instance->keyUpProper(readKey, readX, readY);
 }
 
 void KeyboardHandler::refresh() {
 	for (int i = 0; i < 256; i++) {
-		if (ifKeyRefresh[i] || keyStates[i] == removeLater)
+		if (ifKeyRefresh[i] || keyStates[i] == removeInFuture)
 			keyStates[i] = notClicked;
 		ifKeyPressedThisFrame[i] = false;
 	}
 }
 
-void KeyboardHandler::setIfShouldRefresh(unsigned char key, bool should) {
-	ifKeyRefresh[key] = should;
+void KeyboardHandler::setIfShouldRefresh(unsigned char readKey, bool readShould) {
+	ifKeyRefresh[readKey] = readShould;
 }
 
-bool KeyboardHandler::getIfShouldRefresh(unsigned char key) {
-	return ifKeyRefresh[key];
+bool KeyboardHandler::getIfShouldRefresh(unsigned char readKey) {
+	return ifKeyRefresh[readKey];
 }
 
-bool KeyboardHandler::checkIfPressed(unsigned char key) {
-	if (keyStates[key] != notClicked)
+bool KeyboardHandler::checkIfPressed(unsigned char readKey) {
+	if (keyStates[readKey] != notClicked)
 		return true;
 	return false;
 }

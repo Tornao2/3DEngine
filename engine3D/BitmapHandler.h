@@ -5,6 +5,6 @@
 
 class BitmapHandler {
 public:
-	int loadBitmap(std::string path);
-	void deleteBitmap(int& textureId);
+	int loadBitmap(std::string readPath);
+	void deleteBitmap(int& readTextureId);
 };

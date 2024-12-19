@@ -1,18 +1,14 @@
 #include "ObjectManager.h"
 
-ObjectManager::ObjectManager(Shader* readShader) {
-	shader = readShader;
-}
-
 ObjectManager::ObjectManager() {
 	shader = nullptr;
 }
 
-void ObjectManager::addDirectDrawable(DirectDraw* readPrimitive, int index) {
+void ObjectManager::addDirectDrawable(DirectDraw* readDirect, int index) {
 	if (index == -1 || index >= directList.size())
-		directList.push_back(readPrimitive);
+		directList.push_back(readDirect);
 	else if (index >= 0)
-		directList.insert(directList.begin() + index, readPrimitive);
+		directList.insert(directList.begin() + index, readDirect);
 	else
 		return;
 	refreshBuffer();
@@ -91,11 +87,11 @@ void ObjectManager::drawAll() {
 	glBindVertexArray(0);
 }
 
-void ObjectManager::addIndicedDrawable(IndiceDraw* readFigure, int index) {
+void ObjectManager::addIndicedDrawable(IndiceDraw* readIndiced, int index) {
 	if (index == -1 || index >= indicedList.size())
-		indicedList.push_back(readFigure);
+		indicedList.push_back(readIndiced);
 	else if (index >= 0)
-		indicedList.insert(indicedList.begin() + index, readFigure);
+		indicedList.insert(indicedList.begin() + index, readIndiced);
 	else
 		return;
 	refreshBuffer();
@@ -166,11 +162,11 @@ void ObjectManager::clearIndicedTexturedList() {
 	refreshBuffer();
 }
 
-void ObjectManager::addIndicedDrawableTextured(IndiceDraw* readFigure, int index) {
+void ObjectManager::addIndicedDrawableTextured(IndiceDraw* readIndiced, int index) {
 	if (index == -1 || index >= indicedTexturedList.size())
-		indicedTexturedList.push_back(readFigure);
+		indicedTexturedList.push_back(readIndiced);
 	else if (index >= 0)
-		indicedTexturedList.insert(indicedTexturedList.begin() + index, readFigure);
+		indicedTexturedList.insert(indicedTexturedList.begin() + index, readIndiced);
 	else
 		return;
 	refreshBuffer();

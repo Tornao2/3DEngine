@@ -7,16 +7,16 @@
 
 class Engine {
 public:
-	Engine(int* argc, char* argv[], Renderer& renderer, DisplayManager& displayManager, int delay = 300);
+	Engine(int* argc, char* argv[], Renderer& readRenderer, DisplayManager& readDisplayManager, int readDelay = 300);
 	int getFpsCap();
-	void setFpsCap(int delay);
-	void toggleKeyboard(bool should, std::function<void(void)> function);
-	void toggleMouse(bool should, std::function<void(void)> function);
+	void setFpsCap(int readDelay);
+	void toggleKeyboard(bool readShould, std::function<void(void)> readFunction);
+	void toggleMouse(bool readShould, std::function<void(void)> readFunction);
 private:
 	int fpsCap;
 	static Engine* instance;
-	void initializeLibrary(int* argc, char* argv[], DisplayManager& displayManager);
-	void static timer(int value);
+	void initializeLibrary(int* argc, char* argv[], DisplayManager& readDisplayManager);
+	void static timer(int readDummy);
 	static std::function<void(void)> mouseFunc;
 	static std::function<void(void)> keyboardFunc;
 };

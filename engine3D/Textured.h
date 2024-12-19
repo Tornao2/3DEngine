@@ -4,6 +4,6 @@ class Textured {
 protected:
 	int textureId;
 public:
-	void setTextureId(int TextureId);
+	void setTextureId(int readTextureId);
 	int getTextured();
 };

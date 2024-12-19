@@ -1,7 +1,7 @@
 #include "Textured.h"
 
-void Textured::setTextureId(int TextureId) {
-	textureId = TextureId;
+void Textured::setTextureId(int readTextureId) {
+	textureId = readTextureId;
 }
 
 int Textured::getTextured() {

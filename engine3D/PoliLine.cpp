@@ -14,40 +14,19 @@ void PoliLine::drawDirect(int index) {
 		glDrawArrays(GL_LINE_STRIP, index, (GLsizei)data.size() / 3);
 }
 
-void PoliLine::addPoint(std::vector <glm::vec4> point, int index) {
+void PoliLine::addPoint(std::vector <glm::vec4> readPoint, int index) {
 	int realIndex = index * 3;
 	if (data.size() <= realIndex || realIndex < 0) {
-		data.push_back(point[0]);
-		data.push_back(point[1]);
-		data.push_back(point[2]);
+		data.push_back(readPoint[0]);
+		data.push_back(readPoint[1]);
+		data.push_back(readPoint[2]);
 	}
 	else {
-		data.insert(data.begin() + realIndex, point[2]);
-		data.insert(data.begin() + realIndex, point[1]);
-		data.insert(data.begin() + realIndex, point[0]);
+		data.insert(data.begin() + realIndex, readPoint[2]);
+		data.insert(data.begin() + realIndex, readPoint[1]);
+		data.insert(data.begin() + realIndex, readPoint[0]);
 	}
 	callForRefresh = true;
-}
-
-void PoliLine::changePoint(std::vector <glm::vec4> point, int index) {
-	int realIndex = index * 3;
-	if (data.size() <= realIndex || realIndex < 0)
-		return;
-	data[realIndex] = point[0];
-	data[realIndex + 1] = point[1];
-	data[realIndex + 2] = point[2];
-	callForRefresh = true;
-}
-
-std::vector <glm::vec4> PoliLine::getPoint(int index) {
-	int realIndex = index * 3;
-	if (data.size() <= realIndex || realIndex < 0)
-		return {};
-	std::vector <glm::vec4> realData;
-	realData.push_back(data[realIndex]);
-	realData.push_back(data[realIndex + 1]);
-	realData.push_back(data[realIndex + 2]);
-	return realData;
 }
 
 void PoliLine::removePoint(int index) {

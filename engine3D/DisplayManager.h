@@ -4,14 +4,14 @@
 
 class DisplayManager {
 public:
-	DisplayManager(int width = 640, int height = 480, bool shouldFullscreen = false, bool shouldDoubleBuffer = true, std::string title = "Engine");
+	DisplayManager(int readWidth = 640, int readHeight = 480, bool readFullscreen = false, bool readDoubleBuffer = true, std::string readTitle = "Engine");
 	void initializeWindow();
 	int getWindowWidth();
 	int GetWindowHeight();
-	void setWindowWidth(int width);
-	void setWindowHeight(int height);
+	void setWindowWidth(int readWidth);
+	void setWindowHeight(int readHeight);
 	bool ifFullscreen();
-	void setFullscreen(bool shouldFullscreen);
+	void setFullscreen(bool readFullscreen);
 private:
 	int windowWidth;
 	int windowHeight;

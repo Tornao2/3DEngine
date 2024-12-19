@@ -22,15 +22,14 @@ private:
 	std::vector<unsigned short int> totalIndicesTextured;
 	Observer* camera;
 public:
-	ObjectManager(Shader* readShader);
 	ObjectManager();
-	void addDirectDrawable(DirectDraw* readPrimitive, int index = -1);
+	void addDirectDrawable(DirectDraw* readDirect, int index = -1);
 	void removeDirectDrawable(int index = -1);
 	DirectDraw* getDirectDrawable(int index = -1);
-	void addIndicedDrawable(IndiceDraw* readFigure, int index = -1);
+	void addIndicedDrawable(IndiceDraw* readIndiced, int index = -1);
 	void removeIndicedDrawable(int index = -1);
 	IndiceDraw* getIndicedDrawable(int index = -1);
-	void addIndicedDrawableTextured(IndiceDraw* readFigure, int index = -1);
+	void addIndicedDrawableTextured(IndiceDraw* readIndiced, int index = -1);
 	void removeIndicedDrawableTextured(int index = -1);
 	IndiceDraw* getIndicedDrawableTextured(int index = -1);
 	void clearIndicedList();

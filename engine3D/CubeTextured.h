@@ -4,5 +4,5 @@
 
 class CubeTextured : public Cube, public Textured {
 public:
-	CubeTextured(float rSideLength, float rx, float ry, float rz);
+	CubeTextured(float readSideLength, float readX, float readY, float readZ);
 };

@@ -2,12 +2,12 @@
 
 Renderer* Renderer::instance = nullptr;
 
-Renderer::Renderer(ObjectManager* readManager, glm::vec3 readClearColor, bool zBuffer, bool shouldOrthogonal) {
+Renderer::Renderer(ObjectManager* readManager, glm::vec3 readClearColor, bool readZBuffer, bool shouldOrthogonal) {
 	instance = this;
 	shader = nullptr;
 	manager = readManager;
 	clearColor = readClearColor;
-	setZBuffer(zBuffer);
+	setZBuffer(readZBuffer);
 	orthogonalView = shouldOrthogonal;
 }
 
@@ -49,8 +49,8 @@ glm::vec3 Renderer::getClearColor() {
 	return clearColor;
 }
 
-void Renderer::setZBuffer(bool should) {
-	enableZBuffer = should;
+void Renderer::setZBuffer(bool readShould) {
+	enableZBuffer = readShould;
 	if (enableZBuffer)
 		glEnable(GL_DEPTH_TEST);
 	else
@@ -163,14 +163,14 @@ void Renderer::toggleIfFlatShading() {
 }
 
 bool Renderer::getWarnModel() {
-	return warnModel;
+	return ifWarnModel;
 }
 
-void Renderer::setWarnModel(bool readVal) {
-	warnModel = readVal;
+void Renderer::setWarnModel(bool readIfWarn) {
+	ifWarnModel = readIfWarn;
 	glUseProgram(shader->getProgramId());
-	GLint warnModelInt = glGetUniformLocation(shader->getProgramId(), "warnModel");
-	glUniform1i(warnModelInt, warnModel);
+	GLint warnModelInt = glGetUniformLocation(shader->getProgramId(), "ifWarnModel");
+	glUniform1i(warnModelInt, ifWarnModel);
 }
 
 void Renderer::setWarnCutOff(float readCutOff) {
