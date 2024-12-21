@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Engine3d: Dokumentacja klasy Engine</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Engine3d
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano za pomocą Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('class_engine.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Metody publiczne</a> &#124;
+<a href="class_engine-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja klasy Engine</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_engine_8h_source.html">Engine.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Metody publiczne</h2></td></tr>
+<tr class="memitem:aace4bafdd94c719c1c45ce6e74e9c4e9" id="r_aace4bafdd94c719c1c45ce6e74e9c4e9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aace4bafdd94c719c1c45ce6e74e9c4e9">Engine</a> (int *argc, char *argv[], <a class="el" href="class_renderer.html">Renderer</a> &amp;readRenderer, <a class="el" href="class_display_manager.html">DisplayManager</a> &amp;readDisplayManager, int readDelay=300)</td></tr>
+<tr class="separator:aace4bafdd94c719c1c45ce6e74e9c4e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad660a3d94402c8ce1553d3505a6328e4" id="r_ad660a3d94402c8ce1553d3505a6328e4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad660a3d94402c8ce1553d3505a6328e4">getFpsCap</a> ()</td></tr>
+<tr class="separator:ad660a3d94402c8ce1553d3505a6328e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d6ab89de87c025f050d0629657c37c8" id="r_a2d6ab89de87c025f050d0629657c37c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d6ab89de87c025f050d0629657c37c8">setFpsCap</a> (int readDelay)</td></tr>
+<tr class="separator:a2d6ab89de87c025f050d0629657c37c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6ccc3718b3eeb799fc16819a2a07624" id="r_af6ccc3718b3eeb799fc16819a2a07624"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af6ccc3718b3eeb799fc16819a2a07624">toggleKeyboard</a> (bool readShould, std::function&lt; void(void)&gt; readFunction)</td></tr>
+<tr class="separator:af6ccc3718b3eeb799fc16819a2a07624"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d63082acd3eb2e8447d5d6f0f23d488" id="r_a7d63082acd3eb2e8447d5d6f0f23d488"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7d63082acd3eb2e8447d5d6f0f23d488">toggleMouse</a> (bool readShould, std::function&lt; void(void)&gt; readFunction)</td></tr>
+<tr class="separator:a7d63082acd3eb2e8447d5d6f0f23d488"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Opis szczegółowy</h2>
+<div class="textblock"><p>Klasa odpowiedzialna za zarządzanie głównym cyklem gry, w tym obsługą klawiatury, myszy, renderowania i okna wyświetlania. </p>
+</div><h2 class="groupheader">Dokumentacja konstruktora i destruktora</h2>
+<a id="aace4bafdd94c719c1c45ce6e74e9c4e9" name="aace4bafdd94c719c1c45ce6e74e9c4e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aace4bafdd94c719c1c45ce6e74e9c4e9">&#9670;&#160;</a></span>Engine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Engine::Engine </td>
+          <td>(</td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>argc</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>argv</em></span>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_renderer.html">Renderer</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>readRenderer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_display_manager.html">DisplayManager</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>readDisplayManager</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>readDelay</em></span><span class="paramdefsep"> = </span><span class="paramdefval">300</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Konstruktor inicjalizujący silnik gry. </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argc</td><td>Liczba argumentów wiersza poleceń. </td></tr>
+    <tr><td class="paramname">argv</td><td>Tablica argumentów wiersza poleceń. </td></tr>
+    <tr><td class="paramname">readRenderer</td><td>Obiekt odpowiedzialny za renderowanie. </td></tr>
+    <tr><td class="paramname">readDisplayManager</td><td>Obiekt odpowiedzialny za zarządzanie oknem. </td></tr>
+    <tr><td class="paramname">readDelay</td><td>Liczba fps (domyślnie 300fps, ale jest to ograniczane przez odświeżanie monitora). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="ad660a3d94402c8ce1553d3505a6328e4" name="ad660a3d94402c8ce1553d3505a6328e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad660a3d94402c8ce1553d3505a6328e4">&#9670;&#160;</a></span>getFpsCap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Engine::getFpsCap </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Funkcja zwracająca limit klatek na sekundę. </p><dl class="section return"><dt>Zwraca</dt><dd>Limit klatek na sekundę. </dd></dl>
+
+</div>
+</div>
+<a id="a2d6ab89de87c025f050d0629657c37c8" name="a2d6ab89de87c025f050d0629657c37c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d6ab89de87c025f050d0629657c37c8">&#9670;&#160;</a></span>setFpsCap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::setFpsCap </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>readDelay</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Funkcja ustawiająca limit klatek na sekundę. </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">readDelay</td><td>Liczba klatek na sekundę. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="af6ccc3718b3eeb799fc16819a2a07624" name="af6ccc3718b3eeb799fc16819a2a07624"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6ccc3718b3eeb799fc16819a2a07624">&#9670;&#160;</a></span>toggleKeyboard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::toggleKeyboard </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>readShould</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; void(void)&gt;</td>          <td class="paramname"><span class="paramname"><em>readFunction</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Funkcja włączająca/wyłączająca obsługę klawiatury. </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">readShould</td><td>Flaga określająca, czy klawiatura ma być włączona. </td></tr>
+    <tr><td class="paramname">readFunction</td><td>Funkcja zajmująca się obsługą klawiatury wywoływana co klatkę programu. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7d63082acd3eb2e8447d5d6f0f23d488" name="a7d63082acd3eb2e8447d5d6f0f23d488"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d63082acd3eb2e8447d5d6f0f23d488">&#9670;&#160;</a></span>toggleMouse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Engine::toggleMouse </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>readShould</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; void(void)&gt;</td>          <td class="paramname"><span class="paramname"><em>readFunction</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Funkcja włączająca/wyłączająca obsługę myszy. </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">readShould</td><td>Flaga określająca, czy mysz ma być włączona. </td></tr>
+    <tr><td class="paramname">readFunction</td><td>Funkcja zajmująca się obsługą myszki wywoływana co klatkę programu. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z plików:<ul>
+<li><a class="el" href="_engine_8h_source.html">Engine.h</a></li>
+<li><b>Engine.cpp</b></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_engine.html">Engine</a></li>
+    <li class="footer">Wygenerowano za pomocą <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+  </ul>
+</div>
+</body>
+</html>

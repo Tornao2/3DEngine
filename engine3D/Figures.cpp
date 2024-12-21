@@ -42,3 +42,7 @@ bool Figures::getTextured() {
 void Figures::setTextured(bool readVal) {
 	isTextured = readVal;
 }
+
+void Figures::updateIndex(int& index) {
+	index +=  data.size() / 3;
+}

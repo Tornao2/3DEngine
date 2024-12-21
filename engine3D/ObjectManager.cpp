@@ -68,9 +68,9 @@ void ObjectManager::drawAll() {
 		}
 	}
 	glUniform1i(glGetUniformLocation(shader->getProgramId(), "useTexture"), 1);
-	glDrawElements(GL_TRIANGLES, (GLsizei)totalIndicesTextured.size(), GL_UNSIGNED_SHORT, (void*)totalIndicesTextured.data());
+	glDrawElements(GL_TRIANGLES, (GLsizei)totalIndicesTextured.size(), GL_UNSIGNED_INT, (void*)totalIndicesTextured.data());
 	glUniform1i(glGetUniformLocation(shader->getProgramId(), "useTexture"), 0);
-	glDrawRangeElements(GL_TRIANGLES, (GLsizei)totalIndicesTextured.size(), (GLsizei)totalIndicesTextured.size() + (GLsizei)totalIndices.size(), (GLsizei) totalIndices.size(), GL_UNSIGNED_SHORT, (void*) totalIndices.data());
+	glDrawRangeElements(GL_TRIANGLES, (GLsizei)totalIndicesTextured.size(), (GLsizei)totalIndicesTextured.size() + (GLsizei)totalIndices.size(), (GLsizei) totalIndices.size(), GL_UNSIGNED_INT, (void*) totalIndices.data());
 	int index = 0;
 	for (int i = 0; i < indicedList.size(); i++) 
 		 index += indicedList[i]->getDataCount();
@@ -125,20 +125,20 @@ void ObjectManager::setShader(Shader* readShader) {
 void ObjectManager::refreshBuffer() {
 	std::vector <glm::vec4> allFigures;
 	totalIndices.clear();
-	unsigned short int index = 0;
+	int index = 0;
 	for (int i = 0; i < indicedTexturedList.size(); i++) {
 		for (int j = 0; j < indicedTexturedList[i]->getDataCount()*3; j++)
 			allFigures.push_back(indicedTexturedList[i]->getData()[j]);
 		for (int j = 0; j < indicedTexturedList[i]->getIndices().size(); j++)
 			totalIndicesTextured.push_back(indicedTexturedList[i]->getIndices()[j] + index);
-		indicedTexturedList[i]->updateIndiceCount(index);
+		indicedTexturedList[i]->updateIndex(index);
 	}
 	for (int i = 0; i < indicedList.size(); i++) {
 		for (int j = 0; j < indicedList[i]->getDataCount()*3; j++)
 			allFigures.push_back(indicedList[i]->getData()[j]);
 		for (int j = 0; j < indicedList[i]->getIndices().size(); j++) 
 			totalIndices.push_back(indicedList[i]->getIndices()[j] + index);
-		indicedList[i]->updateIndiceCount(index);
+		indicedList[i]->updateIndex(index);
 	}
 	for (int i = 0; i < directList.size(); i++)
 		for (int j = 0; j < directList[i]->getDataCount() * 3; j++)

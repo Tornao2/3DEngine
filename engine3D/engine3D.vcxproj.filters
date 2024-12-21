@@ -114,9 +114,6 @@
     <ClCompile Include="DisplayManager.cpp">
       <Filter>Source Files\Handlers\I/O</Filter>
     </ClCompile>
-    <ClCompile Include="DirectDraw.cpp">
-      <Filter>Source Files\BaseClasses\Main</Filter>
-    </ClCompile>
     <ClCompile Include="EngineObject.cpp">
       <Filter>Source Files\BaseClasses\Main</Filter>
     </ClCompile>

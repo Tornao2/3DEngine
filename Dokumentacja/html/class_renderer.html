@@ -1,0 +1,799 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Engine3d: Dokumentacja klasy Renderer</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Engine3d
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano za pomocą Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('class_renderer.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Metody publiczne</a> &#124;
+<a href="#pub-static-methods">Statyczne metody publiczne</a> &#124;
+<a href="class_renderer-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja klasy Renderer</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Metody publiczne</h2></td></tr>
+<tr class="memitem:a6c733c0c6fe32ae8df3d194703043cf6" id="r_a6c733c0c6fe32ae8df3d194703043cf6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c733c0c6fe32ae8df3d194703043cf6">Renderer</a> (<a class="el" href="class_object_manager.html">ObjectManager</a> *readManager, glm::vec3 readClearColor={ 0, 0, 0 }, bool readZBuffer=true, bool shouldOrthogonal=true)</td></tr>
+<tr class="separator:a6c733c0c6fe32ae8df3d194703043cf6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4694152cb4e9000c80e07af6b324fe11" id="r_a4694152cb4e9000c80e07af6b324fe11"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4694152cb4e9000c80e07af6b324fe11">setClearColor</a> (glm::vec3 readClearColor)</td></tr>
+<tr class="separator:a4694152cb4e9000c80e07af6b324fe11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a009b859813f733b3dc8ad89c80939174" id="r_a009b859813f733b3dc8ad89c80939174"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a009b859813f733b3dc8ad89c80939174">getClearColor</a> ()</td></tr>
+<tr class="separator:a009b859813f733b3dc8ad89c80939174"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad002e4f24a680ef0b32bac58087b5575" id="r_ad002e4f24a680ef0b32bac58087b5575"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad002e4f24a680ef0b32bac58087b5575">setZBuffer</a> (bool readShould)</td></tr>
+<tr class="separator:ad002e4f24a680ef0b32bac58087b5575"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a159f19013e89147566caf68affb8bdb2" id="r_a159f19013e89147566caf68affb8bdb2"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a159f19013e89147566caf68affb8bdb2">getZBuffer</a> ()</td></tr>
+<tr class="separator:a159f19013e89147566caf68affb8bdb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c15669bd503722d0f6ac9da01c3e888" id="r_a9c15669bd503722d0f6ac9da01c3e888"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9c15669bd503722d0f6ac9da01c3e888">getOrthogonal</a> ()</td></tr>
+<tr class="separator:a9c15669bd503722d0f6ac9da01c3e888"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0061068a696d01559a6949fc93a583b9" id="r_a0061068a696d01559a6949fc93a583b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0061068a696d01559a6949fc93a583b9">setOrthogonal</a> (bool shouldOrthogonal)</td></tr>
+<tr class="separator:a0061068a696d01559a6949fc93a583b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab29b3db7adb7b4c11b0708a53af5d9e5" id="r_ab29b3db7adb7b4c11b0708a53af5d9e5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_object_manager.html">ObjectManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab29b3db7adb7b4c11b0708a53af5d9e5">getManager</a> ()</td></tr>
+<tr class="separator:ab29b3db7adb7b4c11b0708a53af5d9e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54391030d4726a294781dba082b5ec6e" id="r_a54391030d4726a294781dba082b5ec6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54391030d4726a294781dba082b5ec6e">replaceManager</a> (<a class="el" href="class_object_manager.html">ObjectManager</a> *readManager)</td></tr>
+<tr class="separator:a54391030d4726a294781dba082b5ec6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02d4219e6980b9f209f62b2173ac1a7f" id="r_a02d4219e6980b9f209f62b2173ac1a7f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02d4219e6980b9f209f62b2173ac1a7f">setUpShaders</a> ()</td></tr>
+<tr class="separator:a02d4219e6980b9f209f62b2173ac1a7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33d9eec83cfeccc638c55766e9aff4ef" id="r_a33d9eec83cfeccc638c55766e9aff4ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_shader.html">Shader</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a33d9eec83cfeccc638c55766e9aff4ef">getShader</a> ()</td></tr>
+<tr class="separator:a33d9eec83cfeccc638c55766e9aff4ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1170f2fdf5049f2d8904336ee8eda6b6" id="r_a1170f2fdf5049f2d8904336ee8eda6b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1170f2fdf5049f2d8904336ee8eda6b6">setLightingPos</a> (glm::vec3 readLighting)</td></tr>
+<tr class="separator:a1170f2fdf5049f2d8904336ee8eda6b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adda6eac6acb96c4abc7e985bedca2ae1" id="r_adda6eac6acb96c4abc7e985bedca2ae1"><td class="memItemLeft" align="right" valign="top">glm::vec3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adda6eac6acb96c4abc7e985bedca2ae1">getLightingPos</a> ()</td></tr>
+<tr class="separator:adda6eac6acb96c4abc7e985bedca2ae1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab31a565ebc73ea58d1257a1ba5fa0960" id="r_ab31a565ebc73ea58d1257a1ba5fa0960"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab31a565ebc73ea58d1257a1ba5fa0960">setAmbientStrength</a> (float readStrength)</td></tr>
+<tr class="separator:ab31a565ebc73ea58d1257a1ba5fa0960"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3f0446d174c4c61793b3e5d962e444e" id="r_ab3f0446d174c4c61793b3e5d962e444e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab3f0446d174c4c61793b3e5d962e444e">getAmbientStrength</a> ()</td></tr>
+<tr class="separator:ab3f0446d174c4c61793b3e5d962e444e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a914f1904a5a738a3724a3f16fd9c34d3" id="r_a914f1904a5a738a3724a3f16fd9c34d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a914f1904a5a738a3724a3f16fd9c34d3">setSpecularStrength</a> (float readStrength)</td></tr>
+<tr class="separator:a914f1904a5a738a3724a3f16fd9c34d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac171f60ed002270a6fde11bfd6e77644" id="r_ac171f60ed002270a6fde11bfd6e77644"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac171f60ed002270a6fde11bfd6e77644">getSpecularStrength</a> ()</td></tr>
+<tr class="separator:ac171f60ed002270a6fde11bfd6e77644"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac237424221e2f439a12f0010be41ba4c" id="r_ac237424221e2f439a12f0010be41ba4c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac237424221e2f439a12f0010be41ba4c">setScatterStrength</a> (int readStrength)</td></tr>
+<tr class="separator:ac237424221e2f439a12f0010be41ba4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa286347f05f2c7e0ce78bf313e4c4bad" id="r_aa286347f05f2c7e0ce78bf313e4c4bad"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa286347f05f2c7e0ce78bf313e4c4bad">getScatterStrength</a> ()</td></tr>
+<tr class="separator:aa286347f05f2c7e0ce78bf313e4c4bad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1478e7d4abd4c9949ac05315e50aa82" id="r_ad1478e7d4abd4c9949ac05315e50aa82"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad1478e7d4abd4c9949ac05315e50aa82">setBoostColor</a> (float readBoost)</td></tr>
+<tr class="separator:ad1478e7d4abd4c9949ac05315e50aa82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec628c3c3d57877a21becd3d250aaa7e" id="r_aec628c3c3d57877a21becd3d250aaa7e"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aec628c3c3d57877a21becd3d250aaa7e">getBoostColor</a> ()</td></tr>
+<tr class="separator:aec628c3c3d57877a21becd3d250aaa7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a192ba170f66932c92f26ff8603da3ec6" id="r_a192ba170f66932c92f26ff8603da3ec6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a192ba170f66932c92f26ff8603da3ec6">toggleIfFlatShading</a> ()</td></tr>
+<tr class="separator:a192ba170f66932c92f26ff8603da3ec6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7240ea1e20664a14073058b64b543711" id="r_a7240ea1e20664a14073058b64b543711"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7240ea1e20664a14073058b64b543711">getWarnModel</a> ()</td></tr>
+<tr class="separator:a7240ea1e20664a14073058b64b543711"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d82ca217518d1e6afdf283e090d0197" id="r_a8d82ca217518d1e6afdf283e090d0197"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8d82ca217518d1e6afdf283e090d0197">setWarnModel</a> (bool readIfWarn)</td></tr>
+<tr class="separator:a8d82ca217518d1e6afdf283e090d0197"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89212293315309e6d11abda912e94fda" id="r_a89212293315309e6d11abda912e94fda"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a89212293315309e6d11abda912e94fda">setWarnCutOff</a> (float readCutOff)</td></tr>
+<tr class="separator:a89212293315309e6d11abda912e94fda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fdc171fb77e844da67031cc58fb7a10" id="r_a0fdc171fb77e844da67031cc58fb7a10"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0fdc171fb77e844da67031cc58fb7a10">getWarnCutOff</a> ()</td></tr>
+<tr class="separator:a0fdc171fb77e844da67031cc58fb7a10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab95c71732653e8282cfcb10966894187" id="r_ab95c71732653e8282cfcb10966894187"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab95c71732653e8282cfcb10966894187">setWarnIntensity</a> (float readIntensity)</td></tr>
+<tr class="separator:ab95c71732653e8282cfcb10966894187"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36909a0ea1ea8e1e6b44f655ea6627ae" id="r_a36909a0ea1ea8e1e6b44f655ea6627ae"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a36909a0ea1ea8e1e6b44f655ea6627ae">getWarnIntensity</a> ()</td></tr>
+<tr class="separator:a36909a0ea1ea8e1e6b44f655ea6627ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Statyczne metody publiczne</h2></td></tr>
+<tr class="memitem:af7e5f8f68742f198e315fb4683a605a4" id="r_af7e5f8f68742f198e315fb4683a605a4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af7e5f8f68742f198e315fb4683a605a4">render</a> ()</td></tr>
+<tr class="separator:af7e5f8f68742f198e315fb4683a605a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Dokumentacja konstruktora i destruktora</h2>
+<a id="a6c733c0c6fe32ae8df3d194703043cf6" name="a6c733c0c6fe32ae8df3d194703043cf6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c733c0c6fe32ae8df3d194703043cf6">&#9670;&#160;</a></span>Renderer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Renderer::Renderer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_object_manager.html">ObjectManager</a> *</td>          <td class="paramname"><span class="paramname"><em>readManager</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">glm::vec3</td>          <td class="paramname"><span class="paramname"><em>readClearColor</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{&#160;0,&#160;0,&#160;0&#160;}</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>readZBuffer</em></span><span class="paramdefsep"> = </span><span class="paramdefval">true</span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>shouldOrthogonal</em></span><span class="paramdefsep"> = </span><span class="paramdefval">true</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Konstruktor klasy <a class="el" href="class_renderer.html">Renderer</a>. </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">readManager</td><td>Wskaźnik na obiekt zarządzający obiektami do renderowania. </td></tr>
+    <tr><td class="paramname">readClearColor</td><td>Kolor tła (domyślnie czarny). </td></tr>
+    <tr><td class="paramname">readZBuffer</td><td>Flaga włączająca z-buffer. </td></tr>
+    <tr><td class="paramname">shouldOrthogonal</td><td>Flaga decydująca o widoku ortogonalnym. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="ab3f0446d174c4c61793b3e5d962e444e" name="ab3f0446d174c4c61793b3e5d962e444e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3f0446d174c4c61793b3e5d962e444e">&#9670;&#160;</a></span>getAmbientStrength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Renderer::getAmbientStrength </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Zwraca siłę światła ambientowego. </p><dl class="section return"><dt>Zwraca</dt><dd>Siła światła ambientowego. </dd></dl>
+
+</div>
+</div>
+<a id="aec628c3c3d57877a21becd3d250aaa7e" name="aec628c3c3d57877a21becd3d250aaa7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec628c3c3d57877a21becd3d250aaa7e">&#9670;&#160;</a></span>getBoostColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Renderer::getBoostColor </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Zwraca współczynnik wzmocnienia koloru obiektów. </p><dl class="section return"><dt>Zwraca</dt><dd>Współczynnik wzmocnienia koloru. </dd></dl>
+
+</div>
+</div>
+<a id="a009b859813f733b3dc8ad89c80939174" name="a009b859813f733b3dc8ad89c80939174"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a009b859813f733b3dc8ad89c80939174">&#9670;&#160;</a></span>getClearColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 Renderer::getClearColor </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Zwraca kolor tła. </p><dl class="section return"><dt>Zwraca</dt><dd>Kolor tła. </dd></dl>
+
+</div>
+</div>
+<a id="adda6eac6acb96c4abc7e985bedca2ae1" name="adda6eac6acb96c4abc7e985bedca2ae1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adda6eac6acb96c4abc7e985bedca2ae1">&#9670;&#160;</a></span>getLightingPos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">glm::vec3 Renderer::getLightingPos </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Zwraca pozycję światła. </p><dl class="section return"><dt>Zwraca</dt><dd>Pozycja światła w przestrzeni. </dd></dl>
+
+</div>
+</div>
+<a id="ab29b3db7adb7b4c11b0708a53af5d9e5" name="ab29b3db7adb7b4c11b0708a53af5d9e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab29b3db7adb7b4c11b0708a53af5d9e5">&#9670;&#160;</a></span>getManager()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_object_manager.html">ObjectManager</a> * Renderer::getManager </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Zwraca wskaźnik na menedżera obiektów. </p><dl class="section return"><dt>Zwraca</dt><dd>Wskaźnik na menedżera obiektów. </dd></dl>
+
+</div>
+</div>
+<a id="a9c15669bd503722d0f6ac9da01c3e888" name="a9c15669bd503722d0f6ac9da01c3e888"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c15669bd503722d0f6ac9da01c3e888">&#9670;&#160;</a></span>getOrthogonal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Renderer::getOrthogonal </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Zwraca flagę, czy widok ortogonalny jest włączony. </p><dl class="section return"><dt>Zwraca</dt><dd>Flaga widoku ortogonalnego. </dd></dl>
+
+</div>
+</div>
+<a id="aa286347f05f2c7e0ce78bf313e4c4bad" name="aa286347f05f2c7e0ce78bf313e4c4bad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa286347f05f2c7e0ce78bf313e4c4bad">&#9670;&#160;</a></span>getScatterStrength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Renderer::getScatterStrength </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Zwraca siłę rozproszenia światła. </p><dl class="section return"><dt>Zwraca</dt><dd>Siła rozproszenia światła. </dd></dl>
+
+</div>
+</div>
+<a id="a33d9eec83cfeccc638c55766e9aff4ef" name="a33d9eec83cfeccc638c55766e9aff4ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33d9eec83cfeccc638c55766e9aff4ef">&#9670;&#160;</a></span>getShader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_shader.html">Shader</a> * Renderer::getShader </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Zwraca wskaźnik na aktualnie używany obiekt do obsługiwania shaderów. </p><dl class="section return"><dt>Zwraca</dt><dd>Wskaźnik na obiekt do obsługiwania shaderów. </dd></dl>
+
+</div>
+</div>
+<a id="ac171f60ed002270a6fde11bfd6e77644" name="ac171f60ed002270a6fde11bfd6e77644"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac171f60ed002270a6fde11bfd6e77644">&#9670;&#160;</a></span>getSpecularStrength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Renderer::getSpecularStrength </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Zwraca siłę światła spekularnego. </p><dl class="section return"><dt>Zwraca</dt><dd>Siła światła spekularnego. </dd></dl>
+
+</div>
+</div>
+<a id="a0fdc171fb77e844da67031cc58fb7a10" name="a0fdc171fb77e844da67031cc58fb7a10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fdc171fb77e844da67031cc58fb7a10">&#9670;&#160;</a></span>getWarnCutOff()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Renderer::getWarnCutOff </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Zwraca kąt odcięcia dla modelu Warna. </p><dl class="section return"><dt>Zwraca</dt><dd>Kąt odcięcia dla modelu Warna. </dd></dl>
+
+</div>
+</div>
+<a id="a36909a0ea1ea8e1e6b44f655ea6627ae" name="a36909a0ea1ea8e1e6b44f655ea6627ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36909a0ea1ea8e1e6b44f655ea6627ae">&#9670;&#160;</a></span>getWarnIntensity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Renderer::getWarnIntensity </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Zwraca intensywność dla modelu Warna. </p><dl class="section return"><dt>Zwraca</dt><dd>Intensywność dla modelu Warna. </dd></dl>
+
+</div>
+</div>
+<a id="a7240ea1e20664a14073058b64b543711" name="a7240ea1e20664a14073058b64b543711"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7240ea1e20664a14073058b64b543711">&#9670;&#160;</a></span>getWarnModel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Renderer::getWarnModel </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Zwraca czy jest używany model Warna. </p><dl class="section return"><dt>Zwraca</dt><dd>Flaga czy jest używany model Warna. </dd></dl>
+
+</div>
+</div>
+<a id="a159f19013e89147566caf68affb8bdb2" name="a159f19013e89147566caf68affb8bdb2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a159f19013e89147566caf68affb8bdb2">&#9670;&#160;</a></span>getZBuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Renderer::getZBuffer </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Zwraca flagę, czy z-buffer jest włączony. </p><dl class="section return"><dt>Zwraca</dt><dd>Flaga z-bufferu. </dd></dl>
+
+</div>
+</div>
+<a id="af7e5f8f68742f198e315fb4683a605a4" name="af7e5f8f68742f198e315fb4683a605a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7e5f8f68742f198e315fb4683a605a4">&#9670;&#160;</a></span>render()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Renderer::render </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Statyczna funkcja renderująca scenę. </p>
+
+</div>
+</div>
+<a id="a54391030d4726a294781dba082b5ec6e" name="a54391030d4726a294781dba082b5ec6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54391030d4726a294781dba082b5ec6e">&#9670;&#160;</a></span>replaceManager()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Renderer::replaceManager </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_object_manager.html">ObjectManager</a> *</td>          <td class="paramname"><span class="paramname"><em>readManager</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Zastępuje bieżącego menedżera obiektów. </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">readManager</td><td>Nowy menedżer obiektów. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab31a565ebc73ea58d1257a1ba5fa0960" name="ab31a565ebc73ea58d1257a1ba5fa0960"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab31a565ebc73ea58d1257a1ba5fa0960">&#9670;&#160;</a></span>setAmbientStrength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Renderer::setAmbientStrength </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>readStrength</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ustawia siłę światła ambientowego. </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">readStrength</td><td>Nowa siła światła ambientowego. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad1478e7d4abd4c9949ac05315e50aa82" name="ad1478e7d4abd4c9949ac05315e50aa82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1478e7d4abd4c9949ac05315e50aa82">&#9670;&#160;</a></span>setBoostColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Renderer::setBoostColor </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>readBoost</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ustawia współczynnik wzmocnienia koloru obiektów. </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">readBoost</td><td>Nowy współczynnik wzmocnienia koloru. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4694152cb4e9000c80e07af6b324fe11" name="a4694152cb4e9000c80e07af6b324fe11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4694152cb4e9000c80e07af6b324fe11">&#9670;&#160;</a></span>setClearColor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Renderer::setClearColor </td>
+          <td>(</td>
+          <td class="paramtype">glm::vec3</td>          <td class="paramname"><span class="paramname"><em>readClearColor</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ustawia kolor tła. </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">readClearColor</td><td>Kolor tła. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1170f2fdf5049f2d8904336ee8eda6b6" name="a1170f2fdf5049f2d8904336ee8eda6b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1170f2fdf5049f2d8904336ee8eda6b6">&#9670;&#160;</a></span>setLightingPos()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Renderer::setLightingPos </td>
+          <td>(</td>
+          <td class="paramtype">glm::vec3</td>          <td class="paramname"><span class="paramname"><em>readLighting</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ustawia pozycję światła w przestrzeni. </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">readLighting</td><td>Nowa pozycja światła. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0061068a696d01559a6949fc93a583b9" name="a0061068a696d01559a6949fc93a583b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0061068a696d01559a6949fc93a583b9">&#9670;&#160;</a></span>setOrthogonal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Renderer::setOrthogonal </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>shouldOrthogonal</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ustawia flagę dla widoku ortogonalnego. </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shouldOrthogonal</td><td>Flaga aktywująca widok ortogonalny. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac237424221e2f439a12f0010be41ba4c" name="ac237424221e2f439a12f0010be41ba4c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac237424221e2f439a12f0010be41ba4c">&#9670;&#160;</a></span>setScatterStrength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Renderer::setScatterStrength </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>readStrength</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ustawia siłę rozproszenia światła. </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">readStrength</td><td>Nowa siła rozproszenia światła. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a914f1904a5a738a3724a3f16fd9c34d3" name="a914f1904a5a738a3724a3f16fd9c34d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a914f1904a5a738a3724a3f16fd9c34d3">&#9670;&#160;</a></span>setSpecularStrength()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Renderer::setSpecularStrength </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>readStrength</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ustawia siłę światła spekularnego. </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">readStrength</td><td>Nowa siła światła spekularnego. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a02d4219e6980b9f209f62b2173ac1a7f" name="a02d4219e6980b9f209f62b2173ac1a7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02d4219e6980b9f209f62b2173ac1a7f">&#9670;&#160;</a></span>setUpShaders()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Renderer::setUpShaders </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Konfiguruje shadery do renderowania. </p>
+
+</div>
+</div>
+<a id="a89212293315309e6d11abda912e94fda" name="a89212293315309e6d11abda912e94fda"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89212293315309e6d11abda912e94fda">&#9670;&#160;</a></span>setWarnCutOff()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Renderer::setWarnCutOff </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>readCutOff</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ustawia kąt odcięcia dla modelu Warna. </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">readCutOff</td><td>Kąt odcięcia dla modelu Warna. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab95c71732653e8282cfcb10966894187" name="ab95c71732653e8282cfcb10966894187"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab95c71732653e8282cfcb10966894187">&#9670;&#160;</a></span>setWarnIntensity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Renderer::setWarnIntensity </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>readIntensity</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ustawia intensywność dla modelu Warna. </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">readIntensity</td><td>Intensywność dla modelu Warna. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8d82ca217518d1e6afdf283e090d0197" name="a8d82ca217518d1e6afdf283e090d0197"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d82ca217518d1e6afdf283e090d0197">&#9670;&#160;</a></span>setWarnModel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Renderer::setWarnModel </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>readIfWarn</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ustawia flagę czy jest używany model Warna. </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">readIfWarn</td><td>Nowa flaga czy jest używany model Warna. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad002e4f24a680ef0b32bac58087b5575" name="ad002e4f24a680ef0b32bac58087b5575"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad002e4f24a680ef0b32bac58087b5575">&#9670;&#160;</a></span>setZBuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Renderer::setZBuffer </td>
+          <td>(</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>readShould</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ustawia flagę włączenia z-bufferu. </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">readShould</td><td>Flaga włączająca z-buffer. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a192ba170f66932c92f26ff8603da3ec6" name="a192ba170f66932c92f26ff8603da3ec6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a192ba170f66932c92f26ff8603da3ec6">&#9670;&#160;</a></span>toggleIfFlatShading()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Renderer::toggleIfFlatShading </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Przełącza tryb renderowania z płaskim cieniowaniem. </p>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z plików:<ul>
+<li><a class="el" href="_renderer_8h_source.html">Renderer.h</a></li>
+<li><b>Renderer.cpp</b></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_renderer.html">Renderer</a></li>
+    <li class="footer">Wygenerowano za pomocą <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,558 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Engine3d: Dokumentacja klasy ObjectManager</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Engine3d
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano za pomocą Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('class_object_manager.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Wczytywanie...</div>
+<div class="SRStatus" id="Searching">Szukanie...</div>
+<div class="SRStatus" id="NoMatches">Brak dopasowań</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Metody publiczne</a> &#124;
+<a href="class_object_manager-members.html">Lista wszystkich składowych</a>  </div>
+  <div class="headertitle"><div class="title">Dokumentacja klasy ObjectManager</div></div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Metody publiczne</h2></td></tr>
+<tr class="memitem:a6fa9372c7c3a8da88412f4158ca3dfd9" id="r_a6fa9372c7c3a8da88412f4158ca3dfd9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6fa9372c7c3a8da88412f4158ca3dfd9">ObjectManager</a> ()</td></tr>
+<tr class="separator:a6fa9372c7c3a8da88412f4158ca3dfd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61cad0272210754b7b4ccd9ef7338421" id="r_a61cad0272210754b7b4ccd9ef7338421"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a61cad0272210754b7b4ccd9ef7338421">addDirectDrawable</a> (<a class="el" href="class_direct_draw.html">DirectDraw</a> *readDirect, int index=-1)</td></tr>
+<tr class="separator:a61cad0272210754b7b4ccd9ef7338421"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa6ce529c1fe119908cc31e768928dba" id="r_aaa6ce529c1fe119908cc31e768928dba"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaa6ce529c1fe119908cc31e768928dba">removeDirectDrawable</a> (int index=-1)</td></tr>
+<tr class="separator:aaa6ce529c1fe119908cc31e768928dba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a762ea7cd8388a3ffc689ebee8182bc5f" id="r_a762ea7cd8388a3ffc689ebee8182bc5f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_direct_draw.html">DirectDraw</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a762ea7cd8388a3ffc689ebee8182bc5f">getDirectDrawable</a> (int index=-1)</td></tr>
+<tr class="separator:a762ea7cd8388a3ffc689ebee8182bc5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13e6eecfc4c75a2c61465de6eaf5f159" id="r_a13e6eecfc4c75a2c61465de6eaf5f159"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13e6eecfc4c75a2c61465de6eaf5f159">addIndicedDrawable</a> (<a class="el" href="class_indice_draw.html">IndiceDraw</a> *readIndiced, int index=-1)</td></tr>
+<tr class="separator:a13e6eecfc4c75a2c61465de6eaf5f159"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2b5783b262a3b202c064fe100f69e03" id="r_ad2b5783b262a3b202c064fe100f69e03"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad2b5783b262a3b202c064fe100f69e03">removeIndicedDrawable</a> (int index=-1)</td></tr>
+<tr class="separator:ad2b5783b262a3b202c064fe100f69e03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60c377ce531ac92c30d6c004f27f900d" id="r_a60c377ce531ac92c30d6c004f27f900d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_indice_draw.html">IndiceDraw</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a60c377ce531ac92c30d6c004f27f900d">getIndicedDrawable</a> (int index=-1)</td></tr>
+<tr class="separator:a60c377ce531ac92c30d6c004f27f900d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13b26e6ad2695ebf1d824ec625db6286" id="r_a13b26e6ad2695ebf1d824ec625db6286"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13b26e6ad2695ebf1d824ec625db6286">addIndicedDrawableTextured</a> (<a class="el" href="class_indice_draw.html">IndiceDraw</a> *readIndiced, int index=-1)</td></tr>
+<tr class="separator:a13b26e6ad2695ebf1d824ec625db6286"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89cb40f56a61ccb277c72175583d58d0" id="r_a89cb40f56a61ccb277c72175583d58d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a89cb40f56a61ccb277c72175583d58d0">removeIndicedDrawableTextured</a> (int index=-1)</td></tr>
+<tr class="separator:a89cb40f56a61ccb277c72175583d58d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd6ab027e29d506a318b60fd95caea5b" id="r_acd6ab027e29d506a318b60fd95caea5b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_indice_draw.html">IndiceDraw</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd6ab027e29d506a318b60fd95caea5b">getIndicedDrawableTextured</a> (int index=-1)</td></tr>
+<tr class="separator:acd6ab027e29d506a318b60fd95caea5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a275e00c76e1b956803d36d6645e80a1c" id="r_a275e00c76e1b956803d36d6645e80a1c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a275e00c76e1b956803d36d6645e80a1c">clearIndicedList</a> ()</td></tr>
+<tr class="separator:a275e00c76e1b956803d36d6645e80a1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b55550ff2b1f9ccb656497da4ca4f8b" id="r_a1b55550ff2b1f9ccb656497da4ca4f8b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b55550ff2b1f9ccb656497da4ca4f8b">clearDirectList</a> ()</td></tr>
+<tr class="separator:a1b55550ff2b1f9ccb656497da4ca4f8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11d0f5e96a8c70e1db3a2f45c827d495" id="r_a11d0f5e96a8c70e1db3a2f45c827d495"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a11d0f5e96a8c70e1db3a2f45c827d495">clearIndicedTexturedList</a> ()</td></tr>
+<tr class="separator:a11d0f5e96a8c70e1db3a2f45c827d495"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f446751a6891b796cb10c8ef91c02f1" id="r_a6f446751a6891b796cb10c8ef91c02f1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6f446751a6891b796cb10c8ef91c02f1">drawAll</a> ()</td></tr>
+<tr class="separator:a6f446751a6891b796cb10c8ef91c02f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d9c80fed254e7063f12365fdaeb9a1d" id="r_a2d9c80fed254e7063f12365fdaeb9a1d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d9c80fed254e7063f12365fdaeb9a1d">setShader</a> (<a class="el" href="class_shader.html">Shader</a> *readShader)</td></tr>
+<tr class="separator:a2d9c80fed254e7063f12365fdaeb9a1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1c59627b99e7a832cfbfa354e1f4418" id="r_af1c59627b99e7a832cfbfa354e1f4418"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af1c59627b99e7a832cfbfa354e1f4418">refreshBuffer</a> ()</td></tr>
+<tr class="separator:af1c59627b99e7a832cfbfa354e1f4418"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5f52f8802a599d32e5d64edbaa0636c" id="r_aa5f52f8802a599d32e5d64edbaa0636c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa5f52f8802a599d32e5d64edbaa0636c">setCamera</a> (<a class="el" href="class_observer.html">Observer</a> *readCamera)</td></tr>
+<tr class="separator:aa5f52f8802a599d32e5d64edbaa0636c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc9bf9c994bce86e26dff210013fd740" id="r_abc9bf9c994bce86e26dff210013fd740"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_observer.html">Observer</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abc9bf9c994bce86e26dff210013fd740">getCamera</a> ()</td></tr>
+<tr class="separator:abc9bf9c994bce86e26dff210013fd740"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Dokumentacja konstruktora i destruktora</h2>
+<a id="a6fa9372c7c3a8da88412f4158ca3dfd9" name="a6fa9372c7c3a8da88412f4158ca3dfd9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fa9372c7c3a8da88412f4158ca3dfd9">&#9670;&#160;</a></span>ObjectManager()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ObjectManager::ObjectManager </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Konstruktor domyślny. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja funkcji składowych</h2>
+<a id="a61cad0272210754b7b4ccd9ef7338421" name="a61cad0272210754b7b4ccd9ef7338421"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61cad0272210754b7b4ccd9ef7338421">&#9670;&#160;</a></span>addDirectDrawable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ObjectManager::addDirectDrawable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_direct_draw.html">DirectDraw</a> *</td>          <td class="paramname"><span class="paramname"><em>readDirect</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>index</em></span><span class="paramdefsep"> = </span><span class="paramdefval">-1</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Dodaje obiekt do listy obiektów do bezpośredniego rysowania. </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">readDirect</td><td>Wskaźnik na obiekt do dodania. </td></tr>
+    <tr><td class="paramname">index</td><td>Opcjonalny indeks, w którym obiekt ma być dodany. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a13e6eecfc4c75a2c61465de6eaf5f159" name="a13e6eecfc4c75a2c61465de6eaf5f159"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13e6eecfc4c75a2c61465de6eaf5f159">&#9670;&#160;</a></span>addIndicedDrawable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ObjectManager::addIndicedDrawable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_indice_draw.html">IndiceDraw</a> *</td>          <td class="paramname"><span class="paramname"><em>readIndiced</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>index</em></span><span class="paramdefsep"> = </span><span class="paramdefval">-1</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Dodaje obiekt z indeksami do listy obiektów. </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">readIndiced</td><td>Wskaźnik na obiekt do dodania. </td></tr>
+    <tr><td class="paramname">index</td><td>Opcjonalny indeks, w którym obiekt ma być dodany. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a13b26e6ad2695ebf1d824ec625db6286" name="a13b26e6ad2695ebf1d824ec625db6286"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13b26e6ad2695ebf1d824ec625db6286">&#9670;&#160;</a></span>addIndicedDrawableTextured()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ObjectManager::addIndicedDrawableTextured </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_indice_draw.html">IndiceDraw</a> *</td>          <td class="paramname"><span class="paramname"><em>readIndiced</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>index</em></span><span class="paramdefsep"> = </span><span class="paramdefval">-1</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Dodaje obiekt teksturowany do listy obiektów z indeksami. </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">readIndiced</td><td>Wskaźnik na obiekt do dodania. </td></tr>
+    <tr><td class="paramname">index</td><td>Opcjonalny indeks, w którym obiekt ma być dodany. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1b55550ff2b1f9ccb656497da4ca4f8b" name="a1b55550ff2b1f9ccb656497da4ca4f8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b55550ff2b1f9ccb656497da4ca4f8b">&#9670;&#160;</a></span>clearDirectList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ObjectManager::clearDirectList </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Czyści listę obiektów do bezpośredniego rysowania. </p>
+
+</div>
+</div>
+<a id="a275e00c76e1b956803d36d6645e80a1c" name="a275e00c76e1b956803d36d6645e80a1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a275e00c76e1b956803d36d6645e80a1c">&#9670;&#160;</a></span>clearIndicedList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ObjectManager::clearIndicedList </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Czyści listę obiektów z indeksami. </p>
+
+</div>
+</div>
+<a id="a11d0f5e96a8c70e1db3a2f45c827d495" name="a11d0f5e96a8c70e1db3a2f45c827d495"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11d0f5e96a8c70e1db3a2f45c827d495">&#9670;&#160;</a></span>clearIndicedTexturedList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ObjectManager::clearIndicedTexturedList </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Czyści listę obiektów teksturowanych z indeksami. </p>
+
+</div>
+</div>
+<a id="a6f446751a6891b796cb10c8ef91c02f1" name="a6f446751a6891b796cb10c8ef91c02f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f446751a6891b796cb10c8ef91c02f1">&#9670;&#160;</a></span>drawAll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ObjectManager::drawAll </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Rysuje wszystkie obiekty. </p>
+
+</div>
+</div>
+<a id="abc9bf9c994bce86e26dff210013fd740" name="abc9bf9c994bce86e26dff210013fd740"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc9bf9c994bce86e26dff210013fd740">&#9670;&#160;</a></span>getCamera()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_observer.html">Observer</a> * ObjectManager::getCamera </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Zwraca wskaźnik na kamerę. </p><dl class="section return"><dt>Zwraca</dt><dd>Wskaźnik na kamerę. </dd></dl>
+
+</div>
+</div>
+<a id="a762ea7cd8388a3ffc689ebee8182bc5f" name="a762ea7cd8388a3ffc689ebee8182bc5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a762ea7cd8388a3ffc689ebee8182bc5f">&#9670;&#160;</a></span>getDirectDrawable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_direct_draw.html">DirectDraw</a> * ObjectManager::getDirectDrawable </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>index</em></span><span class="paramdefsep"> = </span><span class="paramdefval">-1</span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Zwraca obiekt z listy obiektów do bezpośredniego rysowania. </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Opcjonalny indeks obiektu do zwrócenia. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Wskaźnik na obiekt. </dd></dl>
+
+</div>
+</div>
+<a id="a60c377ce531ac92c30d6c004f27f900d" name="a60c377ce531ac92c30d6c004f27f900d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60c377ce531ac92c30d6c004f27f900d">&#9670;&#160;</a></span>getIndicedDrawable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_indice_draw.html">IndiceDraw</a> * ObjectManager::getIndicedDrawable </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>index</em></span><span class="paramdefsep"> = </span><span class="paramdefval">-1</span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Zwraca obiekt z listy obiektów z indeksami. </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Opcjonalny indeks obiektu do zwrócenia. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Wskaźnik na obiekt. </dd></dl>
+
+</div>
+</div>
+<a id="acd6ab027e29d506a318b60fd95caea5b" name="acd6ab027e29d506a318b60fd95caea5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd6ab027e29d506a318b60fd95caea5b">&#9670;&#160;</a></span>getIndicedDrawableTextured()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_indice_draw.html">IndiceDraw</a> * ObjectManager::getIndicedDrawableTextured </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>index</em></span><span class="paramdefsep"> = </span><span class="paramdefval">-1</span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Zwraca obiekt teksturowany z listy obiektów z indeksami. </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Opcjonalny indeks obiektu do zwrócenia. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Zwraca</dt><dd>Wskaźnik na obiekt. </dd></dl>
+
+</div>
+</div>
+<a id="af1c59627b99e7a832cfbfa354e1f4418" name="af1c59627b99e7a832cfbfa354e1f4418"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1c59627b99e7a832cfbfa354e1f4418">&#9670;&#160;</a></span>refreshBuffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ObjectManager::refreshBuffer </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Odświeża bufory z danymi do rysowanaia. </p>
+
+</div>
+</div>
+<a id="aaa6ce529c1fe119908cc31e768928dba" name="aaa6ce529c1fe119908cc31e768928dba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa6ce529c1fe119908cc31e768928dba">&#9670;&#160;</a></span>removeDirectDrawable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ObjectManager::removeDirectDrawable </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>index</em></span><span class="paramdefsep"> = </span><span class="paramdefval">-1</span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Usuwa obiekt z listy obiektów do bezpośredniego rysowania. </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Opcjonalny indeks obiektu do usunięcia. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad2b5783b262a3b202c064fe100f69e03" name="ad2b5783b262a3b202c064fe100f69e03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2b5783b262a3b202c064fe100f69e03">&#9670;&#160;</a></span>removeIndicedDrawable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ObjectManager::removeIndicedDrawable </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>index</em></span><span class="paramdefsep"> = </span><span class="paramdefval">-1</span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Usuwa obiekt z listy obiektów z indeksami. </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Opcjonalny indeks obiektu do usunięcia. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a89cb40f56a61ccb277c72175583d58d0" name="a89cb40f56a61ccb277c72175583d58d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89cb40f56a61ccb277c72175583d58d0">&#9670;&#160;</a></span>removeIndicedDrawableTextured()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ObjectManager::removeIndicedDrawableTextured </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>index</em></span><span class="paramdefsep"> = </span><span class="paramdefval">-1</span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Usuwa obiekt teksturowany z listy obiektów z indeksami. </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Opcjonalny indeks obiektu do usunięcia. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa5f52f8802a599d32e5d64edbaa0636c" name="aa5f52f8802a599d32e5d64edbaa0636c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5f52f8802a599d32e5d64edbaa0636c">&#9670;&#160;</a></span>setCamera()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ObjectManager::setCamera </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_observer.html">Observer</a> *</td>          <td class="paramname"><span class="paramname"><em>readCamera</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ustawia kamerę. </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">readCamera</td><td>Wskaźnik na kamerę do ustawienia. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2d9c80fed254e7063f12365fdaeb9a1d" name="a2d9c80fed254e7063f12365fdaeb9a1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d9c80fed254e7063f12365fdaeb9a1d">&#9670;&#160;</a></span>setShader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ObjectManager::setShader </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_shader.html">Shader</a> *</td>          <td class="paramname"><span class="paramname"><em>readShader</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Ustawia obiekt obsługujący shadery. </p><dl class="params"><dt>Parametry</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">readShader</td><td>Wskaźnik na obiekt obsługujący shadery. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<hr/>Dokumentacja dla tej klasy została wygenerowana z plików:<ul>
+<li><a class="el" href="_object_manager_8h_source.html">ObjectManager.h</a></li>
+<li><b>ObjectManager.cpp</b></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_object_manager.html">ObjectManager</a></li>
+    <li class="footer">Wygenerowano za pomocą <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+  </ul>
+</div>
+</body>
+</html>

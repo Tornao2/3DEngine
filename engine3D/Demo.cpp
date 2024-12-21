@@ -33,6 +33,8 @@ public:
         manager = readManager;
         transformable = transformables;
         returnTheFunc = false;
+        createFigure = point;
+        player = readPlayer;
         setIfShouldRefresh('4', true);
         setIfShouldRefresh('5', true);
         setIfShouldRefresh('6', true);
@@ -40,8 +42,6 @@ public:
         setIfShouldRefresh('.', true);
         setIfShouldRefresh('[', true);
         setIfShouldRefresh(']', true);
-        createFigure = point;
-        player = readPlayer;
     }
     void handleKeyboard() {
         glutKeyboardFunc(NULL);
@@ -482,53 +482,46 @@ public:
 };
 
 void fillManager(ObjectManager* managers, std::vector <TransformableFigure*>* transformables, Player** player) {
-    std::vector<glm::vec4> triangleData = {
-        glm::vec4(-3.0f,  5.5f, -3.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.0f, 1.0f, 1.0f, 1.0f),
-        glm::vec4(-5.5f, 0.5f, -3.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 0.0f),glm::vec4(0.0f, 1.0f, 1.0f, 1.0f),
-        glm::vec4(3.5f, 0.5f, -3.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 0.0f),glm::vec4(0.0f, 1.0f, 1.0f, 1.0f)
+    std::vector<glm::vec4> pointData = {
+        glm::vec4(-7.0f,  -1.0f, -5.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 0.0f),glm::vec4(0.0f, 1.0f, 1.0f, 1.0f)
     };
     std::vector<glm::vec4> lineData = {
-        glm::vec4(-10.5f,  0.0f, -30.0f, 1.0), glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 1.0f, 0.0, 1.0f),
-        glm::vec4(0.5f,  5.0f, -30.0f, 1.0), glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 1.0f, 0.0, 1.0f)
+        glm::vec4(-6.5f,  3.0f, -5, 1.0), glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 1.0f, 0.0, 1.0f),
+        glm::vec4(-5.5f,  5.0f, -5, 1.0), glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 1.0f, 0.0, 1.0f)
     };
-    std::vector<glm::vec4> pointData = {
-        glm::vec4(2.0f,  2.0f, -3.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 0.0f),glm::vec4(0.0f, 1.0f, 1.0f, 1.0f)
+    std::vector<glm::vec4> triangleData = {
+        glm::vec4(-4.5f,  2.5f, -5.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.0f, 1.0f, 1.0f, 1.0f),
+        glm::vec4(-5.0f, 0.5f, -5.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 0.0f),glm::vec4(0.0f, 1.0f, 1.0f, 1.0f),
+        glm::vec4(-4.0f, -1.5f, -5.0f, 1.0f), glm::vec4(0.0f, 0.0f, 1.0f, 0.0f),glm::vec4(0.0f, 1.0f, 1.0f, 1.0f)
     };
     std::vector<glm::vec4> poliLineData = {
-        glm::vec4(2.0f,  2.0f, -3.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f),
-        glm::vec4(0.0f,  1.0f,  1.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f),
-        glm::vec4(-1.0f, 0.5f,  2.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f),
+        glm::vec4(-3.0f,  2.0f, -3.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f),
+        glm::vec4(-2.5f,  5.0f,  -3.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 0.0f, 1.0f, 1.0f),
+        glm::vec4(-2.0f, 0.0f,  -3.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 1.0f, 0.0f, 1.0f),
     };
     std::vector <glm::vec4> closedPoliLine = {
-        glm::vec4(0.5f,  2.0f, -1.5f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f),
-        glm::vec4(-2.0f, -1.0f, 1.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f),
-        glm::vec4(1.0f,  -2.0f, -2.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f),
-        glm::vec4(2.5f,  0.0f,  1.5f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f),
+        glm::vec4(-1.5f,  2.0f, -3.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f),
+        glm::vec4(-2.0f, -3.0f, -3.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f),
+        glm::vec4(0.0f,  2.0f, -3.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f),
+        glm::vec4(-1.5f,  2.0f,  -3.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f),
     };
     std::vector<glm::vec4> triangleStripData = {
-        glm::vec4(-1.0f, -3.5f,  -4.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f),
-        glm::vec4(-1.0f,  2.5f,  -5.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f),
-        glm::vec4(0.0f, -3.5f,  -4.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.6f, 0.0f, 1.0f, 1.0f),
-        glm::vec4(0.0f,  2.5f,  -1.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.1f, 0.0f, 1.0f, 1.0f),
-        glm::vec4(1.0f, -3.5f,  -4.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.4f, 1.0f, 0.0f, 1.0f),
-        glm::vec4(1.0f,  1.0f,  -2.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.1f, 1.0f, 0.2f, 1.0f),
-        glm::vec4(0.5f,  2.0f,  -3.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.2f, 1.0f, 0.3f, 1.0f),
-        glm::vec4(1.75f,  -1.0f,  -2.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.1f, 1.0f, 0.1f, 1.0f),
-        glm::vec4(0.25f,  0.0f,  -5.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.3f, 1.0f, 0.0f, 1.0f)
+        glm::vec4(-0.3f, -3.5f,  -3.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f),
+        glm::vec4(0.5f,  0.5f,  -2.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f),
+        glm::vec4(-1.2f, -2.5f,  -3.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.6f, 0.0f, 1.0f, 1.0f),
+        glm::vec4(1.0f,  3.0f,  -2.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.1f, 1.0f, 0.2f, 1.0f),
     };
     std::vector<glm::vec4> triangleFanData = {
-        glm::vec4(3.0f, 0.0f,  -3.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 1.0f, 1.0f, 1.0f),
-        glm::vec4(3.5f, 0.0f,  -3.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 1.0f, 1.0f, 1.0f),
-        glm::vec4(3.3f, 0.7f,  -3.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 1.0f, 1.0f, 1.0f),
-        glm::vec4(3.0f, 1.0f,  -3.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 1.0f, 1.0f, 1.0f),
-        glm::vec4(2.6f, 0.7f,  -3.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 1.0f, 1.0f, 1.0f),
-        glm::vec4(2.5f, 0.0f,  -3.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 1.0f, 1.0f, 1.0f)
+        glm::vec4(3.5f, 0.0f,  -4.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 1.0f, 0.0f, 1.0f),
+        glm::vec4(3.0f, -1.0f,  -4.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.0f, 0.0f, 1.0f, 1.0f),
+        glm::vec4(2.6f, -0.7f,  -5.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f),
+        glm::vec4(2.5f, 2.0f,  -3.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4( 0.0f, 1.0f, 0.0f, 1.0f)
     };
     std::vector<glm::vec4> quadsData = {
-        glm::vec4(-0.5f, -2.5f, -5.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 1.0f, 0.0f, 1.0f),
-        glm::vec4(-0.5f,  -6.0f, -5.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 1.0f, 0.0f, 1.0f),
-        glm::vec4(-2.5f,  -6.0f, -5.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 1.0f, 0.0f, 1.0f),
-        glm::vec4(-2.5f, -0.5f, -5.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 1.0f, 0.0f, 1.0f),
+        glm::vec4(-6.5f, -4.5f, -5.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.0f, 1.0f, 0.0f, 1.0f),
+        glm::vec4(-6.5f,  -8.0f, -5.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 0.0f, 0.0f, 1.0f),
+        glm::vec4(-8.5f,  -8.0f, -5.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 1.0f, 0.0f, 1.0f),
+        glm::vec4(-8.5f, -4.5f, -5.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(1.0f, 1.0f, 1.0f, 1.0f),
     };
     std::vector<glm::vec4> quadsTexturedData = {
         glm::vec4(30.5f, -14.5f, -30.0f, 1.0f),glm::vec4(0.0f, 0.0f, 1.0f, 0.0f), glm::vec4(0.0f, 0.0f, 0.0f, 0.0f),
@@ -547,12 +540,18 @@ void fillManager(ObjectManager* managers, std::vector <TransformableFigure*>* tr
     std::vector<glm::vec4> playerColors;
     for (int i = 0; i < 24; i++)
         playerColors.push_back({ 1, 1, 1, 1 });
-    managers->addDirectDrawable(new Triangle(triangleData));
-    transformables->push_back((Triangle*)managers->getDirectDrawable());
-    managers->addDirectDrawable(new Point(pointData, 40));
+    std::vector <glm::vec4> EColors;
+    for (int i = 0; i < 76; i++) {
+        EColors.push_back({ 1, 1, 1, 1 });
+    }
+    BitmapHandler tempBitmap;
+    int dirtId = tempBitmap.loadBitmap("dirt.png");
+    managers->addDirectDrawable(new Point(pointData, 20));
     transformables->push_back((Point*)managers->getDirectDrawable());
     managers->addDirectDrawable(new Line(lineData, 10));
     transformables->push_back((Line*)managers->getDirectDrawable());
+    managers->addDirectDrawable(new Triangle(triangleData));
+    transformables->push_back((Triangle*)managers->getDirectDrawable());
     managers->addDirectDrawable(new PoliLine(poliLineData, 10, false));
     transformables->push_back((PoliLine*)managers->getDirectDrawable());
     managers->addDirectDrawable(new PoliLine(closedPoliLine, 5, true));
@@ -563,27 +562,21 @@ void fillManager(ObjectManager* managers, std::vector <TransformableFigure*>* tr
     transformables->push_back((TriangleFan*)managers->getDirectDrawable());
     managers->addDirectDrawable(new Quads(quadsData));
     transformables->push_back((Quads*)managers->getDirectDrawable());
-    BitmapHandler tempBitmap;
-    int dirtId = tempBitmap.loadBitmap("dirt.png");
     managers->addDirectDrawable(new QuadsTextured(quadsTexturedData));
-    transformables->push_back((QuadsTextured*)managers->getDirectDrawable());
     managers->getDirectDrawable()->setTextured(dirtId);
-    managers->addIndicedDrawableTextured(new CubeTextured(2.0f, 1.0f, -2.25f, -1.0f));
+    transformables->push_back((QuadsTextured*)managers->getDirectDrawable());
+    managers->addIndicedDrawableTextured(new CubeTextured(2.0f, 5.0f, -3.0, -5.0f));
     managers->getIndicedDrawableTextured()->setTextured(dirtId);
     transformables->push_back((CubeTextured*)managers->getIndicedDrawableTextured());
-    *player = new Player(0.2f, 0.0f, 1.0f, -2.0f, playerColors);
+    *player = new Player(0.4f, 0.0f, -2.0f, -2.0f, playerColors);
     managers->addIndicedDrawable(*player);
     transformables->push_back((Player*)managers->getIndicedDrawable());
-    managers->addIndicedDrawable(new Cube(1.5f, -1.75f, -3.25f, -1.0f, cubeColors));
+    managers->addIndicedDrawable(new Cube(1.5f, -5.75f, -4.25f, -1.0f, cubeColors));
     transformables->push_back((Cube*)managers->getIndicedDrawable());
-    std::vector <glm::vec4> EColors;
-    for (int i = 0; i < 76; i++) {
-        EColors.push_back({ 1, 1, 1, 1 });
-    }
-    managers->addIndicedDrawable(new FigureE(1.5f, 0.5f, 0.0f, -1.0f, EColors));
+    managers->addIndicedDrawable(new FigureE(1.5f, -2.5f, 3.0f, -5.0f, EColors));
 }
 
-int main(int argc, char** argv) {
+void printCommandList() {
     std::cout << "Nacisnij esc aby wyjsc" << std::endl;
     std::cout << "Nacisnij 1 zeby wybrac liczbe klatek na sekunde" << std::endl;
     std::cout << "Nacisnij 2 zeby wybrac szerokosc okna" << std::endl;
@@ -606,6 +599,10 @@ int main(int argc, char** argv) {
     std::cout << "Nacisnij a/s/d/w/spacji/z aby sterowac graczem" << std::endl;
     std::cout << "Nacisnij [ aby przelaczac miedzy trybami cieniowania" << std::endl;
     std::cout << "Nacisnij ] aby przelaczac miedzy modelami oswietlenia" << std::endl;
+}
+
+int main(int argc, char** argv) {
+    printCommandList();
     ObjectManager manager;
     Renderer renderer(&manager);
     DisplayManager displayManager;;

@@ -145,7 +145,6 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="PoliLine.cpp" />
-    <ClCompile Include="DirectDraw.cpp" />
     <ClCompile Include="DisplayManager.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="Demo.cpp" />
