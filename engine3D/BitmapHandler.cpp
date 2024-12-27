@@ -1,6 +1,5 @@
 #include "BitmapHandler.h"
 
-
 int BitmapHandler::loadBitmap(std::string readPath) {
 	int height, width, channels;
 	unsigned char* temp = stbi_load(readPath.c_str(), &height, &width, &channels, 0);

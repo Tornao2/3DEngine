@@ -31,5 +31,3 @@ public:
      */
     void setActive(bool readActive);
 };
-
-/** @} */

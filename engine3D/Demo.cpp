@@ -473,7 +473,6 @@ public:
  
 class CustomMouse :public MouseHandler {
 public:
-    CustomMouse() : MouseHandler() {};
     void handleMouse() {
         if (checkIfPressed(leftButton))
             printf("Clicked\n");
@@ -563,10 +562,12 @@ void fillManager(ObjectManager* managers, std::vector <TransformableFigure*>* tr
     managers->addDirectDrawable(new Quads(quadsData));
     transformables->push_back((Quads*)managers->getDirectDrawable());
     managers->addDirectDrawable(new QuadsTextured(quadsTexturedData));
-    managers->getDirectDrawable()->setTextured(dirtId);
+    managers->getDirectDrawable()->setTextured(true);
+    ((QuadsTextured*) managers->getDirectDrawable())->setTextureId(dirtId);
     transformables->push_back((QuadsTextured*)managers->getDirectDrawable());
     managers->addIndicedDrawableTextured(new CubeTextured(2.0f, 5.0f, -3.0, -5.0f));
-    managers->getIndicedDrawableTextured()->setTextured(dirtId);
+    managers->getIndicedDrawableTextured()->setTextured(true);
+    ((CubeTextured*)managers->getIndicedDrawableTextured())->setTextureId(dirtId);
     transformables->push_back((CubeTextured*)managers->getIndicedDrawableTextured());
     *player = new Player(0.4f, 0.0f, -2.0f, -2.0f, playerColors);
     managers->addIndicedDrawable(*player);
@@ -605,7 +606,7 @@ int main(int argc, char** argv) {
     printCommandList();
     ObjectManager manager;
     Renderer renderer(&manager);
-    DisplayManager displayManager;;
+    DisplayManager displayManager;
     Engine engine(&argc, argv, renderer, displayManager, 300);
     std::vector <TransformableFigure*> transformables;
     Player* player = nullptr;
@@ -614,7 +615,6 @@ int main(int argc, char** argv) {
     CustomKeyboard key(&displayManager, &engine, &renderer, &manager, &transformables, player);
     Observer camera = Observer(renderer.getShader());
     mouse.setCamera(&camera);
-    manager.setCamera(&camera);
     engine.toggleMouse(true, std::bind(&CustomMouse::handleMouse, &mouse));
     engine.toggleKeyboard(true, std::bind(&CustomKeyboard::handleKeyboard, &key));
     glutMainLoop();

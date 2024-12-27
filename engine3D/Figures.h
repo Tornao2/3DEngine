@@ -5,19 +5,6 @@
 #include "Refreshable.h"
 #include "EngineObject.h"
 
-/**
- * @enum vecType
- * Enum wskazuje ró¿ne typy wektorów, które mog¹ byæ wykorzystywane
- */
-typedef enum vecType {
-	/** Wektor pozycji */
-	pos,
-	/** Wektor koloru */
-	col,
-	/** Wektor normalny */
-	nor
-}vecType;
-
 /** @class Figures
  *  Klasa podstawowa wszystkich figur
  */

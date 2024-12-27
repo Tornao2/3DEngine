@@ -4,6 +4,6 @@ void Textured::setTextureId(int readTextureId) {
 	textureId = readTextureId;
 }
 
-int Textured::getTextured() {
+int Textured::getTextureId() {
 	return textureId;
 }

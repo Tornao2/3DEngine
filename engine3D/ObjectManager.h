@@ -12,6 +12,10 @@
 #include "Player.h"
 #include "Observer.h"
 
+/**
+ * @class ObjectManager
+ * Klasa odpowiedzialna za zarz¹dzanie obiektami programu.
+ */
 class ObjectManager {
 private:
     /** WskaŸnik na obiekt zajmuj¹cy siê shaderami. */
@@ -28,7 +32,6 @@ private:
     std::vector<int> totalIndicesTextured;
     /** WskaŸnik na kamerê. */
     Observer* camera;
-
 public:
     /** Konstruktor domyœlny. */
     ObjectManager();

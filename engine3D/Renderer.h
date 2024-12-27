@@ -2,10 +2,10 @@
 #include "ObjectManager.h"
 #include <glm/gtc/type_ptr.hpp>
 
-#pragma once
-#include "ObjectManager.h"
-#include <glm/gtc/type_ptr.hpp>
-
+/**
+ * @class Renderer
+ * Klasa odpowiedzialna za renderowanie progrmau.
+ */
 class Renderer {
 private:
     /** Funkcja wykonuj¹ca w³aœciwe renderowanie. */

@@ -17,5 +17,5 @@ public:
      * Funkcja zwracaj¹ca identyfikator tekstury.
      * @return Identyfikator tekstury.
      */
-    int getTextured();
+    int getTextureId();
 };

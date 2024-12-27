@@ -5,6 +5,10 @@
 #include <sstream>
 #include <iostream>
 
+/**
+ * @class Shader
+ * Klasa odpowiedzialna za dzia³anie shaderów programu
+ */
 class Shader {
 private:
     /** ID programu shadera dla g³adkiego cieniowania. */
